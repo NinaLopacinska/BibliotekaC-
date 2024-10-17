@@ -58,6 +58,7 @@
             buttonZaloguj.TabIndex = 1;
             buttonZaloguj.Text = "Zaloguj";
             buttonZaloguj.UseVisualStyleBackColor = true;
+            buttonZaloguj.Click += buttonZaloguj_Click_1;
             // 
             // label1
             // 

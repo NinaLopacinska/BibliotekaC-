@@ -35,6 +35,7 @@
             textBox1 = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // buttonZaloguj
@@ -107,11 +108,23 @@
             label2.TabIndex = 6;
             label2.Text = "Wyszukaj pozycje, która Cie interesuje ";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(1120, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(60, 60);
+            button1.TabIndex = 7;
+            button1.Text = "X";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += this.button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 753);
+            Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBox1);
@@ -134,5 +147,6 @@
         private TextBox textBox1;
         private Label label1;
         private Label label2;
+        private Button button1;
     }
 }

@@ -56,7 +56,6 @@
             textBoxHaslo = new TextBox();
             textBoxLogin = new TextBox();
             textBoxNazwisko = new TextBox();
-            textBoxDataUrodzenia = new TextBox();
             textBoxEmailOpiekuna = new TextBox();
             textBoxNrTelefonuOpiekuna = new TextBox();
             textBoxNazwiskoOpiekuna = new TextBox();
@@ -66,6 +65,7 @@
             label19 = new Label();
             label20 = new Label();
             buttonRejstracja = new Button();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
             // label1
@@ -331,14 +331,6 @@
             textBoxNazwisko.Size = new Size(179, 38);
             textBoxNazwisko.TabIndex = 27;
             // 
-            // textBoxDataUrodzenia
-            // 
-            textBoxDataUrodzenia.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxDataUrodzenia.Location = new Point(815, 295);
-            textBoxDataUrodzenia.Name = "textBoxDataUrodzenia";
-            textBoxDataUrodzenia.Size = new Size(179, 38);
-            textBoxDataUrodzenia.TabIndex = 28;
-            // 
             // textBoxEmailOpiekuna
             // 
             textBoxEmailOpiekuna.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -416,12 +408,22 @@
             buttonRejstracja.TabIndex = 37;
             buttonRejstracja.Text = "Rejestruj";
             buttonRejstracja.UseVisualStyleBackColor = true;
+            buttonRejstracja.Click += buttonRejstracja_Click;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Location = new Point(815, 302);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(179, 38);
+            dateTimePicker1.TabIndex = 38;
             // 
             // RejestracjaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 953);
+            Controls.Add(dateTimePicker1);
             Controls.Add(buttonRejstracja);
             Controls.Add(label20);
             Controls.Add(label19);
@@ -431,7 +433,6 @@
             Controls.Add(textBoxNazwiskoOpiekuna);
             Controls.Add(textBoxNrTelefonuOpiekuna);
             Controls.Add(textBoxEmailOpiekuna);
-            Controls.Add(textBoxDataUrodzenia);
             Controls.Add(textBoxNazwisko);
             Controls.Add(textBoxLogin);
             Controls.Add(textBoxHaslo);
@@ -496,7 +497,6 @@
         private TextBox textBoxHaslo;
         private TextBox textBoxLogin;
         private TextBox textBoxNazwisko;
-        private TextBox textBoxDataUrodzenia;
         private TextBox textBoxEmailOpiekuna;
         private TextBox textBoxNrTelefonuOpiekuna;
         private TextBox textBoxNazwiskoOpiekuna;
@@ -506,5 +506,6 @@
         private Label label19;
         private Label label20;
         private Button buttonRejstracja;
+        private DateTimePicker dateTimePicker1;
     }
 }
