@@ -8,7 +8,7 @@ namespace bilbioteka
 {
     internal class Zasoby
     {
-        public Zasoby(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone)
+        public Zasoby(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone, float ocena, int ilosc, string kategoria)
         {
             Tytul = tytul;
             Autor = autor;
@@ -16,6 +16,11 @@ namespace bilbioteka
             NumerKatalogowy = numerKatalogowy;
             Typ = typ;
             CzyWypozyczone = czyWypozyczone;
+            Ocena = ocena;
+            Ilosc = ilosc;
+            Kategoria = kategoria;
+
+
         }
 
         public string Tytul { get; set; }
@@ -24,5 +29,8 @@ namespace bilbioteka
         public int NumerKatalogowy { get; set; }
         public string Typ { get; set; }
         public bool CzyWypozyczone { get; set; }
+        public float Ocena {  get; set; }
+        public int Ilosc {  get; set; } 
+        public string Kategoria { get; set; }
     }
 }

@@ -139,10 +139,10 @@ namespace bilbioteka.Forms
                 // Dodaj nowego użytkownika
                 string insertQuery = @"
             INSERT INTO uzytkownicy 
-            (Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email, 
+            (IdOsoby,Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email, 
             ImieOpiekuna, NazwiskoOpiekuna, NumerTelefonuOpiekuna, EmailOpiekuna) 
             VALUES 
-            (@Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
+            (1, @Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
             @Email, @ImieOpiekuna, @NazwiskoOpiekuna, @NumerTelefonuOpiekuna, @EmailOpiekuna);";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
@@ -183,7 +183,7 @@ namespace bilbioteka.Forms
             MessageBox.Show("Rejestracja zakończona pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
 
-            MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm();
+            MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(imie);
             mainUzytkownikForm.Show();
             this.Hide();
         }

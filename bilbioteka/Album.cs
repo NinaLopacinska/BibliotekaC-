@@ -10,8 +10,8 @@ namespace bilbioteka
     {
         public int LiczbaZdjec { get; set; }
 
-        public Album(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone, int liczbaZdjec)
-            : base(tytul, autor, rokWydania, numerKatalogowy, typ, czyWypozyczone)
+        public Album(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone, float ocena, int ilosc, string kategoria, int liczbaZdjec)
+            : base(tytul, autor, rokWydania, numerKatalogowy, typ, czyWypozyczone, ocena, ilosc, kategoria)
 
         {
             LiczbaZdjec = liczbaZdjec;

@@ -10,8 +10,8 @@ namespace bilbioteka
     {
         public int CzasTrwania { get; set; }
 
-        public Film(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone, int czasTrwania)
-            : base(tytul, autor, rokWydania, numerKatalogowy, typ, czyWypozyczone)
+        public Film(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone, float ocena, int ilosc, string kategoria, int czasTrwania)
+            : base(tytul, autor, rokWydania, numerKatalogowy, typ, czyWypozyczone, ocena, ilosc, kategoria)
         {
             CzasTrwania = czasTrwania;
         }

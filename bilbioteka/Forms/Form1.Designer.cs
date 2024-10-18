@@ -36,14 +36,18 @@
             label1 = new Label();
             label2 = new Label();
             button1 = new Button();
+            dataGridView1 = new DataGridView();
+            button2Nowosci = new Button();
+            buttonUlubiency = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // buttonZaloguj
             // 
             buttonZaloguj.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonZaloguj.Location = new Point(22, 24);
+            buttonZaloguj.Location = new Point(27, 23);
             buttonZaloguj.Name = "buttonZaloguj";
-            buttonZaloguj.Size = new Size(192, 64);
+            buttonZaloguj.Size = new Size(221, 74);
             buttonZaloguj.TabIndex = 0;
             buttonZaloguj.Text = "Zaloguj";
             buttonZaloguj.UseVisualStyleBackColor = true;
@@ -52,9 +56,9 @@
             // buttonRejstruj
             // 
             buttonRejstruj.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonRejstruj.Location = new Point(249, 24);
+            buttonRejstruj.Location = new Point(27, 117);
             buttonRejstruj.Name = "buttonRejstruj";
-            buttonRejstruj.Size = new Size(192, 64);
+            buttonRejstruj.Size = new Size(221, 77);
             buttonRejstruj.TabIndex = 1;
             buttonRejstruj.Text = "Rejstruj";
             buttonRejstruj.UseVisualStyleBackColor = true;
@@ -62,10 +66,10 @@
             // 
             // buttonSzukaj
             // 
-            buttonSzukaj.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(458, 508);
+            buttonSzukaj.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSzukaj.Location = new Point(985, 283);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(192, 64);
+            buttonSzukaj.Size = new Size(153, 51);
             buttonSzukaj.TabIndex = 2;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;
@@ -75,24 +79,24 @@
             comboBox1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Książka ", "Film", "Album ", "Autor", "Nr katalogowy ", "Rok wydania ", "Kategoria " });
-            comboBox1.Location = new Point(667, 404);
+            comboBox1.Location = new Point(737, 294);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(224, 40);
             comboBox1.TabIndex = 3;
             // 
             // textBox1
             // 
-            textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(203, 393);
+            textBox1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(271, 289);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(447, 51);
+            textBox1.Size = new Size(447, 43);
             textBox1.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 49.8000031F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(203, 229);
+            label1.Location = new Point(317, 108);
             label1.Name = "label1";
             label1.Size = new Size(728, 104);
             label1.TabIndex = 5;
@@ -102,7 +106,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(249, 333);
+            label2.Location = new Point(363, 212);
             label2.Name = "label2";
             label2.Size = new Size(608, 40);
             label2.TabIndex = 6;
@@ -117,13 +121,46 @@
             button1.TabIndex = 7;
             button1.Text = "X";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += this.button1_Click;
+            button1.Click += button1_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(271, 406);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(867, 307);
+            dataGridView1.TabIndex = 8;
+            // 
+            // button2Nowosci
+            // 
+            button2Nowosci.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            button2Nowosci.Location = new Point(27, 529);
+            button2Nowosci.Name = "button2Nowosci";
+            button2Nowosci.Size = new Size(221, 97);
+            button2Nowosci.TabIndex = 9;
+            button2Nowosci.Text = "Nowości ";
+            button2Nowosci.UseVisualStyleBackColor = true;
+            // 
+            // buttonUlubiency
+            // 
+            buttonUlubiency.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonUlubiency.Location = new Point(27, 406);
+            buttonUlubiency.Name = "buttonUlubiency";
+            buttonUlubiency.Size = new Size(221, 97);
+            buttonUlubiency.TabIndex = 10;
+            buttonUlubiency.Text = "Ulubieńcy miesiąca";
+            buttonUlubiency.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 753);
+            Controls.Add(buttonUlubiency);
+            Controls.Add(button2Nowosci);
+            Controls.Add(dataGridView1);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -134,6 +171,7 @@
             Controls.Add(buttonZaloguj);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,5 +186,8 @@
         private Label label1;
         private Label label2;
         private Button button1;
+        private DataGridView dataGridView1;
+        private Button button2Nowosci;
+        private Button buttonUlubiency;
     }
 }

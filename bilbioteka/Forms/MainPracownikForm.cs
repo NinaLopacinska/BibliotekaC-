@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace bilbioteka.Forms
 {
-    public partial class MainUzytkownikForm : Form
+    public partial class MainPracownikForm : Form
     {
-        public MainUzytkownikForm(string imie)
+        public MainPracownikForm(string imie)
         {
             InitializeComponent();
-            label1.Text = imie;  
+            label1.Text = imie;
         }
 
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Zostałeś pomyślnie wylogowany. Do zobaczenia!");
-       
+            
             this.Close();
             
         }

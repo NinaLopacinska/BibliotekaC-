@@ -10,8 +10,8 @@ namespace bilbioteka
     {
         public int LiczbaStron { get; set; }
 
-        public Ksiazka(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone, int liczbaStron)
-            : base(tytul, autor, rokWydania, numerKatalogowy, typ, czyWypozyczone)
+        public Ksiazka(string tytul, string autor, int rokWydania, int numerKatalogowy, string typ, bool czyWypozyczone, float ocena, int ilosc, string kategoria, int liczbaStron)
+            : base(tytul, autor, rokWydania, numerKatalogowy, typ, czyWypozyczone, ocena, ilosc, kategoria)
 
         {
             LiczbaStron = liczbaStron;
