@@ -60,7 +60,7 @@
             buttonRejstruj.Name = "buttonRejstruj";
             buttonRejstruj.Size = new Size(221, 77);
             buttonRejstruj.TabIndex = 1;
-            buttonRejstruj.Text = "Rejstruj";
+            buttonRejstruj.Text = "Zarejestruj";
             buttonRejstruj.UseVisualStyleBackColor = true;
             buttonRejstruj.Click += buttonRejstruj_Click;
             // 

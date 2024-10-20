@@ -19,12 +19,19 @@ namespace bilbioteka.Forms
         }
 
 
-        private void buttonWyloguj_Click(object sender, EventArgs e)
+        
+
+        private void buttonDodajPracownika_Click(object sender, EventArgs e)
+        {
+            DodajPracownikaForm dodajPracownikaForm = new DodajPracownikaForm();
+            dodajPracownikaForm.Show();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Zostałeś pomyślnie wylogowany. Do zobaczenia!");
-            
             this.Close();
-            
         }
     }
 }

@@ -31,9 +31,10 @@
             label1 = new Label();
             label2 = new Label();
             buttonEdycjaZbioru = new Button();
-            buttonWyloguj = new Button();
             buttonGenerujRaport = new Button();
-            buttonEdytujPracownika = new Button();
+            buttonUsunPracownika = new Button();
+            buttonDodajPracownika = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -66,45 +67,57 @@
             buttonEdycjaZbioru.Text = "Edytuj zbiór";
             buttonEdycjaZbioru.UseVisualStyleBackColor = true;
             // 
-            // buttonWyloguj
-            // 
-            buttonWyloguj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonWyloguj.Location = new Point(566, 335);
-            buttonWyloguj.Name = "buttonWyloguj";
-            buttonWyloguj.Size = new Size(221, 97);
-            buttonWyloguj.TabIndex = 3;
-            buttonWyloguj.Text = "Wyloguj";
-            buttonWyloguj.UseVisualStyleBackColor = true;
-            buttonWyloguj.Click += buttonWyloguj_Click;
-            // 
             // buttonGenerujRaport
             // 
             buttonGenerujRaport.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonGenerujRaport.Location = new Point(314, 335);
+            buttonGenerujRaport.Location = new Point(566, 198);
             buttonGenerujRaport.Name = "buttonGenerujRaport";
             buttonGenerujRaport.Size = new Size(221, 97);
             buttonGenerujRaport.TabIndex = 4;
             buttonGenerujRaport.Text = "Generuj raport";
             buttonGenerujRaport.UseVisualStyleBackColor = true;
             // 
-            // buttonEdytujPracownika
+            // buttonUsunPracownika
             // 
-            buttonEdytujPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujPracownika.Location = new Point(566, 198);
-            buttonEdytujPracownika.Name = "buttonEdytujPracownika";
-            buttonEdytujPracownika.Size = new Size(221, 97);
-            buttonEdytujPracownika.TabIndex = 5;
-            buttonEdytujPracownika.Text = "Edytuj pracownika";
-            buttonEdytujPracownika.UseVisualStyleBackColor = true;
+            buttonUsunPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonUsunPracownika.Location = new Point(566, 317);
+            buttonUsunPracownika.Name = "buttonUsunPracownika";
+            buttonUsunPracownika.Size = new Size(221, 97);
+            buttonUsunPracownika.TabIndex = 5;
+            buttonUsunPracownika.Text = "Usuń pracownika";
+            buttonUsunPracownika.UseVisualStyleBackColor = true;
+            // 
+            // buttonDodajPracownika
+            // 
+            buttonDodajPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDodajPracownika.Location = new Point(314, 317);
+            buttonDodajPracownika.Name = "buttonDodajPracownika";
+            buttonDodajPracownika.Size = new Size(221, 97);
+            buttonDodajPracownika.TabIndex = 6;
+            buttonDodajPracownika.Text = "Dodaj pracownika";
+            buttonDodajPracownika.UseVisualStyleBackColor = true;
+            buttonDodajPracownika.Click += buttonDodajPracownika_Click;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(1040, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(130, 59);
+            button2.TabIndex = 14;
+            button2.Text = "Wyloguj";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // MainAdminstratorForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 753);
-            Controls.Add(buttonEdytujPracownika);
+            Controls.Add(button2);
+            Controls.Add(buttonDodajPracownika);
+            Controls.Add(buttonUsunPracownika);
             Controls.Add(buttonGenerujRaport);
-            Controls.Add(buttonWyloguj);
             Controls.Add(buttonEdycjaZbioru);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -119,8 +132,9 @@
         private Label label1;
         private Label label2;
         private Button buttonEdycjaZbioru;
-        private Button buttonWyloguj;
         private Button buttonGenerujRaport;
-        private Button buttonEdytujPracownika;
+        private Button buttonUsunPracownika;
+        private Button buttonDodajPracownika;
+        private Button button2;
     }
 }

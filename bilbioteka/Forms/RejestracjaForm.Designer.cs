@@ -121,7 +121,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(624, 433);
+            label4.Location = new Point(637, 433);
             label4.Name = "label4";
             label4.Size = new Size(163, 35);
             label4.TabIndex = 5;
@@ -131,7 +131,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(587, 563);
+            label5.Location = new Point(600, 563);
             label5.Name = "label5";
             label5.Size = new Size(200, 35);
             label5.TabIndex = 6;
@@ -141,7 +141,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(528, 627);
+            label6.Location = new Point(532, 627);
             label6.Name = "label6";
             label6.Size = new Size(270, 35);
             label6.TabIndex = 7;
@@ -161,7 +161,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(570, 760);
+            label8.Location = new Point(583, 760);
             label8.Name = "label8";
             label8.Size = new Size(217, 35);
             label8.TabIndex = 9;
@@ -171,7 +171,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(644, 362);
+            label9.Location = new Point(706, 362);
             label9.Name = "label9";
             label9.Size = new Size(94, 35);
             label9.TabIndex = 10;
@@ -181,7 +181,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(574, 301);
+            label10.Location = new Point(587, 305);
             label10.Name = "label10";
             label10.Size = new Size(213, 35);
             label10.TabIndex = 11;
@@ -201,7 +201,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(85, 725);
+            label12.Location = new Point(118, 722);
             label12.Name = "label12";
             label12.Size = new Size(141, 35);
             label12.TabIndex = 13;
@@ -241,7 +241,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(143, 433);
+            label16.Location = new Point(165, 436);
             label16.Name = "label16";
             label16.Size = new Size(94, 35);
             label16.TabIndex = 17;
@@ -251,7 +251,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.Location = new Point(143, 362);
+            label17.Location = new Point(165, 362);
             label17.Name = "label17";
             label17.Size = new Size(94, 35);
             label17.TabIndex = 18;
