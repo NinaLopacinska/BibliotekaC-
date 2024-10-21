@@ -73,6 +73,16 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Kod pocztowy pracownika musi być z terenu Łodzi czyli od 90-001 do 94-413!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (kodPocztowy.Length < 1 || !Regex.IsMatch(nrLokalu, @"\d"))
+            {
+                MessageBox.Show("Numer lokalu musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (nrPosesji.Length < 1 || !Regex.IsMatch(nrPosesji, @"\d"))
+            {
+                MessageBox.Show("Numer posesji musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (pesel.Length != 11 || !long.TryParse(pesel, out _))
             {
@@ -91,10 +101,15 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Numer telefonu pracownika musi mieć 9 cyfr!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (DateTime.Now.Year - dataUrodzenia.Year < 16)
+            {
+                MessageBox.Show("Pracownik musi mieć cob najmniej 16 lat!", "Bład rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
 
-            // Sprawdzenie unikalności loginu
-            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+                // Sprawdzenie unikalności loginu
+                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -125,7 +140,7 @@ namespace bilbioteka.Forms
                     command.Parameters.AddWithValue("@Nazwisko", nazwisko);
                     command.Parameters.AddWithValue("@NumerTelefonu", numerTelefonu);
                     command.Parameters.AddWithValue("@Login", login);
-                    command.Parameters.AddWithValue("@Haslo", haslo); // Użyj haszowania w produkcji
+                    command.Parameters.AddWithValue("@Haslo", haslo); 
                     command.Parameters.AddWithValue("@KodPocztowy", kodPocztowy);
                     command.Parameters.AddWithValue("@Ulica", ulica);
                     command.Parameters.AddWithValue("@NrPosesji", nrPosesji);
@@ -138,12 +153,11 @@ namespace bilbioteka.Forms
                 }
             }
 
-            MessageBox.Show(" Pracownik został pomyślnie dodany!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(" Pracownik został dodany!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
 
-            MainAdminstratorForm mainAdminstratorForm = new MainAdminstratorForm(imie);
-            mainAdminstratorForm.Show();
-            this.Hide();
+            
+            
         }
     }
 }

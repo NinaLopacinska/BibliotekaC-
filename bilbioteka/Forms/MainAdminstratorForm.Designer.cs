@@ -41,7 +41,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 91);
+            label1.Location = new Point(12, 63);
             label1.Name = "label1";
             label1.Size = new Size(106, 40);
             label1.TabIndex = 0;
@@ -113,6 +113,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1182, 753);
             Controls.Add(button2);
             Controls.Add(buttonDodajPracownika);

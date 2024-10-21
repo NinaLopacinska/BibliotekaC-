@@ -120,6 +120,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1182, 753);
             Controls.Add(textBoxHaslo);
             Controls.Add(textBoxLogin);

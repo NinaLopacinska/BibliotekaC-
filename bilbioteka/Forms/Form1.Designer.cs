@@ -95,18 +95,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Book Antiqua", 49.8000031F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(317, 108);
+            label1.BackColor = SystemColors.ScrollBar;
+            label1.Font = new Font("Book Antiqua", 36F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(271, 152);
             label1.Name = "label1";
-            label1.Size = new Size(728, 104);
+            label1.Size = new Size(523, 75);
             label1.TabIndex = 5;
             label1.Text = "Witaj w bibliotece ";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = SystemColors.ScrollBar;
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(363, 212);
+            label2.Location = new Point(271, 237);
             label2.Name = "label2";
             label2.Size = new Size(608, 40);
             label2.TabIndex = 6;
@@ -157,6 +159,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1182, 753);
             Controls.Add(buttonUlubiency);
             Controls.Add(button2Nowosci);

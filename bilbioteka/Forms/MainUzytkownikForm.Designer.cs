@@ -123,7 +123,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(25, 88);
+            label1.Location = new Point(323, 28);
             label1.Name = "label1";
             label1.Size = new Size(106, 40);
             label1.TabIndex = 18;
@@ -133,6 +133,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1182, 753);
             Controls.Add(dataGridView1);
             Controls.Add(textBox1);
@@ -143,6 +144,7 @@
             Controls.Add(buttonHistoriaWypozyczen);
             Controls.Add(label2);
             Controls.Add(label1);
+            ForeColor = SystemColors.ControlText;
             Name = "MainUzytkownikForm";
             Text = "MainUzytkownikForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

@@ -65,6 +65,16 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Kod pocztowy musi być z terenu Łodzi czyli od 90-001 do 94-413!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (kodPocztowy.Length< 1 || !Regex.IsMatch(nrLokalu, @"\d"))
+            {
+                MessageBox.Show("Numer lokalu musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (nrPosesji.Length < 1 || !Regex.IsMatch(nrPosesji, @"\d"))
+            {
+                MessageBox.Show("Numer posesji musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (pesel.Length != 11 || !long.TryParse(pesel, out _))
             {
