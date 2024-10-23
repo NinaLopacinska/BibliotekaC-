@@ -66,6 +66,7 @@
             label20 = new Label();
             buttonRejstracja = new Button();
             dateTimePicker1 = new DateTimePicker();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // label1
@@ -412,17 +413,26 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker1.Location = new Point(815, 302);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(179, 38);
+            dateTimePicker1.Size = new Size(179, 25);
             dateTimePicker1.TabIndex = 38;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(508, 504);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(575, 317);
+            panel1.TabIndex = 39;
             // 
             // RejestracjaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 953);
+            Controls.Add(panel1);
             Controls.Add(dateTimePicker1);
             Controls.Add(buttonRejstracja);
             Controls.Add(label20);
@@ -507,5 +517,6 @@
         private Label label20;
         private Button buttonRejstracja;
         private DateTimePicker dateTimePicker1;
+        private Panel panel1;
     }
 }

@@ -11,6 +11,7 @@ namespace bilbioteka.Forms
         {
             InitializeComponent();
             textBoxHaslo.PasswordChar = '*';
+            dateTimePicker1.ValueChanged += new EventHandler(dateTimePicker1_ValueChanged);
         }
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
@@ -19,7 +20,7 @@ namespace bilbioteka.Forms
             logowanieForm.ShowDialog();
             this.Close();
         }
-        
+
 
         private void buttonRejstracja_Click(object sender, EventArgs e)
         {
@@ -36,6 +37,9 @@ namespace bilbioteka.Forms
             DateTime dataUrodzenia = dateTimePicker1.Value;
             string email = textBoxEmail.Text.Trim();
             string numerTelefonu = textBoxNrTelefonu.Text.Trim();
+            panel1.Visible = false;
+
+
 
             // Walidacja danych
             if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) ||
@@ -65,7 +69,7 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Kod pocztowy musi być z terenu Łodzi czyli od 90-001 do 94-413!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (kodPocztowy.Length< 1 || !Regex.IsMatch(nrLokalu, @"\d"))
+            if (kodPocztowy.Length < 1 || !Regex.IsMatch(nrLokalu, @"\d"))
             {
                 MessageBox.Show("Numer lokalu musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -100,8 +104,9 @@ namespace bilbioteka.Forms
             string nrTelefonuOpiekuna = null;
             string emailOpiekuna = null;
 
-            if (DateTime.Now.Year - dataUrodzenia.Year < 13)
+            if (DateTime.Now < dataUrodzenia.AddYears(13))
             {
+                //panel1.Visible = true;
                 imieOpiekuna = textBoxImieOpiekuna.Text.Trim();
                 nazwiskoOpiekuna = textBoxNazwiskoOpiekuna.Text.Trim();
                 nrTelefonuOpiekuna = textBoxNrTelefonuOpiekuna.Text.Trim();
@@ -127,6 +132,7 @@ namespace bilbioteka.Forms
                     return;
                 }
             }
+            //else { panel1.Visible = false; }
 
             // Sprawdzenie unikalności loginu
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
@@ -171,7 +177,7 @@ namespace bilbioteka.Forms
                     command.Parameters.AddWithValue("@Email", email);
 
                     // Dodaj dane opiekuna, jeśli są wymagane
-                    if (DateTime.Now.Year - dataUrodzenia.Year < 13)
+                    if (DateTime.Now < dataUrodzenia.AddYears(13))
                     {
                         command.Parameters.AddWithValue("@ImieOpiekuna", imieOpiekuna);
                         command.Parameters.AddWithValue("@NazwiskoOpiekuna", nazwiskoOpiekuna);
@@ -196,6 +202,19 @@ namespace bilbioteka.Forms
             MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(imie);
             mainUzytkownikForm.Show();
             this.Hide();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dataUrodzenia = dateTimePicker1.Value;
+            if (DateTime.Now.Year - dataUrodzenia.Year < 13)
+            {
+                panel1.Visible = true;
+            }
+            else
+            {
+                panel1.Visible = false;
+            }
         }
     }
 }
