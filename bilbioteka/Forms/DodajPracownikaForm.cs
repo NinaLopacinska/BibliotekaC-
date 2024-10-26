@@ -24,9 +24,7 @@ namespace bilbioteka.Forms
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
         {
-            MainAdminstratorForm mainAdminstratorForm = new MainAdminstratorForm(imie);
-            mainAdminstratorForm.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void buttonDodajPracownika_Click(object sender, EventArgs e)

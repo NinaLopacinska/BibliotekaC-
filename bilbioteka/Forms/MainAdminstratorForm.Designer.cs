@@ -35,6 +35,7 @@
             buttonUsunPracownika = new Button();
             buttonDodajPracownika = new Button();
             button2 = new Button();
+            buttonDodajProdukt = new Button();
             SuspendLayout();
             // 
             // label1
@@ -66,6 +67,7 @@
             buttonEdycjaZbioru.TabIndex = 2;
             buttonEdycjaZbioru.Text = "Edytuj zbiór";
             buttonEdycjaZbioru.UseVisualStyleBackColor = true;
+            buttonEdycjaZbioru.Click += buttonEdycjaZbioru_Click;
             // 
             // buttonGenerujRaport
             // 
@@ -109,12 +111,24 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // buttonDodajProdukt
+            // 
+            buttonDodajProdukt.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDodajProdukt.Location = new Point(314, 434);
+            buttonDodajProdukt.Name = "buttonDodajProdukt";
+            buttonDodajProdukt.Size = new Size(221, 97);
+            buttonDodajProdukt.TabIndex = 15;
+            buttonDodajProdukt.Text = "Dodaj nowy produkt";
+            buttonDodajProdukt.UseVisualStyleBackColor = true;
+            buttonDodajProdukt.Click += buttonDodajProdukt_Click;
+            // 
             // MainAdminstratorForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1182, 753);
+            Controls.Add(buttonDodajProdukt);
             Controls.Add(button2);
             Controls.Add(buttonDodajPracownika);
             Controls.Add(buttonUsunPracownika);
@@ -137,5 +151,6 @@
         private Button buttonUsunPracownika;
         private Button buttonDodajPracownika;
         private Button button2;
+        private Button buttonDodajProdukt;
     }
 }

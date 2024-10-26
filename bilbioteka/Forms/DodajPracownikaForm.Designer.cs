@@ -31,7 +31,7 @@
             buttonRejstracja = new Button();
             buttonZalogujRej = new Button();
             dateTimePicker1 = new DateTimePicker();
-            buttonDodajPracownika = new Button();
+            buttonDodajProdukt = new Button();
             label20 = new Label();
             textBoxEmail = new TextBox();
             textBoxNrTelefonu = new TextBox();
@@ -90,16 +90,16 @@
             dateTimePicker1.Size = new Size(179, 38);
             dateTimePicker1.TabIndex = 113;
             // 
-            // buttonDodajPracownika
+            // buttonDodajProdukt
             // 
-            buttonDodajPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajPracownika.Location = new Point(478, 624);
-            buttonDodajPracownika.Name = "buttonDodajPracownika";
-            buttonDodajPracownika.Size = new Size(169, 62);
-            buttonDodajPracownika.TabIndex = 112;
-            buttonDodajPracownika.Text = "Dodaj";
-            buttonDodajPracownika.UseVisualStyleBackColor = true;
-            buttonDodajPracownika.Click += buttonDodajPracownika_Click;
+            buttonDodajProdukt.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDodajProdukt.Location = new Point(478, 624);
+            buttonDodajProdukt.Name = "buttonDodajProdukt";
+            buttonDodajProdukt.Size = new Size(169, 62);
+            buttonDodajProdukt.TabIndex = 112;
+            buttonDodajProdukt.Text = "Dodaj";
+            buttonDodajProdukt.UseVisualStyleBackColor = true;
+            buttonDodajProdukt.Click += buttonDodajPracownika_Click;
             // 
             // label20
             // 
@@ -355,7 +355,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 753);
             Controls.Add(dateTimePicker1);
-            Controls.Add(buttonDodajPracownika);
+            Controls.Add(buttonDodajProdukt);
             Controls.Add(label20);
             Controls.Add(textBoxEmail);
             Controls.Add(textBoxNrTelefonu);
@@ -395,7 +395,7 @@
         private Button buttonRejstracja;
         private Button buttonZalogujRej;
         private DateTimePicker dateTimePicker1;
-        private Button buttonDodajPracownika;
+        private Button buttonDodajProdukt;
         private Label label20;
         private TextBox textBoxEmail;
         private TextBox textBoxNrTelefonu;
