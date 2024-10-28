@@ -37,25 +37,30 @@
             buttonHistoriaWypozyczen = new Button();
             label2 = new Label();
             label1 = new Label();
+            wypożycz = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(274, 211);
+            dataGridView1.Location = new Point(342, 264);
+            dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(819, 423);
+            dataGridView1.Size = new Size(1024, 529);
             dataGridView1.TabIndex = 29;
             // 
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(274, 88);
+            textBox1.Location = new Point(342, 110);
+            textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(414, 51);
+            textBox1.Size = new Size(516, 60);
             textBox1.TabIndex = 28;
             // 
             // comboBox1
@@ -63,17 +68,19 @@
             comboBox1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Książka ", "Film", "Album ", "Autor", "Nr katalogowy ", "Rok wydania ", "Kategoria " });
-            comboBox1.Location = new Point(274, 145);
+            comboBox1.Location = new Point(342, 181);
+            comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(237, 40);
+            comboBox1.Size = new Size(295, 46);
             comboBox1.TabIndex = 27;
             // 
             // buttonSzukaj
             // 
             buttonSzukaj.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(706, 88);
+            buttonSzukaj.Location = new Point(882, 110);
+            buttonSzukaj.Margin = new Padding(4);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(104, 51);
+            buttonSzukaj.Size = new Size(130, 64);
             buttonSzukaj.TabIndex = 26;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;
@@ -81,20 +88,21 @@
             // button2
             // 
             button2.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1040, 12);
+            button2.Location = new Point(1300, 15);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
-            button2.Size = new Size(130, 59);
+            button2.Size = new Size(162, 74);
             button2.TabIndex = 25;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // buttonEdytujKonto
             // 
             buttonEdytujKonto.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujKonto.Location = new Point(25, 339);
+            buttonEdytujKonto.Location = new Point(31, 424);
+            buttonEdytujKonto.Margin = new Padding(4);
             buttonEdytujKonto.Name = "buttonEdytujKonto";
-            buttonEdytujKonto.Size = new Size(221, 97);
+            buttonEdytujKonto.Size = new Size(276, 121);
             buttonEdytujKonto.TabIndex = 23;
             buttonEdytujKonto.Text = "Edytuj konto ";
             buttonEdytujKonto.UseVisualStyleBackColor = true;
@@ -102,9 +110,10 @@
             // buttonHistoriaWypozyczen
             // 
             buttonHistoriaWypozyczen.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonHistoriaWypozyczen.Location = new Point(25, 214);
+            buttonHistoriaWypozyczen.Location = new Point(31, 268);
+            buttonHistoriaWypozyczen.Margin = new Padding(4);
             buttonHistoriaWypozyczen.Name = "buttonHistoriaWypozyczen";
-            buttonHistoriaWypozyczen.Size = new Size(221, 97);
+            buttonHistoriaWypozyczen.Size = new Size(276, 121);
             buttonHistoriaWypozyczen.TabIndex = 20;
             buttonHistoriaWypozyczen.Text = "Historia wypożyczeń";
             buttonHistoriaWypozyczen.UseVisualStyleBackColor = true;
@@ -113,9 +122,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(12, 28);
+            label2.Location = new Point(15, 35);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(315, 40);
+            label2.Size = new Size(368, 47);
             label2.TabIndex = 19;
             label2.Text = "Witaj Użytkowniku";
             // 
@@ -123,18 +133,32 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(323, 28);
+            label1.Location = new Point(404, 35);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(106, 40);
+            label1.Size = new Size(125, 47);
             label1.TabIndex = 18;
             label1.Text = "label1";
             // 
+            // wypożycz
+            // 
+            wypożycz.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            wypożycz.Location = new Point(31, 573);
+            wypożycz.Margin = new Padding(4);
+            wypożycz.Name = "wypożycz";
+            wypożycz.Size = new Size(276, 121);
+            wypożycz.TabIndex = 30;
+            wypożycz.Text = "wypożycz";
+            wypożycz.UseVisualStyleBackColor = true;
+            wypożycz.Click += wypożycz_Click;
+            // 
             // MainUzytkownikForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1182, 753);
+            ClientSize = new Size(1478, 941);
+            Controls.Add(wypożycz);
             Controls.Add(dataGridView1);
             Controls.Add(textBox1);
             Controls.Add(comboBox1);
@@ -145,6 +169,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.ControlText;
+            Margin = new Padding(4);
             Name = "MainUzytkownikForm";
             Text = "MainUzytkownikForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -163,5 +188,6 @@
         private Button buttonHistoriaWypozyczen;
         private Label label2;
         private Label label1;
+        private Button wypożycz;
     }
 }

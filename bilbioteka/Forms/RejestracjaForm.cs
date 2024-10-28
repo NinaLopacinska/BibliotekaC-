@@ -21,7 +21,6 @@ namespace bilbioteka.Forms
             this.Close();
         }
 
-
         private void buttonRejstracja_Click(object sender, EventArgs e)
         {
             // Pobierz dane z pól tekstowych
@@ -38,8 +37,6 @@ namespace bilbioteka.Forms
             string email = textBoxEmail.Text.Trim();
             string numerTelefonu = textBoxNrTelefonu.Text.Trim();
             panel1.Visible = false;
-
-
 
             // Walidacja danych
             if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) ||
@@ -106,7 +103,6 @@ namespace bilbioteka.Forms
 
             if (DateTime.Now < dataUrodzenia.AddYears(13))
             {
-                //panel1.Visible = true;
                 imieOpiekuna = textBoxImieOpiekuna.Text.Trim();
                 nazwiskoOpiekuna = textBoxNazwiskoOpiekuna.Text.Trim();
                 nrTelefonuOpiekuna = textBoxNrTelefonuOpiekuna.Text.Trim();
@@ -132,7 +128,6 @@ namespace bilbioteka.Forms
                     return;
                 }
             }
-            //else { panel1.Visible = false; }
 
             // Sprawdzenie unikalności loginu
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
@@ -154,12 +149,13 @@ namespace bilbioteka.Forms
 
                 // Dodaj nowego użytkownika
                 string insertQuery = @"
-            INSERT INTO uzytkownicy 
-            (IdOsoby,Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email, 
-            ImieOpiekuna, NazwiskoOpiekuna, NumerTelefonuOpiekuna, EmailOpiekuna) 
-            VALUES 
-            (1, @Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
-            @Email, @ImieOpiekuna, @NazwiskoOpiekuna, @NumerTelefonuOpiekuna, @EmailOpiekuna);";
+                INSERT INTO uzytkownicy 
+                (Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email, 
+                ImieOpiekuna, NazwiskoOpiekuna, NumerTelefonuOpiekuna, EmailOpiekuna) 
+                VALUES 
+                (@Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
+                @Email, @ImieOpiekuna, @NazwiskoOpiekuna, @NumerTelefonuOpiekuna, @EmailOpiekuna);
+                SELECT SCOPE_IDENTITY();"; // Pobierz ID nowego użytkownika
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
@@ -175,46 +171,28 @@ namespace bilbioteka.Forms
                     command.Parameters.AddWithValue("@Pesel", pesel);
                     command.Parameters.AddWithValue("@DataUrodzenia", dataUrodzenia);
                     command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@ImieOpiekuna", imieOpiekuna ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@NazwiskoOpiekuna", nazwiskoOpiekuna ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@NumerTelefonuOpiekuna", nrTelefonuOpiekuna ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@EmailOpiekuna", emailOpiekuna ?? (object)DBNull.Value);
 
-                    // Dodaj dane opiekuna, jeśli są wymagane
-                    if (DateTime.Now < dataUrodzenia.AddYears(13))
-                    {
-                        command.Parameters.AddWithValue("@ImieOpiekuna", imieOpiekuna);
-                        command.Parameters.AddWithValue("@NazwiskoOpiekuna", nazwiskoOpiekuna);
-                        command.Parameters.AddWithValue("@NumerTelefonuOpiekuna", nrTelefonuOpiekuna);
-                        command.Parameters.AddWithValue("@EmailOpiekuna", emailOpiekuna);
-                    }
-                    else
-                    {
-                        command.Parameters.AddWithValue("@ImieOpiekuna", (object)DBNull.Value);
-                        command.Parameters.AddWithValue("@NazwiskoOpiekuna", (object)DBNull.Value);
-                        command.Parameters.AddWithValue("@NumerTelefonuOpiekuna", (object)DBNull.Value);
-                        command.Parameters.AddWithValue("@EmailOpiekuna", (object)DBNull.Value);
-                    }
+                    // Wykonanie zapytania i uzyskanie ID użytkownika
+                    int userId = Convert.ToInt32(command.ExecuteScalar());
 
-                    command.ExecuteNonQuery();
+                    // Komunikat o sukcesie
+                    MessageBox.Show("Rejestracja zakończona pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Utwórz i wyświetl MainUzytkownikForm
+                    MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(userId, imie);
+                    mainUzytkownikForm.Show();
+                    this.Hide();
                 }
             }
-
-            MessageBox.Show("Rejestracja zakończona pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
-
-            MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(imie);
-            mainUzytkownikForm.Show();
-            this.Hide();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime dataUrodzenia = dateTimePicker1.Value;
-            if (DateTime.Now.Year - dataUrodzenia.Year < 13)
-            {
-                panel1.Visible = true;
-            }
-            else
-            {
-                panel1.Visible = false;
-            }
+            // Możesz dodać logikę, jeśli potrzebujesz
         }
     }
 }
