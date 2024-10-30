@@ -84,16 +84,16 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Location = new Point(843, 391);
+            dateTimePicker1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Location = new Point(934, 436);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(179, 38);
+            dateTimePicker1.Size = new Size(267, 27);
             dateTimePicker1.TabIndex = 113;
             // 
             // buttonDodajProdukt
             // 
             buttonDodajProdukt.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajProdukt.Location = new Point(478, 624);
+            buttonDodajProdukt.Location = new Point(595, 667);
             buttonDodajProdukt.Name = "buttonDodajProdukt";
             buttonDodajProdukt.Size = new Size(169, 62);
             buttonDodajProdukt.TabIndex = 112;
@@ -105,7 +105,7 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(652, 222);
+            label20.Location = new Point(743, 267);
             label20.Name = "label20";
             label20.Size = new Size(119, 24);
             label20.TabIndex = 111;
@@ -114,88 +114,88 @@
             // textBoxEmail
             // 
             textBoxEmail.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxEmail.Location = new Point(843, 448);
+            textBoxEmail.Location = new Point(934, 493);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(179, 38);
+            textBoxEmail.Size = new Size(267, 38);
             textBoxEmail.TabIndex = 109;
             // 
             // textBoxNrTelefonu
             // 
             textBoxNrTelefonu.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNrTelefonu.Location = new Point(843, 519);
+            textBoxNrTelefonu.Location = new Point(934, 564);
             textBoxNrTelefonu.Name = "textBoxNrTelefonu";
-            textBoxNrTelefonu.Size = new Size(179, 38);
+            textBoxNrTelefonu.Size = new Size(267, 38);
             textBoxNrTelefonu.TabIndex = 108;
             // 
             // textBoxNazwisko
             // 
             textBoxNazwisko.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNazwisko.Location = new Point(310, 252);
+            textBoxNazwisko.Location = new Point(317, 301);
             textBoxNazwisko.Name = "textBoxNazwisko";
-            textBoxNazwisko.Size = new Size(179, 38);
+            textBoxNazwisko.Size = new Size(267, 38);
             textBoxNazwisko.TabIndex = 103;
             // 
             // textBoxLogin
             // 
             textBoxLogin.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLogin.Location = new Point(310, 316);
+            textBoxLogin.Location = new Point(317, 365);
             textBoxLogin.Name = "textBoxLogin";
-            textBoxLogin.Size = new Size(179, 38);
+            textBoxLogin.Size = new Size(267, 38);
             textBoxLogin.TabIndex = 102;
             // 
             // textBoxHaslo
             // 
             textBoxHaslo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxHaslo.Location = new Point(310, 387);
+            textBoxHaslo.Location = new Point(317, 436);
             textBoxHaslo.Name = "textBoxHaslo";
-            textBoxHaslo.Size = new Size(179, 38);
+            textBoxHaslo.Size = new Size(267, 38);
             textBoxHaslo.TabIndex = 101;
             // 
             // textBoxKodPocztowy
             // 
             textBoxKodPocztowy.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxKodPocztowy.Location = new Point(310, 455);
+            textBoxKodPocztowy.Location = new Point(317, 504);
             textBoxKodPocztowy.Name = "textBoxKodPocztowy";
-            textBoxKodPocztowy.Size = new Size(179, 38);
+            textBoxKodPocztowy.Size = new Size(267, 38);
             textBoxKodPocztowy.TabIndex = 100;
             // 
             // textBoxUlica
             // 
             textBoxUlica.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxUlica.Location = new Point(310, 519);
+            textBoxUlica.Location = new Point(317, 568);
             textBoxUlica.Name = "textBoxUlica";
-            textBoxUlica.Size = new Size(179, 38);
+            textBoxUlica.Size = new Size(267, 38);
             textBoxUlica.TabIndex = 99;
             // 
             // textBoxNrPosesji
             // 
             textBoxNrPosesji.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNrPosesji.Location = new Point(843, 164);
+            textBoxNrPosesji.Location = new Point(934, 209);
             textBoxNrPosesji.Name = "textBoxNrPosesji";
-            textBoxNrPosesji.Size = new Size(179, 38);
+            textBoxNrPosesji.Size = new Size(267, 38);
             textBoxNrPosesji.TabIndex = 98;
             // 
             // textBoxNrLokalu
             // 
             textBoxNrLokalu.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNrLokalu.Location = new Point(843, 252);
+            textBoxNrLokalu.Location = new Point(934, 297);
             textBoxNrLokalu.Name = "textBoxNrLokalu";
-            textBoxNrLokalu.Size = new Size(179, 38);
+            textBoxNrLokalu.Size = new Size(267, 38);
             textBoxNrLokalu.TabIndex = 97;
             // 
             // textBoxPesel
             // 
             textBoxPesel.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxPesel.Location = new Point(843, 322);
+            textBoxPesel.Location = new Point(934, 367);
             textBoxPesel.Name = "textBoxPesel";
-            textBoxPesel.Size = new Size(179, 38);
+            textBoxPesel.Size = new Size(267, 38);
             textBoxPesel.TabIndex = 96;
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(157, 252);
+            label18.Location = new Point(164, 301);
             label18.Name = "label18";
             label18.Size = new Size(147, 35);
             label18.TabIndex = 95;
@@ -205,7 +205,7 @@
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.Location = new Point(199, 316);
+            label17.Location = new Point(206, 365);
             label17.Name = "label17";
             label17.Size = new Size(94, 35);
             label17.TabIndex = 94;
@@ -215,7 +215,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(199, 390);
+            label16.Location = new Point(206, 439);
             label16.Name = "label16";
             label16.Size = new Size(94, 35);
             label16.TabIndex = 93;
@@ -225,7 +225,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.Location = new Point(91, 458);
+            label15.Location = new Point(98, 507);
             label15.Name = "label15";
             label15.Size = new Size(202, 35);
             label15.TabIndex = 92;
@@ -235,7 +235,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(177, 522);
+            label14.Location = new Point(184, 571);
             label14.Name = "label14";
             label14.Size = new Size(86, 35);
             label14.TabIndex = 91;
@@ -245,7 +245,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.Location = new Point(686, 167);
+            label13.Location = new Point(777, 212);
             label13.Name = "label13";
             label13.Size = new Size(147, 35);
             label13.TabIndex = 90;
@@ -255,7 +255,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(685, 252);
+            label12.Location = new Point(776, 297);
             label12.Name = "label12";
             label12.Size = new Size(141, 35);
             label12.TabIndex = 89;
@@ -265,7 +265,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(629, 325);
+            label11.Location = new Point(720, 370);
             label11.Name = "label11";
             label11.Size = new Size(201, 35);
             label11.TabIndex = 88;
@@ -275,7 +275,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(615, 394);
+            label10.Location = new Point(706, 439);
             label10.Name = "label10";
             label10.Size = new Size(213, 35);
             label10.TabIndex = 87;
@@ -285,7 +285,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(734, 451);
+            label9.Location = new Point(825, 496);
             label9.Name = "label9";
             label9.Size = new Size(94, 35);
             label9.TabIndex = 86;
@@ -295,7 +295,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(665, 522);
+            label4.Location = new Point(756, 567);
             label4.Name = "label4";
             label4.Size = new Size(163, 35);
             label4.TabIndex = 81;
@@ -304,16 +304,16 @@
             // textBoxImie
             // 
             textBoxImie.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxImie.Location = new Point(310, 190);
+            textBoxImie.Location = new Point(317, 239);
             textBoxImie.Name = "textBoxImie";
-            textBoxImie.Size = new Size(179, 38);
+            textBoxImie.Size = new Size(267, 38);
             textBoxImie.TabIndex = 80;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(177, 190);
+            label3.Location = new Point(184, 239);
             label3.Name = "label3";
             label3.Size = new Size(77, 35);
             label3.TabIndex = 79;
@@ -343,7 +343,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(389, 67);
+            label1.Location = new Point(479, 114);
             label1.Name = "label1";
             label1.Size = new Size(411, 58);
             label1.TabIndex = 76;
@@ -353,7 +353,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 753);
+            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
+            ClientSize = new Size(1382, 803);
             Controls.Add(dateTimePicker1);
             Controls.Add(buttonDodajProdukt);
             Controls.Add(label20);

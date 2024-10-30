@@ -69,5 +69,15 @@ namespace bilbioteka.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stan_czytelnictwa_w_polsce1 {
+            get {
+                object obj = ResourceManager.GetObject("stan-czytelnictwa-w-polsce1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

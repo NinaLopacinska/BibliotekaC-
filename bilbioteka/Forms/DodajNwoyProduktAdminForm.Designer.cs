@@ -54,7 +54,7 @@
             // buttonDodajPracownika
             // 
             buttonDodajPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajPracownika.Location = new Point(511, 573);
+            buttonDodajPracownika.Location = new Point(598, 576);
             buttonDodajPracownika.Name = "buttonDodajPracownika";
             buttonDodajPracownika.Size = new Size(169, 62);
             buttonDodajPracownika.TabIndex = 143;
@@ -67,7 +67,7 @@
             textBoxAutor.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxAutor.Location = new Point(373, 300);
             textBoxAutor.Name = "textBoxAutor";
-            textBoxAutor.Size = new Size(179, 38);
+            textBoxAutor.Size = new Size(247, 38);
             textBoxAutor.TabIndex = 139;
             // 
             // textBoxRokWydania
@@ -75,7 +75,7 @@
             textBoxRokWydania.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxRokWydania.Location = new Point(373, 388);
             textBoxRokWydania.Name = "textBoxRokWydania";
-            textBoxRokWydania.Size = new Size(179, 38);
+            textBoxRokWydania.Size = new Size(247, 38);
             textBoxRokWydania.TabIndex = 138;
             // 
             // textBoxNrKatagolowy
@@ -83,23 +83,23 @@
             textBoxNrKatagolowy.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxNrKatagolowy.Location = new Point(373, 476);
             textBoxNrKatagolowy.Name = "textBoxNrKatagolowy";
-            textBoxNrKatagolowy.Size = new Size(179, 38);
+            textBoxNrKatagolowy.Size = new Size(247, 38);
             textBoxNrKatagolowy.TabIndex = 137;
             // 
             // textBoxOcena
             // 
             textBoxOcena.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxOcena.Location = new Point(772, 476);
+            textBoxOcena.Location = new Point(878, 487);
             textBoxOcena.Name = "textBoxOcena";
-            textBoxOcena.Size = new Size(179, 38);
+            textBoxOcena.Size = new Size(255, 38);
             textBoxOcena.TabIndex = 135;
             // 
             // textBoxIlosc
             // 
             textBoxIlosc.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxIlosc.Location = new Point(772, 217);
+            textBoxIlosc.Location = new Point(878, 228);
             textBoxIlosc.Name = "textBoxIlosc";
-            textBoxIlosc.Size = new Size(179, 38);
+            textBoxIlosc.Size = new Size(255, 38);
             textBoxIlosc.TabIndex = 134;
             // 
             // label18
@@ -136,7 +136,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.Location = new Point(673, 392);
+            label15.Location = new Point(779, 403);
             label15.Name = "label15";
             label15.Size = new Size(72, 35);
             label15.TabIndex = 128;
@@ -146,7 +146,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(646, 479);
+            label14.Location = new Point(752, 490);
             label14.Name = "label14";
             label14.Size = new Size(99, 35);
             label14.TabIndex = 127;
@@ -156,7 +156,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.Location = new Point(667, 220);
+            label13.Location = new Point(773, 231);
             label13.Name = "label13";
             label13.Size = new Size(78, 35);
             label13.TabIndex = 126;
@@ -166,7 +166,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(603, 304);
+            label12.Location = new Point(709, 315);
             label12.Name = "label12";
             label12.Size = new Size(142, 35);
             label12.TabIndex = 125;
@@ -177,7 +177,7 @@
             textBoxTytul.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxTytul.Location = new Point(373, 220);
             textBoxTytul.Name = "textBoxTytul";
-            textBoxTytul.Size = new Size(179, 38);
+            textBoxTytul.Size = new Size(247, 38);
             textBoxTytul.TabIndex = 120;
             // 
             // label3
@@ -236,9 +236,9 @@
             comboBox1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Ksiązka", "Film", "Album" });
-            comboBox1.Location = new Point(772, 391);
+            comboBox1.Location = new Point(878, 402);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(179, 36);
+            comboBox1.Size = new Size(255, 36);
             comboBox1.TabIndex = 145;
             // 
             // comboBox2
@@ -246,9 +246,9 @@
             comboBox2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "Fikcja ", "Fantastyka", "Kryminał", "Romans", "Dramat ", "Horror ", "Komedia ", "Dziecięca ", "Dokumentalny", "Edukacja ", "Lektury szkolne" });
-            comboBox2.Location = new Point(772, 303);
+            comboBox2.Location = new Point(878, 314);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(179, 36);
+            comboBox2.Size = new Size(255, 36);
             comboBox2.TabIndex = 146;
             // 
             // DodajNwoyProduktAdminForm
@@ -256,7 +256,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1182, 753);
+            ClientSize = new Size(1382, 803);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
             Controls.Add(buttonDodajPracownika);

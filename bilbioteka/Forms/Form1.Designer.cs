@@ -118,7 +118,7 @@
             // button1
             // 
             button1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(1120, 2);
+            button1.Location = new Point(1310, 12);
             button1.Name = "button1";
             button1.Size = new Size(60, 60);
             button1.TabIndex = 7;
@@ -160,8 +160,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1182, 753);
+            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
+            ClientSize = new Size(1382, 803);
             Controls.Add(buttonUlubiency);
             Controls.Add(button2Nowosci);
             Controls.Add(dataGridView1);
@@ -173,6 +173,7 @@
             Controls.Add(buttonSzukaj);
             Controls.Add(buttonRejstruj);
             Controls.Add(buttonZaloguj);
+            ForeColor = SystemColors.ControlText;
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

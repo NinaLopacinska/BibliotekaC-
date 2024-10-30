@@ -16,6 +16,7 @@ namespace bilbioteka.Forms
         public EdycjaProduktowAdminForm()
         {
             InitializeComponent();
+            this.Load += new EventHandler(Form1_Load);
         }
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
@@ -83,6 +84,7 @@ namespace bilbioteka.Forms
                 }
             }
         }
+
 
         private void buttonUsun_Click(object sender, EventArgs e)
         {
@@ -183,6 +185,52 @@ namespace bilbioteka.Forms
                     }
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            // Pobieranie connection string z klasy PolaczenieBazyDanych
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+
+            // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
+            string query = "SELECT * FROM zasoby";
+
+            // Tworzenie obiektu SqlConnection z connection string
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    // Otwórz połączenie
+                    conn.Open();
+
+                    // Utwórz obiekt SqlDataAdapter
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+
+                    // Utwórz DataTable, do której załadujemy dane
+                    DataTable dataTable = new DataTable();
+
+                    // Załaduj dane z SQL do DataTable
+                    dataAdapter.Fill(dataTable);
+
+                    // Ustaw DataGridView1 jako źródło danych dla DataTable
+                    dataGridView1.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    // Obsługa błędów
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                }
+            }
+        }
+
+        private void EdycjaProduktowAdminForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

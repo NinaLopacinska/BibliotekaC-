@@ -46,7 +46,7 @@
             // buttonEdytujKontoUzytkownika
             // 
             buttonEdytujKontoUzytkownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujKontoUzytkownika.Location = new Point(12, 222);
+            buttonEdytujKontoUzytkownika.Location = new Point(80, 256);
             buttonEdytujKontoUzytkownika.Name = "buttonEdytujKontoUzytkownika";
             buttonEdytujKontoUzytkownika.Size = new Size(221, 97);
             buttonEdytujKontoUzytkownika.TabIndex = 11;
@@ -56,7 +56,7 @@
             // buttonPrzyjmijOplate
             // 
             buttonPrzyjmijOplate.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonPrzyjmijOplate.Location = new Point(12, 351);
+            buttonPrzyjmijOplate.Location = new Point(80, 385);
             buttonPrzyjmijOplate.Name = "buttonPrzyjmijOplate";
             buttonPrzyjmijOplate.Size = new Size(221, 97);
             buttonPrzyjmijOplate.TabIndex = 10;
@@ -66,7 +66,7 @@
             // buttonWydłuzTermin
             // 
             buttonWydłuzTermin.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonWydłuzTermin.Location = new Point(12, 600);
+            buttonWydłuzTermin.Location = new Point(80, 634);
             buttonWydłuzTermin.Name = "buttonWydłuzTermin";
             buttonWydłuzTermin.Size = new Size(221, 97);
             buttonWydłuzTermin.TabIndex = 9;
@@ -76,7 +76,7 @@
             // buttonWypozycz
             // 
             buttonWypozycz.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonWypozycz.Location = new Point(12, 97);
+            buttonWypozycz.Location = new Point(80, 131);
             buttonWypozycz.Name = "buttonWypozycz";
             buttonWypozycz.Size = new Size(221, 97);
             buttonWypozycz.TabIndex = 8;
@@ -106,7 +106,7 @@
             // buttonEdytujSwojeKonto
             // 
             buttonEdytujSwojeKonto.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujSwojeKonto.Location = new Point(12, 479);
+            buttonEdytujSwojeKonto.Location = new Point(80, 513);
             buttonEdytujSwojeKonto.Name = "buttonEdytujSwojeKonto";
             buttonEdytujSwojeKonto.Size = new Size(221, 97);
             buttonEdytujSwojeKonto.TabIndex = 12;
@@ -116,7 +116,7 @@
             // button2
             // 
             button2.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1040, 20);
+            button2.Location = new Point(1240, 20);
             button2.Name = "button2";
             button2.Size = new Size(130, 59);
             button2.TabIndex = 13;
@@ -127,7 +127,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(274, 222);
+            dataGridView1.Location = new Point(393, 261);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
@@ -137,37 +137,38 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(274, 99);
+            textBox1.Location = new Point(393, 177);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(414, 51);
+            textBox1.Size = new Size(424, 51);
             textBox1.TabIndex = 16;
             // 
             // comboBox1
             // 
             comboBox1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Książka ", "Film", "Album ", "Autor", "Nr katalogowy ", "Rok wydania ", "Kategoria " });
-            comboBox1.Location = new Point(274, 156);
+            comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria" });
+            comboBox1.Location = new Point(823, 188);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(232, 40);
+            comboBox1.Size = new Size(263, 40);
             comboBox1.TabIndex = 15;
             // 
             // buttonSzukaj
             // 
-            buttonSzukaj.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(706, 99);
+            buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSzukaj.Location = new Point(1092, 179);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(104, 51);
+            buttonSzukaj.Size = new Size(120, 57);
             buttonSzukaj.TabIndex = 14;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;
+            buttonSzukaj.Click += buttonSzukaj_Click;
             // 
             // MainPracownikForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1182, 753);
+            ClientSize = new Size(1382, 803);
             Controls.Add(dataGridView1);
             Controls.Add(textBox1);
             Controls.Add(comboBox1);

@@ -102,10 +102,10 @@
             // 
             // button2
             // 
-            button2.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1040, 12);
+            button2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(1234, 23);
             button2.Name = "button2";
-            button2.Size = new Size(130, 59);
+            button2.Size = new Size(136, 60);
             button2.TabIndex = 14;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1182, 753);
+            ClientSize = new Size(1382, 803);
             Controls.Add(buttonDodajProdukt);
             Controls.Add(button2);
             Controls.Add(buttonDodajPracownika);

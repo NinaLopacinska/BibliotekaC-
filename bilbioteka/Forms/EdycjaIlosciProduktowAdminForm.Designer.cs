@@ -38,12 +38,14 @@
             label6 = new Label();
             buttonZalogujRej = new Button();
             buttonUsun = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // buttonDodaj
             // 
             buttonDodaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodaj.Location = new Point(419, 525);
+            buttonDodaj.Location = new Point(350, 454);
             buttonDodaj.Name = "buttonDodaj";
             buttonDodaj.Size = new Size(169, 62);
             buttonDodaj.TabIndex = 163;
@@ -54,16 +56,16 @@
             // textBoxIlosc
             // 
             textBoxIlosc.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxIlosc.Location = new Point(532, 355);
+            textBoxIlosc.Location = new Point(304, 281);
             textBoxIlosc.Name = "textBoxIlosc";
-            textBoxIlosc.Size = new Size(179, 38);
+            textBoxIlosc.Size = new Size(311, 38);
             textBoxIlosc.TabIndex = 162;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(427, 358);
+            label10.Location = new Point(199, 281);
             label10.Name = "label10";
             label10.Size = new Size(78, 35);
             label10.TabIndex = 161;
@@ -72,16 +74,16 @@
             // textBoxNrKatalogowy
             // 
             textBoxNrKatalogowy.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNrKatalogowy.Location = new Point(532, 433);
+            textBoxNrKatalogowy.Location = new Point(304, 359);
             textBoxNrKatalogowy.Name = "textBoxNrKatalogowy";
-            textBoxNrKatalogowy.Size = new Size(179, 38);
+            textBoxNrKatalogowy.Size = new Size(311, 38);
             textBoxNrKatalogowy.TabIndex = 160;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(241, 436);
+            label8.Location = new Point(13, 362);
             label8.Name = "label8";
             label8.Size = new Size(264, 35);
             label8.TabIndex = 159;
@@ -90,16 +92,16 @@
             // textBoxTytul
             // 
             textBoxTytul.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxTytul.Location = new Point(532, 262);
+            textBoxTytul.Location = new Point(304, 188);
             textBoxTytul.Name = "textBoxTytul";
-            textBoxTytul.Size = new Size(179, 38);
+            textBoxTytul.Size = new Size(311, 38);
             textBoxTytul.TabIndex = 158;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(427, 265);
+            label7.Location = new Point(199, 191);
             label7.Name = "label7";
             label7.Size = new Size(89, 35);
             label7.TabIndex = 157;
@@ -109,11 +111,11 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(418, 137);
+            label6.Location = new Point(443, 78);
             label6.Name = "label6";
-            label6.Size = new Size(372, 58);
+            label6.Size = new Size(483, 58);
             label6.TabIndex = 156;
-            label6.Text = "Edytuj produkty";
+            label6.Text = "Edycja ilości zasobów";
             // 
             // buttonZalogujRej
             // 
@@ -129,7 +131,7 @@
             // buttonUsun
             // 
             buttonUsun.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsun.Location = new Point(607, 525);
+            buttonUsun.Location = new Point(350, 559);
             buttonUsun.Name = "buttonUsun";
             buttonUsun.Size = new Size(169, 62);
             buttonUsun.TabIndex = 165;
@@ -137,12 +139,23 @@
             buttonUsun.UseVisualStyleBackColor = true;
             buttonUsun.Click += buttonUsun_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(621, 188);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(749, 450);
+            dataGridView1.TabIndex = 166;
+            // 
             // EdycjaProduktowAdminForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1182, 753);
+            ClientSize = new Size(1382, 803);
+            Controls.Add(dataGridView1);
             Controls.Add(buttonUsun);
             Controls.Add(buttonZalogujRej);
             Controls.Add(buttonDodaj);
@@ -155,6 +168,8 @@
             Controls.Add(label6);
             Name = "EdycjaProduktowAdminForm";
             Text = "EdycjaProduktowAdminForm";
+            Load += EdycjaProduktowAdminForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -171,5 +186,6 @@
         private Label label6;
         private Button buttonZalogujRej;
         private Button buttonUsun;
+        private DataGridView dataGridView1;
     }
 }
