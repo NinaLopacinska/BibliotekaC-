@@ -51,6 +51,7 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
+
                     // Przygotowujemy zapytanie, które wyciągnie aktywne wypożyczenia dla danego użytkownika
                     string query = @"
                 SELECT h.Id, z.Tytul, h.DataWypozyczenia, h.DataZwrotu 
@@ -68,11 +69,15 @@ namespace bilbioteka.Forms
 
                     if (dataTable.Rows.Count == 0)
                     {
-                        MessageBox.Show("Brak aktywnych wypożyczeń.");
+                        dataGridView2.DataSource = null; // Ustawia DataGridView na pustą, jeśli brak aktywnych wypożyczeń
+                        labelNoActiveLoans.Visible = true; // Wyświetla etykietę informującą o braku aktywnych wypożyczeń
                     }
-
-                    dataGridView2.DataSource = dataTable;
-                    dataGridView2.Columns["Id"].Visible = false; // Ukrycie kolumny z Id, jeśli nie jest potrzebna
+                    else
+                    {
+                        labelNoActiveLoans.Visible = false; // Ukrywa etykietę, jeśli są aktywne wypożyczenia
+                        dataGridView2.DataSource = dataTable;
+                        dataGridView2.Columns["Id"].Visible = false; // Ukrycie kolumny z Id, jeśli nie jest potrzebna
+                    }
                 }
             }
             catch (Exception ex)
@@ -80,6 +85,7 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Wystąpił błąd podczas ładowania danych: " + ex.Message);
             }
         }
+
 
 
 

@@ -40,6 +40,7 @@
             wypożycz = new Button();
             label3 = new Label();
             dataGridView2 = new DataGridView();
+            labelNoActiveLoans = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -50,7 +51,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(294, 346);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
@@ -61,7 +62,7 @@
             // 
             textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(294, 190);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(556, 60);
             textBox1.TabIndex = 28;
@@ -72,7 +73,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria" });
             comboBox1.Location = new Point(294, 278);
-            comboBox1.Margin = new Padding(4, 4, 4, 4);
+            comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(295, 46);
             comboBox1.TabIndex = 27;
@@ -81,7 +82,7 @@
             // 
             buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonSzukaj.Location = new Point(880, 190);
-            buttonSzukaj.Margin = new Padding(4, 4, 4, 4);
+            buttonSzukaj.Margin = new Padding(4);
             buttonSzukaj.Name = "buttonSzukaj";
             buttonSzukaj.Size = new Size(155, 70);
             buttonSzukaj.TabIndex = 26;
@@ -93,7 +94,7 @@
             // 
             button2.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(1550, 15);
-            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
             button2.Size = new Size(162, 74);
             button2.TabIndex = 25;
@@ -105,7 +106,7 @@
             // 
             buttonEdytujKonto.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujKonto.Location = new Point(15, 346);
-            buttonEdytujKonto.Margin = new Padding(4, 4, 4, 4);
+            buttonEdytujKonto.Margin = new Padding(4);
             buttonEdytujKonto.Name = "buttonEdytujKonto";
             buttonEdytujKonto.Size = new Size(238, 100);
             buttonEdytujKonto.TabIndex = 23;
@@ -116,7 +117,7 @@
             // 
             buttonHistoriaWypozyczen.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             buttonHistoriaWypozyczen.Location = new Point(15, 190);
-            buttonHistoriaWypozyczen.Margin = new Padding(4, 4, 4, 4);
+            buttonHistoriaWypozyczen.Margin = new Padding(4);
             buttonHistoriaWypozyczen.Name = "buttonHistoriaWypozyczen";
             buttonHistoriaWypozyczen.Size = new Size(238, 100);
             buttonHistoriaWypozyczen.TabIndex = 20;
@@ -150,7 +151,7 @@
             // 
             wypożycz.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             wypożycz.Location = new Point(15, 495);
-            wypożycz.Margin = new Padding(4, 4, 4, 4);
+            wypożycz.Margin = new Padding(4);
             wypożycz.Name = "wypożycz";
             wypożycz.Size = new Size(238, 100);
             wypożycz.TabIndex = 30;
@@ -173,12 +174,23 @@
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(1059, 346);
-            dataGridView2.Margin = new Padding(4, 4, 4, 4);
+            dataGridView2.Margin = new Padding(4);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
             dataGridView2.Size = new Size(654, 290);
             dataGridView2.TabIndex = 32;
+            // 
+            // labelNoActiveLoans
+            // 
+            labelNoActiveLoans.AutoSize = true;
+            labelNoActiveLoans.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            labelNoActiveLoans.Location = new Point(1183, 651);
+            labelNoActiveLoans.Margin = new Padding(4, 0, 4, 0);
+            labelNoActiveLoans.Name = "labelNoActiveLoans";
+            labelNoActiveLoans.Size = new Size(451, 41);
+            labelNoActiveLoans.TabIndex = 33;
+            labelNoActiveLoans.Text = "Brak aktywnych wypożyczeń";
             // 
             // MainUzytkownikForm
             // 
@@ -186,6 +198,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1728, 1004);
+            Controls.Add(labelNoActiveLoans);
             Controls.Add(dataGridView2);
             Controls.Add(label3);
             Controls.Add(wypożycz);
@@ -199,7 +212,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.ControlText;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "MainUzytkownikForm";
             Text = "MainUzytkownikForm";
             WindowState = FormWindowState.Minimized;
@@ -223,5 +236,6 @@
         private Button wypożycz;
         private Label label3;
         private DataGridView dataGridView2;
+        private Label labelNoActiveLoans;
     }
 }
