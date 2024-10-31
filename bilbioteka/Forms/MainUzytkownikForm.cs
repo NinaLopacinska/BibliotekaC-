@@ -7,51 +7,17 @@ namespace bilbioteka.Forms
 {
     public partial class MainUzytkownikForm : Form
     {
-        private int userId;  // Id zalogowanego użytkownika
+        private int userId; // Id zalogowanego użytkownika
         private string userName; // Imię zalogowanego użytkownika
 
         public MainUzytkownikForm(int userId, string imie)
         {
             InitializeComponent();
-            this.userId = userId; // Ustaw userId
-            this.userName = imie; // Ustaw imię użytkownika
-            label1.Text = userName; // Wyświetla imię użytkownika
+            this.userId = userId;
+            this.userName = imie;
+            label1.Text = userName;
             LoadData();
-        }
-
-        // Metoda pobiera dane zalogowanego użytkownika
-        private void PobierzDaneUzytkownika()
-        {
-            try
-            {
-                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Zapytanie pobierające dane użytkownika na podstawie userId
-                    string query = "SELECT Id, Imie FROM Uzytkownicy WHERE Id = @userId";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@userId", userId);
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        userId = reader.GetInt32(0);
-                        userName = reader.GetString(1);
-                        label1.Text = userName; // Wyświetla imię użytkownika
-                    }
-                    else
-                    {
-                        MessageBox.Show("Błąd podczas pobierania danych użytkownika.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Wystąpił błąd podczas pobierania danych użytkownika: " + ex.Message);
-            }
+            LoadDataToDataGridView2();
         }
 
         private void LoadData()
@@ -62,7 +28,7 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM zasoby WHERE Ilosc > 0"; // Filtrujemy tylko dostępne zasoby
+                    string query = "SELECT * FROM zasoby WHERE Ilosc > 0"; // Tylko dostępne zasoby
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -70,6 +36,43 @@ namespace bilbioteka.Forms
                     dataGridView1.DataSource = dataTable;
                     dataGridView1.Columns["Id"].Visible = false;
                     dataGridView1.Columns["CzyWypozyczone"].Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił błąd podczas ładowania danych: " + ex.Message);
+            }
+        }
+        private void LoadDataToDataGridView2()
+        {
+            try
+            {
+                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    // Przygotowujemy zapytanie, które wyciągnie aktywne wypożyczenia dla danego użytkownika
+                    string query = @"
+                SELECT h.Id, z.Tytul, h.DataWypozyczenia, h.DataZwrotu 
+                FROM HistoriaWypozyczen h
+                JOIN zasoby z ON h.ZasobId = z.Id
+                WHERE h.UzytkownikId = @userId AND h.DataZwrotu > @currentDate"; // Aktywne wypożyczenia
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@userId", userId); // Przekazujemy userId
+                    command.Parameters.AddWithValue("@currentDate", DateTime.Now); // Ustawiamy dzisiejszą datę
+
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Brak aktywnych wypożyczeń.");
+                    }
+
+                    dataGridView2.DataSource = dataTable;
+                    dataGridView2.Columns["Id"].Visible = false; // Ukrycie kolumny z Id, jeśli nie jest potrzebna
                 }
             }
             catch (Exception ex)
@@ -90,7 +93,7 @@ namespace bilbioteka.Forms
                 command.Parameters.AddWithValue("@userId", userId);
 
                 connection.Open();
-                return (int)command.ExecuteScalar() > 0; // Zwróci true, jeśli użytkownik istnieje
+                return (int)command.ExecuteScalar() > 0;
             }
         }
 
@@ -102,6 +105,17 @@ namespace bilbioteka.Forms
                 return;
             }
 
+            DialogResult result = MessageBox.Show(
+                "Czy na pewno chcesz wypożyczyć wybrane pozycje?",
+                "Potwierdzenie wypożyczenia",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
             try
             {
                 string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
@@ -109,7 +123,6 @@ namespace bilbioteka.Forms
                 {
                     connection.Open();
 
-                    // Sprawdzenie, czy userId istnieje
                     if (!UserIdExists(userId))
                     {
                         MessageBox.Show("Zalogowany użytkownik nie istnieje w bazie danych.");
@@ -158,6 +171,7 @@ namespace bilbioteka.Forms
 
             LoadData();
         }
+
         private void SearchData()
         {
             if (comboBox1.SelectedItem == null)
@@ -169,15 +183,9 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             string query = string.Empty;
             string searchValue = textBox1.Text;
-            int rokWydania = 0;
-            decimal ocena = 0;
-            int ilosc = 0;
-            // Ustal zapytanie w zależności od wybranego kryterium
+
             switch (comboBox1.SelectedItem.ToString())
             {
-                case "   ":
-                    query = "SELECT * FROM zasoby ";
-                    break;
                 case "Tytuł":
                     query = "SELECT * FROM zasoby WHERE Tytul LIKE @searchValue";
                     break;
@@ -185,8 +193,7 @@ namespace bilbioteka.Forms
                     query = "SELECT * FROM zasoby WHERE Autor LIKE @searchValue";
                     break;
                 case "Rok wydania":
-                    // Sprawdzenie, czy searchValue jest liczbą
-                    if (!int.TryParse(searchValue, out rokWydania))
+                    if (!int.TryParse(searchValue, out int rokWydania))
                     {
                         MessageBox.Show("Proszę wpisać poprawny rok wydania.");
                         return;
@@ -200,8 +207,7 @@ namespace bilbioteka.Forms
                     query = "SELECT * FROM zasoby WHERE Typ LIKE @searchValue";
                     break;
                 case "Ocena":
-                    // Sprawdzenie, czy searchValue jest liczbą
-                    if (!decimal.TryParse(searchValue, out ocena))
+                    if (!decimal.TryParse(searchValue, out decimal ocena))
                     {
                         MessageBox.Show("Proszę wpisać poprawną ocenę.");
                         return;
@@ -209,8 +215,7 @@ namespace bilbioteka.Forms
                     query = "SELECT * FROM zasoby WHERE Ocena = @ocena";
                     break;
                 case "Ilość":
-
-                    if (!int.TryParse(searchValue, out ilosc))
+                    if (!int.TryParse(searchValue, out int ilosc))
                     {
                         MessageBox.Show("Proszę wpisać poprawną ilość.");
                         return;
@@ -225,7 +230,6 @@ namespace bilbioteka.Forms
                     return;
             }
 
-            // Tworzenie połączenia z bazą
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
@@ -233,7 +237,6 @@ namespace bilbioteka.Forms
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(query, conn);
 
-                    // Dodaj parametr w zależności od wybranego kryterium
                     switch (comboBox1.SelectedItem.ToString())
                     {
                         case "Tytuł":
@@ -244,17 +247,16 @@ namespace bilbioteka.Forms
                             cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                             break;
                         case "Rok wydania":
-                            cmd.Parameters.AddWithValue("@rokWydania", rokWydania);
+                            cmd.Parameters.AddWithValue("@rokWydania", searchValue);
                             break;
                         case "Ocena":
-                            cmd.Parameters.AddWithValue("@ocena", ocena);
+                            cmd.Parameters.AddWithValue("@ocena", searchValue);
                             break;
                         case "Ilość":
-                            cmd.Parameters.AddWithValue("@ilosc", ilosc);
+                            cmd.Parameters.AddWithValue("@ilosc", searchValue);
                             break;
                     }
 
-                    // Wypełnij DataTable i przypisz do DataGridView
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -266,6 +268,7 @@ namespace bilbioteka.Forms
                 }
             }
         }
+
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             SearchData();
@@ -275,6 +278,12 @@ namespace bilbioteka.Forms
         {
             MessageBox.Show("Zostałeś pomyślnie wylogowany. Do zobaczenia!");
             this.Close();
+        }
+
+        private void buttonHistoriaWypozyczen_Click(object sender, EventArgs e)
+        {
+            HistoriaWypozycenForm historiaForm = new HistoriaWypozycenForm(userId);
+            historiaForm.ShowDialog();
         }
     }
 }

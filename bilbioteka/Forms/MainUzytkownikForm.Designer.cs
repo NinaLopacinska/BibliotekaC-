@@ -49,19 +49,21 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(235, 277);
+            dataGridView1.Location = new Point(294, 346);
+            dataGridView1.Margin = new Padding(4, 4, 4, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(593, 470);
+            dataGridView1.Size = new Size(741, 588);
             dataGridView1.TabIndex = 29;
             // 
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(235, 152);
+            textBox1.Location = new Point(294, 190);
+            textBox1.Margin = new Padding(4, 4, 4, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(446, 51);
+            textBox1.Size = new Size(556, 60);
             textBox1.TabIndex = 28;
             // 
             // comboBox1
@@ -69,17 +71,19 @@
             comboBox1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria" });
-            comboBox1.Location = new Point(235, 222);
+            comboBox1.Location = new Point(294, 278);
+            comboBox1.Margin = new Padding(4, 4, 4, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(237, 40);
+            comboBox1.Size = new Size(295, 46);
             comboBox1.TabIndex = 27;
             // 
             // buttonSzukaj
             // 
             buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(704, 152);
+            buttonSzukaj.Location = new Point(880, 190);
+            buttonSzukaj.Margin = new Padding(4, 4, 4, 4);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(124, 56);
+            buttonSzukaj.Size = new Size(155, 70);
             buttonSzukaj.TabIndex = 26;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;
@@ -88,9 +92,10 @@
             // button2
             // 
             button2.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1240, 12);
+            button2.Location = new Point(1550, 15);
+            button2.Margin = new Padding(4, 4, 4, 4);
             button2.Name = "button2";
-            button2.Size = new Size(130, 59);
+            button2.Size = new Size(162, 74);
             button2.TabIndex = 25;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
@@ -99,9 +104,10 @@
             // buttonEdytujKonto
             // 
             buttonEdytujKonto.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujKonto.Location = new Point(12, 277);
+            buttonEdytujKonto.Location = new Point(15, 346);
+            buttonEdytujKonto.Margin = new Padding(4, 4, 4, 4);
             buttonEdytujKonto.Name = "buttonEdytujKonto";
-            buttonEdytujKonto.Size = new Size(190, 80);
+            buttonEdytujKonto.Size = new Size(238, 100);
             buttonEdytujKonto.TabIndex = 23;
             buttonEdytujKonto.Text = "Edytuj konto ";
             buttonEdytujKonto.UseVisualStyleBackColor = true;
@@ -109,20 +115,23 @@
             // buttonHistoriaWypozyczen
             // 
             buttonHistoriaWypozyczen.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonHistoriaWypozyczen.Location = new Point(12, 152);
+            buttonHistoriaWypozyczen.Location = new Point(15, 190);
+            buttonHistoriaWypozyczen.Margin = new Padding(4, 4, 4, 4);
             buttonHistoriaWypozyczen.Name = "buttonHistoriaWypozyczen";
-            buttonHistoriaWypozyczen.Size = new Size(190, 80);
+            buttonHistoriaWypozyczen.Size = new Size(238, 100);
             buttonHistoriaWypozyczen.TabIndex = 20;
             buttonHistoriaWypozyczen.Text = "Historia wypożyczeń";
             buttonHistoriaWypozyczen.UseVisualStyleBackColor = true;
+            buttonHistoriaWypozyczen.Click += buttonHistoriaWypozyczen_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(12, 28);
+            label2.Location = new Point(15, 35);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(315, 40);
+            label2.Size = new Size(368, 47);
             label2.TabIndex = 19;
             label2.Text = "Witaj Użytkowniku";
             // 
@@ -130,18 +139,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(323, 28);
+            label1.Location = new Point(404, 35);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(106, 40);
+            label1.Size = new Size(125, 47);
             label1.TabIndex = 18;
             label1.Text = "label1";
             // 
             // wypożycz
             // 
             wypożycz.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            wypożycz.Location = new Point(12, 396);
+            wypożycz.Location = new Point(15, 495);
+            wypożycz.Margin = new Padding(4, 4, 4, 4);
             wypożycz.Name = "wypożycz";
-            wypożycz.Size = new Size(190, 80);
+            wypożycz.Size = new Size(238, 100);
             wypożycz.TabIndex = 30;
             wypożycz.Text = "wypożycz";
             wypożycz.UseVisualStyleBackColor = true;
@@ -151,28 +162,30 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(938, 222);
+            label3.Location = new Point(1172, 278);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(282, 35);
+            label3.Size = new Size(337, 41);
             label3.TabIndex = 31;
             label3.Text = "Twoje wypożyczenia:";
             // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(847, 277);
+            dataGridView2.Location = new Point(1059, 346);
+            dataGridView2.Margin = new Padding(4, 4, 4, 4);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(523, 232);
+            dataGridView2.Size = new Size(654, 290);
             dataGridView2.TabIndex = 32;
             // 
             // MainUzytkownikForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1382, 803);
+            ClientSize = new Size(1728, 1004);
             Controls.Add(dataGridView2);
             Controls.Add(label3);
             Controls.Add(wypożycz);
@@ -186,6 +199,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.ControlText;
+            Margin = new Padding(4, 4, 4, 4);
             Name = "MainUzytkownikForm";
             Text = "MainUzytkownikForm";
             WindowState = FormWindowState.Minimized;

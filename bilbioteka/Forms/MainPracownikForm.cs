@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -168,6 +169,12 @@ namespace bilbioteka.Forms
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             SearchData();
+        }
+
+        private void buttonWypozycz_Click(object sender, EventArgs e)
+        {
+            WypozyczeniePracownikForm wypozyczeniePracownik = new WypozyczeniePracownikForm();
+            wypozyczeniePracownik.ShowDialog();
         }
     }
 }
