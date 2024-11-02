@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -9,16 +10,60 @@ namespace bilbioteka.Forms
     {
         private int userId; // Id zalogowanego użytkownika
         private string userName; // Imię zalogowanego użytkownika
+        private string login;
 
-        public MainUzytkownikForm(int userId, string imie)
+        public MainUzytkownikForm(int userId, string imie, string login)
         {
             InitializeComponent();
             this.userId = userId;
             this.userName = imie;
+            this.login = login;
             label1.Text = userName;
             LoadData();
             LoadDataToDataGridView2();
         }
+
+        private void LoadDataToDataGridView2()
+        {
+            try
+            {
+                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = @"
+                        SELECT h.Id, z.Tytul, h.DataWypozyczenia, h.DataZwrotu 
+                        FROM HistoriaWypozyczen h
+                        JOIN zasoby z ON h.ZasobId = z.Id
+                        WHERE h.LoginUzytkownika = @login"; // Filtrowanie po loginie użytkownika
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@login", login); // Przekazujemy login jako parametr
+
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+
+                    if (dataTable.Rows.Count == 0)
+                    {
+                        dataGridView2.DataSource = null;
+                        labelNoActiveLoans.Visible = true;
+                    }
+                    else
+                    {
+                        labelNoActiveLoans.Visible = false;
+                        dataGridView2.DataSource = dataTable;
+                        dataGridView2.Columns["Id"].Visible = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił błąd podczas ładowania danych: " + ex.Message);
+            }
+        }
+
 
         private void LoadData()
         {
@@ -36,48 +81,6 @@ namespace bilbioteka.Forms
                     dataGridView1.DataSource = dataTable;
                     dataGridView1.Columns["Id"].Visible = false;
                     dataGridView1.Columns["CzyWypozyczone"].Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Wystąpił błąd podczas ładowania danych: " + ex.Message);
-            }
-        }
-        private void LoadDataToDataGridView2()
-        {
-            try
-            {
-                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Przygotowujemy zapytanie, które wyciągnie aktywne wypożyczenia dla danego użytkownika
-                    string query = @"
-                SELECT h.Id, z.Tytul, h.DataWypozyczenia, h.DataZwrotu 
-                FROM HistoriaWypozyczen h
-                JOIN zasoby z ON h.ZasobId = z.Id
-                WHERE h.UzytkownikId = @userId AND h.DataZwrotu > @currentDate"; // Aktywne wypożyczenia
-
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@userId", userId); // Przekazujemy userId
-                    command.Parameters.AddWithValue("@currentDate", DateTime.Now); // Ustawiamy dzisiejszą datę
-
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);
-
-                    if (dataTable.Rows.Count == 0)
-                    {
-                        dataGridView2.DataSource = null; // Ustawia DataGridView na pustą, jeśli brak aktywnych wypożyczeń
-                        labelNoActiveLoans.Visible = true; // Wyświetla etykietę informującą o braku aktywnych wypożyczeń
-                    }
-                    else
-                    {
-                        labelNoActiveLoans.Visible = false; // Ukrywa etykietę, jeśli są aktywne wypożyczenia
-                        dataGridView2.DataSource = dataTable;
-                        dataGridView2.Columns["Id"].Visible = false; // Ukrycie kolumny z Id, jeśli nie jest potrzebna
-                    }
                 }
             }
             catch (Exception ex)
@@ -290,6 +293,11 @@ namespace bilbioteka.Forms
         {
             HistoriaWypozycenForm historiaForm = new HistoriaWypozycenForm(userId);
             historiaForm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadDataToDataGridView2();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace bilbioteka.Forms
 {
@@ -178,7 +179,7 @@ namespace bilbioteka.Forms
 
                     MessageBox.Show("Rejestracja zakończona pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(newId, imie);
+                    MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(newId, imie, login);
                     mainUzytkownikForm.Show();
                     this.Close();
                 }

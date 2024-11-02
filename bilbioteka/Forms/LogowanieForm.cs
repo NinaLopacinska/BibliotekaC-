@@ -74,7 +74,7 @@ namespace bilbioteka.Forms
                         switch (idOsoby)
                         {
                             case 1:
-                                mainForm = new MainUzytkownikForm(idOsoby, imie);
+                                mainForm = new MainUzytkownikForm(idOsoby, imie, login);
                                 break;
 
                             case 2:
@@ -91,7 +91,7 @@ namespace bilbioteka.Forms
                         }
 
                         mainForm.Show();
-                        this.Hide();
+                        this.Close();
                     }
                     else
                     {

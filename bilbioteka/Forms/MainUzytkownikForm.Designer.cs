@@ -41,6 +41,7 @@
             label3 = new Label();
             dataGridView2 = new DataGridView();
             labelNoActiveLoans = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -179,12 +180,24 @@
             labelNoActiveLoans.TabIndex = 33;
             labelNoActiveLoans.Text = "Brak aktywnych wypożyczeń";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(1067, 577);
+            button1.Name = "button1";
+            button1.Size = new Size(130, 59);
+            button1.TabIndex = 34;
+            button1.Text = "Odśwież";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // MainUzytkownikForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1382, 803);
+            Controls.Add(button1);
             Controls.Add(labelNoActiveLoans);
             Controls.Add(dataGridView2);
             Controls.Add(label3);
@@ -223,5 +236,6 @@
         private Label label3;
         private DataGridView dataGridView2;
         private Label labelNoActiveLoans;
+        private Button button1;
     }
 }
