@@ -8,6 +8,7 @@ namespace bilbioteka.Forms
     public partial class HistoriaWypozycenForm : Form
     {
         private int userId;
+       
 
         public HistoriaWypozycenForm(int userId)
         {
@@ -42,6 +43,11 @@ namespace bilbioteka.Forms
             {
                 MessageBox.Show("Wystąpił błąd podczas ładowania historii wypożyczeń: " + ex.Message);
             }
+        }
+
+        private void buttonZalogujRej_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

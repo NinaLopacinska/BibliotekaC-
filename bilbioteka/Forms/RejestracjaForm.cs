@@ -12,6 +12,7 @@ namespace bilbioteka.Forms
             InitializeComponent();
             textBoxHaslo.PasswordChar = '*';
             dateTimePicker1.ValueChanged += new EventHandler(dateTimePicker1_ValueChanged);
+            panel1.Visible = true ;
         }
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
@@ -36,66 +37,8 @@ namespace bilbioteka.Forms
             DateTime dataUrodzenia = dateTimePicker1.Value;
             string email = textBoxEmail.Text.Trim();
             string numerTelefonu = textBoxNrTelefonu.Text.Trim();
-            panel1.Visible = false;
 
-            // Walidacja danych
-            if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) ||
-                string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(haslo) ||
-                string.IsNullOrWhiteSpace(kodPocztowy) || string.IsNullOrWhiteSpace(ulica) ||
-                string.IsNullOrWhiteSpace(nrPosesji) || string.IsNullOrWhiteSpace(pesel) ||
-                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(numerTelefonu))
-            {
-                MessageBox.Show("Wszystkie pola są wymagane!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (login.Length < 5 || login.Length > 30)
-            {
-                MessageBox.Show("Login musi mieć od 5 do 30 znaków!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (haslo.Length < 5 || !Regex.IsMatch(haslo, @"\d"))
-            {
-                MessageBox.Show("Hasło musi mieć minimum 5 znaków i przynajmniej jedną cyfrę!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!Regex.IsMatch(kodPocztowy, @"^\d{2}-\d{3}$") || kodPocztowy.CompareTo("90-001") < 0 || kodPocztowy.CompareTo("94-413") > 0)
-            {
-                MessageBox.Show("Kod pocztowy musi być z terenu Łodzi czyli od 90-001 do 94-413!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (kodPocztowy.Length < 1 || !Regex.IsMatch(nrLokalu, @"\d"))
-            {
-                MessageBox.Show("Numer lokalu musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (nrPosesji.Length < 1 || !Regex.IsMatch(nrPosesji, @"\d"))
-            {
-                MessageBox.Show("Numer posesji musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (pesel.Length != 11 || !long.TryParse(pesel, out _))
-            {
-                MessageBox.Show("Pesel musi mieć 11 cyfr!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (email.Length < 5 || !email.Contains("@") || !email.Contains("."))
-            {
-                MessageBox.Show("Email musi zawierać znak '@' oraz '.'!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (numerTelefonu.Length != 9 || !long.TryParse(numerTelefonu, out _))
-            {
-                MessageBox.Show("Numer telefonu musi mieć 9 cyfr!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Sprawdzenie wieku
+            // Sprawdzenie wieku i danych opiekuna
             string imieOpiekuna = null;
             string nazwiskoOpiekuna = null;
             string nrTelefonuOpiekuna = null;
@@ -109,61 +52,116 @@ namespace bilbioteka.Forms
                 emailOpiekuna = textBoxEmailOpiekuna.Text.Trim();
 
                 // Walidacja danych opiekuna
-                if (string.IsNullOrWhiteSpace(imieOpiekuna) || string.IsNullOrWhiteSpace(nazwiskoOpiekuna) ||
-                    string.IsNullOrWhiteSpace(nrTelefonuOpiekuna) || string.IsNullOrWhiteSpace(emailOpiekuna))
+                if (string.IsNullOrEmpty(imieOpiekuna) || string.IsNullOrEmpty(nazwiskoOpiekuna) ||
+                    string.IsNullOrEmpty(nrTelefonuOpiekuna) || string.IsNullOrEmpty(emailOpiekuna))
                 {
-                    MessageBox.Show("Wszystkie pola opiekuna są wymagane!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Wszystkie pola danych opiekuna muszą być wypełnione, jeśli użytkownik jest poniżej 13 lat.", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                if (nrTelefonuOpiekuna.Length != 9 || !long.TryParse(nrTelefonuOpiekuna, out _))
+                if (!Regex.IsMatch(nrTelefonuOpiekuna, @"^\d{9}$"))
                 {
-                    MessageBox.Show("Numer telefonu opiekuna musi mieć 9 cyfr!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Numer telefonu opiekuna musi składać się z 9 cyfr.", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                if (emailOpiekuna.Length < 5 || !emailOpiekuna.Contains("@") || !emailOpiekuna.Contains("."))
+                if (!emailOpiekuna.Contains("@") || !emailOpiekuna.Contains("."))
                 {
-                    MessageBox.Show("Email opiekuna musi zawierać znak '@' oraz '.'!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Email opiekuna musi zawierać '@' i '.'", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
-            // Sprawdzenie unikalności loginu
+            // Walidacja
+            if (string.IsNullOrWhiteSpace(imie) || string.IsNullOrWhiteSpace(nazwisko) || string.IsNullOrWhiteSpace(login) ||
+                string.IsNullOrWhiteSpace(haslo) || string.IsNullOrWhiteSpace(kodPocztowy) || string.IsNullOrWhiteSpace(ulica) ||
+                string.IsNullOrWhiteSpace(nrPosesji) || string.IsNullOrWhiteSpace(pesel) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(numerTelefonu))
+            {
+                MessageBox.Show("Wszystkie pola muszą być wypełnione (poza numerem lokalu).", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (login.Length < 5 || login.Length > 30)
+            {
+                MessageBox.Show("Login musi mieć od 5 do 30 znaków.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Regex.IsMatch(haslo, @"^(?=.*[0-9]).{5,}$"))
+            {
+                MessageBox.Show("Hasło musi mieć przynajmniej 5 znaków i zawierać co najmniej jedną cyfrę.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Regex.IsMatch(kodPocztowy, @"^9[0-4]-[0-9]{3}$"))
+            {
+                MessageBox.Show("Kod pocztowy musi być w formacie 90-001 do 94-413.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!email.Contains("@") || !email.Contains("."))
+            {
+                MessageBox.Show("Email musi zawierać znak '@' oraz '.'", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Regex.IsMatch(numerTelefonu, @"^\d{9}$"))
+            {
+                MessageBox.Show("Numer telefonu musi składać się z 9 cyfr.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Regex.IsMatch(pesel, @"^\d{11}$"))
+            {
+                MessageBox.Show("PESEL musi składać się z 11 cyfr.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Sprawdzenie unikalności loginu i emaila
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string checkLoginQuery = "SELECT COUNT(1) FROM uzytkownicy WHERE Login = @Login";
-                using (SqlCommand command = new SqlCommand(checkLoginQuery, connection))
+
+                string checkLoginEmailQuery = "SELECT COUNT(1) FROM uzytkownicy WHERE Login = @Login OR Email = @Email";
+                using (SqlCommand command = new SqlCommand(checkLoginEmailQuery, connection))
                 {
                     command.Parameters.AddWithValue("@Login", login);
+                    command.Parameters.AddWithValue("@Email", email);
                     int exists = (int)command.ExecuteScalar();
 
                     if (exists > 0)
                     {
-                        MessageBox.Show("Login już istnieje!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Login lub email już istnieje!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
 
-                // Dodaj nowego użytkownika
+                // Pobranie ostatniego ID
+                int newId = 1;
+                string getMaxIdQuery = "SELECT ISNULL(MAX(Id), 0) + 1 FROM uzytkownicy";
+                using (SqlCommand command = new SqlCommand(getMaxIdQuery, connection))
+                {
+                    newId = (int)command.ExecuteScalar();
+                }
+
+                // Dodanie nowego użytkownika
                 string insertQuery = @"
+                SET IDENTITY_INSERT uzytkownicy ON;
                 INSERT INTO uzytkownicy 
-                (Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email, 
-                ImieOpiekuna, NazwiskoOpiekuna, NumerTelefonuOpiekuna, EmailOpiekuna) 
+                (Id, Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email, 
+                ImieOpiekuna, NazwiskoOpiekuna, NumerTelefonuOpiekuna, EmailOpiekuna, IdOsoby) 
                 VALUES 
-                (@Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
-                @Email, @ImieOpiekuna, @NazwiskoOpiekuna, @NumerTelefonuOpiekuna, @EmailOpiekuna);
-                SELECT SCOPE_IDENTITY();"; // Pobierz ID nowego użytkownika
+                (@Id, @Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
+                @Email, @ImieOpiekuna, @NazwiskoOpiekuna, @NumerTelefonuOpiekuna, @EmailOpiekuna, 1);
+                SET IDENTITY_INSERT uzytkownicy OFF;";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@Id", newId);
                     command.Parameters.AddWithValue("@Imie", imie);
                     command.Parameters.AddWithValue("@Nazwisko", nazwisko);
                     command.Parameters.AddWithValue("@NumerTelefonu", numerTelefonu);
                     command.Parameters.AddWithValue("@Login", login);
-                    command.Parameters.AddWithValue("@Haslo", haslo); // Użyj haszowania w produkcji
+                    command.Parameters.AddWithValue("@Haslo", haslo);
                     command.Parameters.AddWithValue("@KodPocztowy", kodPocztowy);
                     command.Parameters.AddWithValue("@Ulica", ulica);
                     command.Parameters.AddWithValue("@NrPosesji", nrPosesji);
@@ -171,28 +169,34 @@ namespace bilbioteka.Forms
                     command.Parameters.AddWithValue("@Pesel", pesel);
                     command.Parameters.AddWithValue("@DataUrodzenia", dataUrodzenia);
                     command.Parameters.AddWithValue("@Email", email);
-                    command.Parameters.AddWithValue("@ImieOpiekuna", imieOpiekuna ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ImieOpiekuna",  imieOpiekuna ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@NazwiskoOpiekuna", nazwiskoOpiekuna ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@NumerTelefonuOpiekuna", nrTelefonuOpiekuna ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@EmailOpiekuna", emailOpiekuna ?? (object)DBNull.Value);
 
-                    // Wykonanie zapytania i uzyskanie ID użytkownika
-                    int userId = Convert.ToInt32(command.ExecuteScalar());
+                    command.ExecuteNonQuery();
 
-                    // Komunikat o sukcesie
                     MessageBox.Show("Rejestracja zakończona pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Utwórz i wyświetl MainUzytkownikForm
-                    MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(userId, imie);
+                    MainUzytkownikForm mainUzytkownikForm = new MainUzytkownikForm(newId, imie);
                     mainUzytkownikForm.Show();
-                    this.Hide();
+                    this.Close();
                 }
             }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            // Możesz dodać logikę, jeśli potrzebujesz
+            DateTime dataUrodzenia = dateTimePicker1.Value;
+            // Jeśli użytkownik ma mniej niż 13 lat, pokaż panel1 z polami opiekuna
+            if (DateTime.Now < dataUrodzenia.AddYears(13))
+            {
+                panel1.Visible = false;
+            }
+            else
+            {
+                panel1.Visible = true;
+            }
         }
     }
 }
