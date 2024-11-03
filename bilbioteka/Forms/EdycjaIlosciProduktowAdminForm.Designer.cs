@@ -39,13 +39,14 @@
             buttonZalogujRej = new Button();
             buttonUsun = new Button();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // buttonDodaj
             // 
             buttonDodaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodaj.Location = new Point(350, 454);
+            buttonDodaj.Location = new Point(350, 412);
             buttonDodaj.Name = "buttonDodaj";
             buttonDodaj.Size = new Size(169, 62);
             buttonDodaj.TabIndex = 163;
@@ -131,7 +132,7 @@
             // buttonUsun
             // 
             buttonUsun.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsun.Location = new Point(350, 559);
+            buttonUsun.Location = new Point(350, 496);
             buttonUsun.Name = "buttonUsun";
             buttonUsun.Size = new Size(169, 62);
             buttonUsun.TabIndex = 165;
@@ -149,12 +150,24 @@
             dataGridView1.Size = new Size(749, 450);
             dataGridView1.TabIndex = 166;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(350, 576);
+            button1.Name = "button1";
+            button1.Size = new Size(169, 62);
+            button1.TabIndex = 167;
+            button1.Text = "Odśwież";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // EdycjaProduktowAdminForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             ClientSize = new Size(1382, 803);
+            Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(buttonUsun);
             Controls.Add(buttonZalogujRej);
@@ -187,5 +200,6 @@
         private Button buttonZalogujRej;
         private Button buttonUsun;
         private DataGridView dataGridView1;
+        private Button button1;
     }
 }

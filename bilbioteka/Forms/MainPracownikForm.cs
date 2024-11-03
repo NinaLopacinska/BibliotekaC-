@@ -176,5 +176,11 @@ namespace bilbioteka.Forms
             WypozyczeniePracownikForm wypozyczeniePracownik = new WypozyczeniePracownikForm();
             wypozyczeniePracownik.ShowDialog();
         }
+
+        private void buttonEdytujKontoUzytkownika_Click(object sender, EventArgs e)
+        {
+            UsunUzytkownikaPracownikForm usunUzytkownikaPracownik = new UsunUzytkownikaPracownikForm();
+            usunUzytkownikaPracownik.ShowDialog();
+        }
     }
 }

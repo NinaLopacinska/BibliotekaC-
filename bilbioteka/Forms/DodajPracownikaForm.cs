@@ -19,7 +19,8 @@ namespace bilbioteka.Forms
         public DodajPracownikaForm()
         {
             InitializeComponent();
-            
+            this.Load += new EventHandler(Form1_Load);
+            textBoxHaslo.PasswordChar = '*';
         }
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
@@ -76,11 +77,6 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Numer lokalu musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (nrPosesji.Length < 1 || !Regex.IsMatch(nrPosesji, @"\d"))
-            {
-                MessageBox.Show("Numer posesji musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
             if (pesel.Length != 11 || !long.TryParse(pesel, out _))
             {
@@ -106,8 +102,8 @@ namespace bilbioteka.Forms
             }
 
 
-                // Sprawdzenie unikalności loginu
-                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+            // Sprawdzenie unikalności loginu
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -124,21 +120,31 @@ namespace bilbioteka.Forms
                     }
                 }
 
-                // Dodaj nowego użytkownika
+                int newId = 1;
+                string getMaxIdQuery = "SELECT ISNULL(MAX(Id), 0) + 1 FROM uzytkownicy";
+                using (SqlCommand command = new SqlCommand(getMaxIdQuery, connection))
+                {
+                    newId = (int)command.ExecuteScalar();
+                }
+
+                // Dodanie nowego użytkownika
                 string insertQuery = @"
-            INSERT INTO uzytkownicy 
-            (IdOsoby,Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email) 
-            VALUES 
-            (2, @Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
-            @Email);";
+                SET IDENTITY_INSERT uzytkownicy ON;
+                INSERT INTO uzytkownicy 
+                (Id, Imie, Nazwisko, NumerTelefonu, Login, Haslo, KodPocztowy, Ulica, NrPosesji, NrLokalu, Pesel, DataUrodzenia, Email, IdOsoby) 
+                VALUES 
+                (@Id, @Imie, @Nazwisko, @NumerTelefonu, @Login, @Haslo, @KodPocztowy, @Ulica, @NrPosesji, @NrLokalu, @Pesel, @DataUrodzenia, 
+                @Email, 2);
+                SET IDENTITY_INSERT uzytkownicy OFF;";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
+                    command.Parameters.AddWithValue("@Id", newId);
                     command.Parameters.AddWithValue("@Imie", imie);
                     command.Parameters.AddWithValue("@Nazwisko", nazwisko);
                     command.Parameters.AddWithValue("@NumerTelefonu", numerTelefonu);
                     command.Parameters.AddWithValue("@Login", login);
-                    command.Parameters.AddWithValue("@Haslo", haslo); 
+                    command.Parameters.AddWithValue("@Haslo", haslo);
                     command.Parameters.AddWithValue("@KodPocztowy", kodPocztowy);
                     command.Parameters.AddWithValue("@Ulica", ulica);
                     command.Parameters.AddWithValue("@NrPosesji", nrPosesji);
@@ -152,10 +158,52 @@ namespace bilbioteka.Forms
             }
 
             MessageBox.Show(" Pracownik został dodany!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            
+        }
 
-            
-            
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+        private void LoadData()
+        {
+            // Pobieranie connection string z klasy PolaczenieBazyDanych
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+
+            // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
+            string query = "SELECT * FROM uzytkownicy WHERE IdOsoby = 2";
+
+            // Tworzenie obiektu SqlConnection z connection string
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    // Otwórz połączenie
+                    conn.Open();
+
+                    // Utwórz obiekt SqlDataAdapter
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+
+                    // Utwórz DataTable, do której załadujemy dane
+                    DataTable dataTable = new DataTable();
+
+                    // Załaduj dane z SQL do DataTable
+                    dataAdapter.Fill(dataTable);
+
+                    // Ustaw DataGridView1 jako źródło danych dla DataTable
+                    dataGridView1.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    // Obsługa błędów
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                }
+            }
+        }
+
+        private void ButtonOdswiez_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
