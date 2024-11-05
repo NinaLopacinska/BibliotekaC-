@@ -7,13 +7,13 @@ namespace bilbioteka.Forms
 {
     public partial class HistoriaWypozycenForm : Form
     {
-        private int userId;
+        private string login;
        
 
-        public HistoriaWypozycenForm(int userId)
+        public HistoriaWypozycenForm(string login)
         {
             InitializeComponent();
-            this.userId = userId;
+            this.login = login;
             LoadData(); // Załaduj dane po utworzeniu formularza
         }
 
@@ -28,9 +28,9 @@ namespace bilbioteka.Forms
                     connection.Open();
 
                     // Zapytanie SQL, które wybiera wszystkie kolumny z tabeli HistoriaWypozyczen dla konkretnego użytkownika
-                    string query = "SELECT * FROM HistoriaWypozyczen WHERE UzytkownikId = @userId";
+                    string query = "SELECT * FROM HistoriaWypozyczen WHERE LoginUzytkownika = @loginUzytkownika";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@userId", userId);
+                    command.Parameters.AddWithValue("@loginUzytkownika", login);
 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();

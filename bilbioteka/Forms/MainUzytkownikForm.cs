@@ -291,7 +291,7 @@ namespace bilbioteka.Forms
 
         private void buttonHistoriaWypozyczen_Click(object sender, EventArgs e)
         {
-            HistoriaWypozycenForm historiaForm = new HistoriaWypozycenForm(userId);
+            HistoriaWypozycenForm historiaForm = new HistoriaWypozycenForm(login);
             historiaForm.ShowDialog();
         }
 
