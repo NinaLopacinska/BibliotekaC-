@@ -167,12 +167,12 @@
             // 
             // comboBox2
             // 
-            comboBox2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria", "Wydawnictwo" });
             comboBox2.Location = new Point(954, 82);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(263, 40);
+            comboBox2.Size = new Size(263, 36);
             comboBox2.TabIndex = 170;
             // 
             // buttonSzukaj
