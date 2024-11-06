@@ -48,7 +48,7 @@ namespace bilbioteka.Forms
 
                     dataGridView1.DataSource = dataTable;
                     dataGridView1.Columns["Id"].Visible = false;
-                    dataGridView1.Columns["CzyWypozyczone"].Visible = false;
+                    
                 }
             }
             catch (Exception ex)
@@ -122,6 +122,11 @@ namespace bilbioteka.Forms
                 default:
                     MessageBox.Show("Proszę wybrać kryterium wyszukiwania.");
                     return;
+
+                case "Wydawnictwo":
+                    query = "SELECT * FROM zasoby WHERE Wydawnictwo LIKE @searchValue";
+                    break;
+
             }
 
             // Tworzenie połączenia z bazą
@@ -139,6 +144,7 @@ namespace bilbioteka.Forms
                         case "Autor":
                         case "Numer katalogowy":
                         case "Typ produktu":
+                        case "Wydawnictwo":
                         case "Kategoria":
                             cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                             break;

@@ -54,9 +54,9 @@
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(12, 23);
             label2.Name = "label2";
-            label2.Size = new Size(333, 40);
+            label2.Size = new Size(344, 40);
             label2.TabIndex = 1;
-            label2.Text = "Witaj Admnisratorze";
+            label2.Text = "Witaj Admnistratorze";
             // 
             // buttonEdycjaZbioru
             // 

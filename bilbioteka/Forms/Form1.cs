@@ -122,7 +122,7 @@ namespace bilbioteka
                     query = "SELECT * FROM zasoby WHERE Ocena = @ocena";
                     break;
                 case "Iloœæ":
-                    
+
                     if (!int.TryParse(searchValue, out ilosc))
                     {
                         MessageBox.Show("Proszê wpisaæ poprawn¹ iloœæ.");
@@ -136,6 +136,11 @@ namespace bilbioteka
                 default:
                     MessageBox.Show("Proszê wybraæ kryterium wyszukiwania.");
                     return;
+
+                case "Wydawnictwo":
+                    query = "SELECT * FROM zasoby WHERE Wydawnictwo LIKE @searchValue";
+                    break;
+
             }
 
             // Tworzenie po³¹czenia z baz¹
@@ -153,6 +158,7 @@ namespace bilbioteka
                         case "Autor":
                         case "Numer katalogowy":
                         case "Typ produktu":
+                        case "Wydawnictwo":
                         case "Kategoria":
                             cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                             break;

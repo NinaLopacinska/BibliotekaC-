@@ -80,7 +80,7 @@ namespace bilbioteka.Forms
 
                     dataGridView1.DataSource = dataTable;
                     dataGridView1.Columns["Id"].Visible = false;
-                    dataGridView1.Columns["CzyWypozyczone"].Visible = false;
+                    
                 }
             }
             catch (Exception ex)
@@ -192,9 +192,15 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             string query = string.Empty;
             string searchValue = textBox1.Text;
-
+            int rokWydania = 0;
+            decimal ocena = 0;
+            int ilosc = 0;
+            // Ustal zapytanie w zależności od wybranego kryterium
             switch (comboBox1.SelectedItem.ToString())
             {
+                case "   ":
+                    query = "SELECT * FROM zasoby ";
+                    break;
                 case "Tytuł":
                     query = "SELECT * FROM zasoby WHERE Tytul LIKE @searchValue";
                     break;
@@ -202,7 +208,8 @@ namespace bilbioteka.Forms
                     query = "SELECT * FROM zasoby WHERE Autor LIKE @searchValue";
                     break;
                 case "Rok wydania":
-                    if (!int.TryParse(searchValue, out int rokWydania))
+                    // Sprawdzenie, czy searchValue jest liczbą
+                    if (!int.TryParse(searchValue, out rokWydania))
                     {
                         MessageBox.Show("Proszę wpisać poprawny rok wydania.");
                         return;
@@ -216,7 +223,8 @@ namespace bilbioteka.Forms
                     query = "SELECT * FROM zasoby WHERE Typ LIKE @searchValue";
                     break;
                 case "Ocena":
-                    if (!decimal.TryParse(searchValue, out decimal ocena))
+                    // Sprawdzenie, czy searchValue jest liczbą
+                    if (!decimal.TryParse(searchValue, out ocena))
                     {
                         MessageBox.Show("Proszę wpisać poprawną ocenę.");
                         return;
@@ -224,7 +232,8 @@ namespace bilbioteka.Forms
                     query = "SELECT * FROM zasoby WHERE Ocena = @ocena";
                     break;
                 case "Ilość":
-                    if (!int.TryParse(searchValue, out int ilosc))
+
+                    if (!int.TryParse(searchValue, out ilosc))
                     {
                         MessageBox.Show("Proszę wpisać poprawną ilość.");
                         return;
@@ -237,8 +246,14 @@ namespace bilbioteka.Forms
                 default:
                     MessageBox.Show("Proszę wybrać kryterium wyszukiwania.");
                     return;
+
+                case "Wydawnictwo":
+                    query = "SELECT * FROM zasoby WHERE Wydawnictwo LIKE @searchValue";
+                    break;
+
             }
 
+            // Tworzenie połączenia z bazą
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
@@ -246,26 +261,29 @@ namespace bilbioteka.Forms
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(query, conn);
 
+                    // Dodaj parametr w zależności od wybranego kryterium
                     switch (comboBox1.SelectedItem.ToString())
                     {
                         case "Tytuł":
                         case "Autor":
                         case "Numer katalogowy":
                         case "Typ produktu":
+                        case "Wydawnictwo":
                         case "Kategoria":
                             cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                             break;
                         case "Rok wydania":
-                            cmd.Parameters.AddWithValue("@rokWydania", searchValue);
+                            cmd.Parameters.AddWithValue("@rokWydania", rokWydania);
                             break;
                         case "Ocena":
-                            cmd.Parameters.AddWithValue("@ocena", searchValue);
+                            cmd.Parameters.AddWithValue("@ocena", ocena);
                             break;
                         case "Ilość":
-                            cmd.Parameters.AddWithValue("@ilosc", searchValue);
+                            cmd.Parameters.AddWithValue("@ilosc", ilosc);
                             break;
                     }
 
+                    // Wypełnij DataTable i przypisz do DataGridView
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);

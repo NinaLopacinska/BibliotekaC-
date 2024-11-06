@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace bilbioteka.Forms
         {
             InitializeComponent();
             this.Load += new EventHandler(Form1_Load);
+            this.Load += new EventHandler(Form2_Load);
         }
 
         private void buttonWypozycz_Click_1(object sender, EventArgs e)
@@ -81,6 +83,8 @@ namespace bilbioteka.Forms
 
                     int zasobId;
 
+
+
                     using (SqlDataReader zasobReader = zasobCommand.ExecuteReader())
                     {
                         if (!zasobReader.Read())
@@ -102,10 +106,15 @@ namespace bilbioteka.Forms
                     // Dodanie rekordu do tabeli HistoriaWypozyczen
                     DateTime dataWypozyczenia = DateTime.Now;
                     DateTime dataZwrotu = dataWypozyczenia.AddMonths(1);
+                    // Pobierz ostatnie dostępne Id i zwiększ o 1
 
-                    string insertQuery = "INSERT INTO HistoriaWypozyczen (UzytkownikId, ZasobId, DataWypozyczenia, DataZwrotu, LoginUzytkownika, TytulPozycji, TypProduktu) " +
-                                         "VALUES (@uzytkownikId, @zasobId, @dataWypozyczenia, @dataZwrotu, @loginUzytkownika, @tytulPozycji, @typProduktu)";
+
+                    // Użyj zmiennej newId podczas dodawania rekordu do historii wypożyczeń
+                    string insertQuery = "INSERT INTO HistoriaWypozyczen ( UzytkownikId, ZasobId, DataWypozyczenia, DataZwrotu, LoginUzytkownika, TytulPozycji, TypProduktu) " +
+                                         "VALUES ( @uzytkownikId, @zasobId, @dataWypozyczenia, @dataZwrotu, @loginUzytkownika, @tytulPozycji, @typProduktu);";
+
                     SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+                    //insertCommand.Parameters.AddWithValue("@id", newId);
                     insertCommand.Parameters.AddWithValue("@uzytkownikId", uzytkownikId);
                     insertCommand.Parameters.AddWithValue("@zasobId", zasobId);
                     insertCommand.Parameters.AddWithValue("@dataWypozyczenia", dataWypozyczenia);
@@ -167,6 +176,163 @@ namespace bilbioteka.Forms
         private void buttonOdswiez_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+        private void SearchData()
+        {
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać kryterium wyszukiwania.");
+                return;
+            }
+
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+            string query = string.Empty;
+            string searchValue = textBox1.Text;
+            int rokWydania = 0;
+            decimal ocena = 0;
+            int ilosc = 0;
+            // Ustal zapytanie w zależności od wybranego kryterium
+            switch (comboBox2.SelectedItem.ToString())
+            {
+                case "   ":
+                    query = "SELECT * FROM zasoby ";
+                    break;
+                case "Tytuł":
+                    query = "SELECT * FROM zasoby WHERE Tytul LIKE @searchValue";
+                    break;
+                case "Autor":
+                    query = "SELECT * FROM zasoby WHERE Autor LIKE @searchValue";
+                    break;
+                case "Rok wydania":
+                    // Sprawdzenie, czy searchValue jest liczbą
+                    if (!int.TryParse(searchValue, out rokWydania))
+                    {
+                        MessageBox.Show("Proszę wpisać poprawny rok wydania.");
+                        return;
+                    }
+                    query = "SELECT * FROM zasoby WHERE RokWydania = @rokWydania";
+                    break;
+                case "Numer katalogowy":
+                    query = "SELECT * FROM zasoby WHERE NumerKatalogowy LIKE @searchValue";
+                    break;
+                case "Typ produktu":
+                    query = "SELECT * FROM zasoby WHERE Typ LIKE @searchValue";
+                    break;
+                case "Ocena":
+                    // Sprawdzenie, czy searchValue jest liczbą
+                    if (!decimal.TryParse(searchValue, out ocena))
+                    {
+                        MessageBox.Show("Proszę wpisać poprawną ocenę.");
+                        return;
+                    }
+                    query = "SELECT * FROM zasoby WHERE Ocena = @ocena";
+                    break;
+                case "Ilość":
+
+                    if (!int.TryParse(searchValue, out ilosc))
+                    {
+                        MessageBox.Show("Proszę wpisać poprawną ilość.");
+                        return;
+                    }
+                    query = "SELECT * FROM zasoby WHERE Ilosc = @ilosc";
+                    break;
+                case "Kategoria":
+                    query = "SELECT * FROM zasoby WHERE Kategoria LIKE @searchValue";
+                    break;
+                default:
+                    MessageBox.Show("Proszę wybrać kryterium wyszukiwania.");
+                    return;
+
+                case "Wydawnictwo":
+                    query = "SELECT * FROM zasoby WHERE Wydawnictwo LIKE @searchValue";
+                    break;
+
+            }
+
+            // Tworzenie połączenia z bazą
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    // Dodaj parametr w zależności od wybranego kryterium
+                    switch (comboBox2.SelectedItem.ToString())
+                    {
+                        case "Tytuł":
+                        case "Autor":
+                        case "Numer katalogowy":
+                        case "Typ produktu":
+                        case "Wydawnictwo":
+                        case "Kategoria":
+                            cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
+                            break;
+                        case "Rok wydania":
+                            cmd.Parameters.AddWithValue("@rokWydania", rokWydania);
+                            break;
+                        case "Ocena":
+                            cmd.Parameters.AddWithValue("@ocena", ocena);
+                            break;
+                        case "Ilość":
+                            cmd.Parameters.AddWithValue("@ilosc", ilosc);
+                            break;
+                    }
+
+                    // Wypełnij DataTable i przypisz do DataGridView
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dataGridView2.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                }
+            }
+        }
+        private void buttonSzukaj_Click(object sender, EventArgs e)
+        {
+            SearchData();
+        }
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            LoadData2();
+        }
+        private void LoadData2()
+        {
+            // Pobieranie connection string z klasy PolaczenieBazyDanych
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+
+            // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
+            string query = "SELECT * FROM zasoby";
+
+            // Tworzenie obiektu SqlConnection z connection string
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    // Otwórz połączenie
+                    conn.Open();
+
+                    // Utwórz obiekt SqlDataAdapter
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+
+                    // Utwórz DataTable, do której załadujemy dane
+                    DataTable dataTable = new DataTable();
+
+                    // Załaduj dane z SQL do DataTable
+                    dataAdapter.Fill(dataTable);
+
+                    // Ustaw DataGridView1 jako źródło danych dla DataTable
+                    dataGridView2.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    // Obsługa błędów
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                }
+            }
         }
     }
 }

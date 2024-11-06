@@ -50,6 +50,7 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(235, 277);
             dataGridView1.Name = "dataGridView1";
@@ -70,7 +71,7 @@
             // 
             comboBox1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria" });
+            comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria", "Wydawnictwo" });
             comboBox1.Location = new Point(235, 222);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(237, 40);
@@ -141,20 +142,21 @@
             // 
             // wypożycz
             // 
+            wypożycz.BackColor = SystemColors.ScrollBar;
             wypożycz.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             wypożycz.Location = new Point(12, 396);
             wypożycz.Name = "wypożycz";
             wypożycz.Size = new Size(190, 80);
             wypożycz.TabIndex = 30;
             wypożycz.Text = "Wypożycz";
-            wypożycz.UseVisualStyleBackColor = true;
+            wypożycz.UseVisualStyleBackColor = false;
             wypożycz.Click += wypożycz_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(938, 222);
+            label3.Location = new Point(915, 222);
             label3.Name = "label3";
             label3.Size = new Size(282, 35);
             label3.TabIndex = 31;
@@ -162,12 +164,13 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(847, 277);
+            dataGridView2.Location = new Point(846, 277);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(523, 232);
+            dataGridView2.Size = new Size(490, 232);
             dataGridView2.TabIndex = 32;
             // 
             // labelNoActiveLoans

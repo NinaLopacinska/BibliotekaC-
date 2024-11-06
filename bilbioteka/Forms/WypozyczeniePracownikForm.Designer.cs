@@ -38,7 +38,12 @@
             comboBox1 = new ComboBox();
             label1 = new Label();
             buttonOdswiez = new Button();
+            dataGridView2 = new DataGridView();
+            textBox1 = new TextBox();
+            comboBox2 = new ComboBox();
+            buttonSzukaj = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -90,12 +95,13 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(552, 221);
+            dataGridView1.Location = new Point(552, 436);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(761, 405);
+            dataGridView1.Size = new Size(761, 190);
             dataGridView1.TabIndex = 19;
             // 
             // buttonZalogujRej
@@ -140,12 +146,56 @@
             buttonOdswiez.UseVisualStyleBackColor = true;
             buttonOdswiez.Click += buttonOdswiez_Click;
             // 
+            // dataGridView2
+            // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(552, 149);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 51;
+            dataGridView2.RowTemplate.Height = 29;
+            dataGridView2.Size = new Size(761, 281);
+            dataGridView2.TabIndex = 172;
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(552, 71);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(396, 51);
+            textBox1.TabIndex = 171;
+            // 
+            // comboBox2
+            // 
+            comboBox2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria", "Wydawnictwo" });
+            comboBox2.Location = new Point(954, 82);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(263, 40);
+            comboBox2.TabIndex = 170;
+            // 
+            // buttonSzukaj
+            // 
+            buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSzukaj.Location = new Point(1223, 73);
+            buttonSzukaj.Name = "buttonSzukaj";
+            buttonSzukaj.Size = new Size(120, 57);
+            buttonSzukaj.TabIndex = 169;
+            buttonSzukaj.Text = "Szukaj";
+            buttonSzukaj.UseVisualStyleBackColor = true;
+            buttonSzukaj.Click += buttonSzukaj_Click;
+            // 
             // WypozyczeniePracownikForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             ClientSize = new Size(1382, 803);
+            Controls.Add(dataGridView2);
+            Controls.Add(textBox1);
+            Controls.Add(comboBox2);
+            Controls.Add(buttonSzukaj);
             Controls.Add(buttonOdswiez);
             Controls.Add(label1);
             Controls.Add(comboBox1);
@@ -160,6 +210,7 @@
             Name = "WypozyczeniePracownikForm";
             Text = "WypozyczeniePracownikForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -176,5 +227,9 @@
         private ComboBox comboBox1;
         private Label label1;
         private Button buttonOdswiez;
+        private DataGridView dataGridView2;
+        private TextBox textBox1;
+        private ComboBox comboBox2;
+        private Button buttonSzukaj;
     }
 }
