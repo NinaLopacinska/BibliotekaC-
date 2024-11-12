@@ -334,5 +334,75 @@ namespace bilbioteka.Forms
                 }
             }
         }
+
+        private void buttonZwroc_Click(object sender, EventArgs e)
+        {
+            // Sprawdź, czy jakiś wiersz jest zaznaczony w DataGridView
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Pobierz Id zaznaczonego wiersza
+                int selectedId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
+
+                // Zapytanie użytkownika o potwierdzenie zmiany statusu
+                DialogResult result = MessageBox.Show(
+                    "Czy na pewno chcesz zmienić status wybranego zasobu na 'Zwrócono'?",
+                    "Potwierdzenie zmiany statusu",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Połącz się z bazą danych
+                    string connectionString = PolaczenieBazyDanych.StringPolaczeniowy(); // Pobierz odpowiedni connection string
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            // Utwórz zapytanie SQL do zaktualizowania StatusZwrotu na 'Zwrócono'
+                            string query = "UPDATE [biblioteka].[dbo].[HistoriaWypozyczen] " +
+                                           "SET StatusZwrotu = 'Zwrócono' " +
+                                           "WHERE Id = @Id";
+
+                            // Utwórz obiekt SqlCommand z zapytaniem
+                            SqlCommand command = new SqlCommand(query, connection);
+                            command.Parameters.AddWithValue("@Id", selectedId);
+
+                            // Otwórz połączenie
+                            connection.Open();
+
+                            // Wykonaj zapytanie
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            // Sprawdź, czy rekord został zaktualizowany
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Status został zmieniony na 'Zwrócono'.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nie znaleziono rekordu do zaktualizowania.");
+                            }
+
+                            // Odśwież dane w DataGridView
+                            LoadData();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Zmiana statusu została anulowana.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć wiersz w DataGridView.");
+            }
+        }
+
+
     }
 }
