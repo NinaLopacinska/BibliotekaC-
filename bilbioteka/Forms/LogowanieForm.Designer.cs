@@ -41,9 +41,10 @@
             // buttonRejestrujLog
             // 
             buttonRejestrujLog.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonRejestrujLog.Location = new Point(34, 84);
+            buttonRejestrujLog.Location = new Point(30, 63);
+            buttonRejestrujLog.Margin = new Padding(3, 2, 3, 2);
             buttonRejestrujLog.Name = "buttonRejestrujLog";
-            buttonRejestrujLog.Size = new Size(192, 64);
+            buttonRejestrujLog.Size = new Size(168, 48);
             buttonRejestrujLog.TabIndex = 0;
             buttonRejestrujLog.Text = "Rejestruj";
             buttonRejestrujLog.UseVisualStyleBackColor = true;
@@ -52,9 +53,10 @@
             // buttonZaloguj
             // 
             buttonZaloguj.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonZaloguj.Location = new Point(481, 483);
+            buttonZaloguj.Location = new Point(421, 362);
+            buttonZaloguj.Margin = new Padding(3, 2, 3, 2);
             buttonZaloguj.Name = "buttonZaloguj";
-            buttonZaloguj.Size = new Size(192, 64);
+            buttonZaloguj.Size = new Size(168, 48);
             buttonZaloguj.TabIndex = 1;
             buttonZaloguj.Text = "Zaloguj";
             buttonZaloguj.UseVisualStyleBackColor = true;
@@ -64,9 +66,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(345, 326);
+            label1.Location = new Point(302, 244);
             label1.Name = "label1";
-            label1.Size = new Size(199, 40);
+            label1.Size = new Size(158, 32);
             label1.TabIndex = 2;
             label1.Text = "Podaj login:";
             // 
@@ -74,9 +76,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(34, 26);
+            label2.Location = new Point(30, 20);
             label2.Name = "label2";
-            label2.Size = new Size(478, 35);
+            label2.Size = new Size(377, 27);
             label2.TabIndex = 3;
             label2.Text = "Jeśli nie posiadasz konta zarejstruj się";
             // 
@@ -84,9 +86,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(343, 391);
+            label3.Location = new Point(300, 293);
             label3.Name = "label3";
-            label3.Size = new Size(201, 40);
+            label3.Size = new Size(160, 32);
             label3.TabIndex = 4;
             label3.Text = "Podaj hasło:";
             // 
@@ -94,34 +96,37 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Book Antiqua", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(455, 238);
+            label4.Location = new Point(398, 178);
             label4.Name = "label4";
-            label4.Size = new Size(236, 54);
+            label4.Size = new Size(187, 41);
             label4.TabIndex = 5;
             label4.Text = "Zaloguj się";
             // 
             // textBoxLogin
             // 
             textBoxLogin.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLogin.Location = new Point(552, 326);
+            textBoxLogin.Location = new Point(483, 244);
+            textBoxLogin.Margin = new Padding(3, 2, 3, 2);
             textBoxLogin.Name = "textBoxLogin";
-            textBoxLogin.Size = new Size(198, 43);
+            textBoxLogin.Size = new Size(174, 36);
             textBoxLogin.TabIndex = 6;
             // 
             // textBoxHaslo
             // 
             textBoxHaslo.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxHaslo.Location = new Point(552, 391);
+            textBoxHaslo.Location = new Point(483, 293);
+            textBoxHaslo.Margin = new Padding(3, 2, 3, 2);
             textBoxHaslo.Name = "textBoxHaslo";
-            textBoxHaslo.Size = new Size(198, 43);
+            textBoxHaslo.Size = new Size(174, 36);
             textBoxHaslo.TabIndex = 7;
             // 
             // LogowanieForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1182, 753);
+            BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
+            BackgroundImageLayout = ImageLayout.Center;
+            ClientSize = new Size(1034, 565);
             Controls.Add(textBoxHaslo);
             Controls.Add(textBoxLogin);
             Controls.Add(label4);
@@ -130,6 +135,7 @@
             Controls.Add(label1);
             Controls.Add(buttonZaloguj);
             Controls.Add(buttonRejestrujLog);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "LogowanieForm";
             Text = "LogowanieForm";
             ResumeLayout(false);

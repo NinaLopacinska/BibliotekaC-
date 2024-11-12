@@ -37,30 +37,31 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(167, 189);
-            dataGridView1.Margin = new Padding(2, 2, 2, 2);
+            dataGridView1.Location = new Point(146, 142);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(949, 449);
+            dataGridView1.Size = new Size(830, 337);
             dataGridView1.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(167, 107);
+            label2.Location = new Point(146, 80);
             label2.Name = "label2";
-            label2.Size = new Size(613, 58);
+            label2.Size = new Size(494, 45);
             label2.TabIndex = 20;
             label2.Text = "Twoja historia wypożyczeń:";
             // 
             // buttonZalogujRej
             // 
             buttonZalogujRej.Font = new Font("Book Antiqua", 28.2F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonZalogujRej.Location = new Point(12, 12);
+            buttonZalogujRej.Location = new Point(10, 9);
+            buttonZalogujRej.Margin = new Padding(3, 2, 3, 2);
             buttonZalogujRej.Name = "buttonZalogujRej";
-            buttonZalogujRej.Size = new Size(88, 69);
+            buttonZalogujRej.Size = new Size(77, 52);
             buttonZalogujRej.TabIndex = 165;
             buttonZalogujRej.Text = " ⬅";
             buttonZalogujRej.UseVisualStyleBackColor = true;
@@ -68,14 +69,15 @@
             // 
             // HistoriaWypozycenForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
-            ClientSize = new Size(1382, 803);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1209, 602);
             Controls.Add(buttonZalogujRej);
             Controls.Add(label2);
             Controls.Add(dataGridView1);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "HistoriaWypozycenForm";
             Text = "HistoriaWypozycenForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

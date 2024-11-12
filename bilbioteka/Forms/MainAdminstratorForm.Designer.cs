@@ -42,9 +42,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 63);
+            label1.Location = new Point(10, 47);
             label1.Name = "label1";
-            label1.Size = new Size(106, 40);
+            label1.Size = new Size(86, 32);
             label1.TabIndex = 0;
             label1.Text = "label1";
             // 
@@ -52,18 +52,19 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(12, 23);
+            label2.Location = new Point(10, 17);
             label2.Name = "label2";
-            label2.Size = new Size(344, 40);
+            label2.Size = new Size(278, 32);
             label2.TabIndex = 1;
             label2.Text = "Witaj Admnistratorze";
             // 
             // buttonEdycjaZbioru
             // 
             buttonEdycjaZbioru.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdycjaZbioru.Location = new Point(314, 198);
+            buttonEdycjaZbioru.Location = new Point(275, 148);
+            buttonEdycjaZbioru.Margin = new Padding(3, 2, 3, 2);
             buttonEdycjaZbioru.Name = "buttonEdycjaZbioru";
-            buttonEdycjaZbioru.Size = new Size(221, 97);
+            buttonEdycjaZbioru.Size = new Size(193, 73);
             buttonEdycjaZbioru.TabIndex = 2;
             buttonEdycjaZbioru.Text = "Edytuj zbiór";
             buttonEdycjaZbioru.UseVisualStyleBackColor = true;
@@ -72,9 +73,10 @@
             // buttonGenerujRaport
             // 
             buttonGenerujRaport.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonGenerujRaport.Location = new Point(566, 198);
+            buttonGenerujRaport.Location = new Point(495, 148);
+            buttonGenerujRaport.Margin = new Padding(3, 2, 3, 2);
             buttonGenerujRaport.Name = "buttonGenerujRaport";
-            buttonGenerujRaport.Size = new Size(221, 97);
+            buttonGenerujRaport.Size = new Size(193, 73);
             buttonGenerujRaport.TabIndex = 4;
             buttonGenerujRaport.Text = "Generuj raport";
             buttonGenerujRaport.UseVisualStyleBackColor = true;
@@ -82,9 +84,10 @@
             // buttonUsunPracownika
             // 
             buttonUsunPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsunPracownika.Location = new Point(566, 317);
+            buttonUsunPracownika.Location = new Point(495, 238);
+            buttonUsunPracownika.Margin = new Padding(3, 2, 3, 2);
             buttonUsunPracownika.Name = "buttonUsunPracownika";
-            buttonUsunPracownika.Size = new Size(221, 97);
+            buttonUsunPracownika.Size = new Size(193, 73);
             buttonUsunPracownika.TabIndex = 5;
             buttonUsunPracownika.Text = "Usuń pracownika";
             buttonUsunPracownika.UseVisualStyleBackColor = true;
@@ -92,9 +95,10 @@
             // buttonDodajPracownika
             // 
             buttonDodajPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajPracownika.Location = new Point(314, 317);
+            buttonDodajPracownika.Location = new Point(275, 238);
+            buttonDodajPracownika.Margin = new Padding(3, 2, 3, 2);
             buttonDodajPracownika.Name = "buttonDodajPracownika";
-            buttonDodajPracownika.Size = new Size(221, 97);
+            buttonDodajPracownika.Size = new Size(193, 73);
             buttonDodajPracownika.TabIndex = 6;
             buttonDodajPracownika.Text = "Dodaj pracownika";
             buttonDodajPracownika.UseVisualStyleBackColor = true;
@@ -103,9 +107,10 @@
             // button2
             // 
             button2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1234, 23);
+            button2.Location = new Point(1080, 17);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(136, 60);
+            button2.Size = new Size(119, 45);
             button2.TabIndex = 14;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
@@ -114,9 +119,10 @@
             // buttonDodajProdukt
             // 
             buttonDodajProdukt.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajProdukt.Location = new Point(314, 434);
+            buttonDodajProdukt.Location = new Point(275, 326);
+            buttonDodajProdukt.Margin = new Padding(3, 2, 3, 2);
             buttonDodajProdukt.Name = "buttonDodajProdukt";
-            buttonDodajProdukt.Size = new Size(221, 97);
+            buttonDodajProdukt.Size = new Size(193, 73);
             buttonDodajProdukt.TabIndex = 15;
             buttonDodajProdukt.Text = "Dodaj nowy produkt";
             buttonDodajProdukt.UseVisualStyleBackColor = true;
@@ -124,10 +130,11 @@
             // 
             // MainAdminstratorForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
-            ClientSize = new Size(1382, 803);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1209, 602);
             Controls.Add(buttonDodajProdukt);
             Controls.Add(button2);
             Controls.Add(buttonDodajPracownika);
@@ -136,6 +143,7 @@
             Controls.Add(buttonEdycjaZbioru);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MainAdminstratorForm";
             Text = "MainAdminstratorForm";
             ResumeLayout(false);
