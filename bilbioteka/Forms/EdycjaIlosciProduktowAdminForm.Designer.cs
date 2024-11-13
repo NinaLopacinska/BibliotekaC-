@@ -45,8 +45,9 @@
             // 
             // buttonDodaj
             // 
+            buttonDodaj.Anchor = AnchorStyles.None;
             buttonDodaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodaj.Location = new Point(306, 309);
+            buttonDodaj.Location = new Point(179, 297);
             buttonDodaj.Margin = new Padding(3, 2, 3, 2);
             buttonDodaj.Name = "buttonDodaj";
             buttonDodaj.Size = new Size(148, 46);
@@ -57,18 +58,20 @@
             // 
             // textBoxIlosc
             // 
+            textBoxIlosc.Anchor = AnchorStyles.None;
             textBoxIlosc.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxIlosc.Location = new Point(266, 211);
+            textBoxIlosc.Location = new Point(242, 167);
             textBoxIlosc.Margin = new Padding(3, 2, 3, 2);
             textBoxIlosc.Name = "textBoxIlosc";
-            textBoxIlosc.Size = new Size(273, 32);
+            textBoxIlosc.Size = new Size(164, 32);
             textBoxIlosc.TabIndex = 162;
             // 
             // label10
             // 
+            label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(174, 211);
+            label10.Location = new Point(174, 172);
             label10.Name = "label10";
             label10.Size = new Size(62, 27);
             label10.TabIndex = 161;
@@ -76,27 +79,30 @@
             // 
             // textBoxNrKatalogowy
             // 
+            textBoxNrKatalogowy.Anchor = AnchorStyles.None;
             textBoxNrKatalogowy.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNrKatalogowy.Location = new Point(266, 269);
+            textBoxNrKatalogowy.Location = new Point(242, 206);
             textBoxNrKatalogowy.Margin = new Padding(3, 2, 3, 2);
             textBoxNrKatalogowy.Name = "textBoxNrKatalogowy";
-            textBoxNrKatalogowy.Size = new Size(273, 32);
+            textBoxNrKatalogowy.Size = new Size(164, 32);
             textBoxNrKatalogowy.TabIndex = 160;
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(11, 272);
+            label8.Location = new Point(149, 211);
             label8.Name = "label8";
-            label8.Size = new Size(207, 27);
+            label8.Size = new Size(87, 27);
             label8.TabIndex = 159;
-            label8.Text = "Numer katalogowy:";
+            label8.Text = "Nr. kat:";
             // 
             // textBoxTytul
             // 
+            textBoxTytul.Anchor = AnchorStyles.None;
             textBoxTytul.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxTytul.Location = new Point(266, 141);
+            textBoxTytul.Location = new Point(242, 124);
             textBoxTytul.Margin = new Padding(3, 2, 3, 2);
             textBoxTytul.Name = "textBoxTytul";
             textBoxTytul.Size = new Size(273, 32);
@@ -104,9 +110,10 @@
             // 
             // label7
             // 
+            label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(174, 143);
+            label7.Location = new Point(167, 129);
             label7.Name = "label7";
             label7.Size = new Size(69, 27);
             label7.TabIndex = 157;
@@ -114,9 +121,10 @@
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(388, 58);
+            label6.Location = new Point(381, 44);
             label6.Name = "label6";
             label6.Size = new Size(388, 45);
             label6.TabIndex = 156;
@@ -136,8 +144,9 @@
             // 
             // buttonUsun
             // 
+            buttonUsun.Anchor = AnchorStyles.None;
             buttonUsun.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsun.Location = new Point(306, 372);
+            buttonUsun.Location = new Point(179, 360);
             buttonUsun.Margin = new Padding(3, 2, 3, 2);
             buttonUsun.Name = "buttonUsun";
             buttonUsun.Size = new Size(148, 46);
@@ -148,19 +157,21 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(543, 141);
+            dataGridView1.Location = new Point(412, 167);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(655, 338);
+            dataGridView1.Size = new Size(661, 349);
             dataGridView1.TabIndex = 166;
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(306, 432);
+            button1.Location = new Point(179, 420);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(148, 46);
@@ -175,7 +186,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1209, 602);
+            ClientSize = new Size(1219, 577);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(buttonUsun);

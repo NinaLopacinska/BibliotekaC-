@@ -398,7 +398,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1209, 602);
+            ClientSize = new Size(1189, 610);
             Controls.Add(ButtonOdswiez);
             Controls.Add(dataGridView1);
             Controls.Add(dateTimePicker1);
