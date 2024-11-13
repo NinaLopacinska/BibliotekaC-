@@ -85,7 +85,7 @@
             buttonWypozycz.Name = "buttonWypozycz";
             buttonWypozycz.Size = new Size(183, 50);
             buttonWypozycz.TabIndex = 8;
-            buttonWypozycz.Text = "Wypożyczenia";
+            buttonWypozycz.Text = "Wypożycz";
             buttonWypozycz.UseVisualStyleBackColor = true;
             buttonWypozycz.Click += buttonWypozycz_Click;
             // 
@@ -123,7 +123,7 @@
             // button2
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button2.Font = new Font("Book Antiqua", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Font = new Font("Book Antiqua", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(1075, 15);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
