@@ -42,7 +42,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(10, 47);
+            label1.Location = new Point(122, 13);
             label1.Name = "label1";
             label1.Size = new Size(86, 32);
             label1.TabIndex = 0;
@@ -52,19 +52,19 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(10, 17);
+            label2.Location = new Point(9, 13);
             label2.Name = "label2";
-            label2.Size = new Size(278, 32);
+            label2.Size = new Size(107, 32);
             label2.TabIndex = 1;
-            label2.Text = "Witaj Admnistratorze";
+            label2.Text = "Admin:";
             // 
             // buttonEdycjaZbioru
             // 
             buttonEdycjaZbioru.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdycjaZbioru.Location = new Point(275, 148);
+            buttonEdycjaZbioru.Location = new Point(9, 62);
             buttonEdycjaZbioru.Margin = new Padding(3, 2, 3, 2);
             buttonEdycjaZbioru.Name = "buttonEdycjaZbioru";
-            buttonEdycjaZbioru.Size = new Size(193, 73);
+            buttonEdycjaZbioru.Size = new Size(193, 53);
             buttonEdycjaZbioru.TabIndex = 2;
             buttonEdycjaZbioru.Text = "Edytuj zbiór";
             buttonEdycjaZbioru.UseVisualStyleBackColor = true;
@@ -73,10 +73,10 @@
             // buttonGenerujRaport
             // 
             buttonGenerujRaport.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonGenerujRaport.Location = new Point(495, 148);
+            buttonGenerujRaport.Location = new Point(224, 62);
             buttonGenerujRaport.Margin = new Padding(3, 2, 3, 2);
             buttonGenerujRaport.Name = "buttonGenerujRaport";
-            buttonGenerujRaport.Size = new Size(193, 73);
+            buttonGenerujRaport.Size = new Size(182, 53);
             buttonGenerujRaport.TabIndex = 4;
             buttonGenerujRaport.Text = "Generuj raport";
             buttonGenerujRaport.UseVisualStyleBackColor = true;
@@ -84,10 +84,10 @@
             // buttonUsunPracownika
             // 
             buttonUsunPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsunPracownika.Location = new Point(495, 238);
+            buttonUsunPracownika.Location = new Point(224, 130);
             buttonUsunPracownika.Margin = new Padding(3, 2, 3, 2);
             buttonUsunPracownika.Name = "buttonUsunPracownika";
-            buttonUsunPracownika.Size = new Size(193, 73);
+            buttonUsunPracownika.Size = new Size(182, 69);
             buttonUsunPracownika.TabIndex = 5;
             buttonUsunPracownika.Text = "Usuń pracownika";
             buttonUsunPracownika.UseVisualStyleBackColor = true;
@@ -95,10 +95,10 @@
             // buttonDodajPracownika
             // 
             buttonDodajPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajPracownika.Location = new Point(275, 238);
+            buttonDodajPracownika.Location = new Point(9, 130);
             buttonDodajPracownika.Margin = new Padding(3, 2, 3, 2);
             buttonDodajPracownika.Name = "buttonDodajPracownika";
-            buttonDodajPracownika.Size = new Size(193, 73);
+            buttonDodajPracownika.Size = new Size(193, 69);
             buttonDodajPracownika.TabIndex = 6;
             buttonDodajPracownika.Text = "Dodaj pracownika";
             buttonDodajPracownika.UseVisualStyleBackColor = true;
@@ -106,11 +106,12 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1080, 17);
+            button2.Location = new Point(654, 13);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(119, 45);
+            button2.Size = new Size(119, 32);
             button2.TabIndex = 14;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
@@ -119,7 +120,7 @@
             // buttonDodajProdukt
             // 
             buttonDodajProdukt.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajProdukt.Location = new Point(275, 326);
+            buttonDodajProdukt.Location = new Point(9, 213);
             buttonDodajProdukt.Margin = new Padding(3, 2, 3, 2);
             buttonDodajProdukt.Name = "buttonDodajProdukt";
             buttonDodajProdukt.Size = new Size(193, 73);
@@ -134,7 +135,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1209, 602);
+            ClientSize = new Size(785, 428);
             Controls.Add(buttonDodajProdukt);
             Controls.Add(button2);
             Controls.Add(buttonDodajPracownika);
