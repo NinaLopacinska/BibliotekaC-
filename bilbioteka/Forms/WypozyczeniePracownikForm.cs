@@ -14,6 +14,10 @@ namespace bilbioteka.Forms
             InitializeComponent();
             this.Load += new EventHandler(Form1_Load);
             this.Load += new EventHandler(Form2_Load);
+
+            dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
+            dataGridView2.CellClick += dataGridView2_CellClick;
+
         }
 
         private void buttonWypozycz_Click_1(object sender, EventArgs e)
@@ -291,6 +295,42 @@ namespace bilbioteka.Forms
                 }
             }
         }
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            // Sprawdź, czy w DataGridView jest zaznaczony jakiś wiersz
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                // Pobierz zaznaczony wiersz
+                DataGridViewRow selectedRow = dataGridView2.SelectedRows[0];
+
+                // Sprawdź, czy kolumna "Tytul" istnieje i przypisz wartość do textBoxTytul
+                if (selectedRow.Cells["Tytul"] != null && selectedRow.Cells["Tytul"].Value != null)
+                {
+                    textBoxTytul.Text = selectedRow.Cells["Tytul"].Value.ToString();
+                }
+                else
+                {
+                    textBoxTytul.Text = string.Empty; // Wyczyść pole, jeśli brak wartości
+                }
+            }
+        }
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Upewnij się, że kliknięto wiersz, a nie nagłówek
+            {
+                DataGridViewRow selectedRow = dataGridView2.Rows[e.RowIndex];
+                if (selectedRow.Cells["Tytul"] != null && selectedRow.Cells["Tytul"].Value != null)
+                {
+                    textBoxTytul.Text = selectedRow.Cells["Tytul"].Value.ToString();
+                }
+                else
+                {
+                    textBoxTytul.Text = string.Empty;
+                }
+            }
+        }
+
+
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             SearchData();

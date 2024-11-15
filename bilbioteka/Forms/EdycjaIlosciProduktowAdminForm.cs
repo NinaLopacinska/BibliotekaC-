@@ -17,6 +17,7 @@ namespace bilbioteka.Forms
         {
             InitializeComponent();
             this.Load += new EventHandler(Form1_Load);
+            dataGridView1.CellClick += DataGridView1_CellClick;
         }
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
@@ -85,7 +86,19 @@ namespace bilbioteka.Forms
             }
         }
 
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Sprawdzanie, czy kliknięto prawidłowy wiersz (pomijając nagłówki)
+            if (e.RowIndex >= 0)
+            {
+                // Pobierz aktualny wiersz
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 
+                // Przenieś dane do odpowiednich TextBoxów
+                textBoxTytul.Text = selectedRow.Cells["Tytul"].Value?.ToString() ?? string.Empty;
+                textBoxNrKatalogowy.Text = selectedRow.Cells["NumerKatalogowy"].Value?.ToString() ?? string.Empty;
+            }
+        }
         private void buttonUsun_Click(object sender, EventArgs e)
         {
             // Walidacja pól

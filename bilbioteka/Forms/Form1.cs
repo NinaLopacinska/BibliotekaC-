@@ -42,7 +42,7 @@ namespace bilbioteka
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT * FROM zasoby";
+            string query = "SELECT Tytul, Autor, Typ, Ocena, Kategoria, Wydawnictwo FROM zasoby";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))

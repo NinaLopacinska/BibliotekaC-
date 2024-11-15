@@ -28,7 +28,7 @@ namespace bilbioteka.Forms
                     connection.Open();
 
                     // Zapytanie SQL, które wybiera wszystkie kolumny z tabeli HistoriaWypozyczen dla konkretnego użytkownika
-                    string query = "SELECT * FROM HistoriaWypozyczen WHERE LoginUzytkownika = @loginUzytkownika";
+                    string query = "SELECT DataWypozyczenia, DataZwrotu, TytulPozycji, TypProduktu, StatusZwrotu  FROM HistoriaWypozyczen WHERE LoginUzytkownika = @loginUzytkownika";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@loginUzytkownika", login);
 

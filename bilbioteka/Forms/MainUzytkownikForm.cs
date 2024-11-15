@@ -73,13 +73,13 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM zasoby WHERE Ilosc > 0"; // Tylko dostępne zasoby
+                    string query = "SELECT Tytul, Autor, Typ, Ocena, Kategoria, Wydawnictwo  FROM zasoby WHERE Ilosc > 0"; 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
                     dataGridView1.DataSource = dataTable;
-                    dataGridView1.Columns["Id"].Visible = false;
+                    
                     
                 }
             }
@@ -106,80 +106,7 @@ namespace bilbioteka.Forms
             }
         }
 
-        private void wypożycz_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 5)
-            {
-                MessageBox.Show("Możesz wypożyczyć maksymalnie 5 pozycji.");
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "Czy na pewno chcesz wypożyczyć wybrane pozycje?",
-                "Potwierdzenie wypożyczenia",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result != DialogResult.Yes)
-            {
-                return;
-            }
-
-            try
-            {
-                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    if (!UserIdExists(userId))
-                    {
-                        MessageBox.Show("Zalogowany użytkownik nie istnieje w bazie danych.");
-                        return;
-                    }
-
-                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                    {
-                        int zasobId = (int)row.Cells["Id"].Value;
-
-                        SqlCommand updateZasobyCommand = new SqlCommand(
-                            "UPDATE zasoby SET Ilosc = Ilosc - 1 WHERE Id = @zasobId AND Ilosc > 0", connection);
-                        updateZasobyCommand.Parameters.AddWithValue("@zasobId", zasobId);
-                        int rowsAffected = updateZasobyCommand.ExecuteNonQuery();
-
-                        if (rowsAffected == 0)
-                        {
-                            MessageBox.Show($"Zasób {row.Cells["Tytul"].Value} jest niedostępny.");
-                            continue;
-                        }
-
-                        DateTime dataZwrotu = DateTime.Now.AddMonths(1);
-
-                        SqlCommand insertHistoriaCommand = new SqlCommand(
-                            "INSERT INTO HistoriaWypozyczen (UzytkownikId, ZasobId, DataWypozyczenia, DataZwrotu) " +
-                            "VALUES (@uzytkownikId, @zasobId, @dataWypozyczenia, @dataZwrotu)", connection);
-                        insertHistoriaCommand.Parameters.AddWithValue("@uzytkownikId", userId);
-                        insertHistoriaCommand.Parameters.AddWithValue("@zasobId", zasobId);
-                        insertHistoriaCommand.Parameters.AddWithValue("@dataWypozyczenia", DateTime.Now);
-                        insertHistoriaCommand.Parameters.AddWithValue("@dataZwrotu", dataZwrotu);
-
-                        int historiaRowsAffected = insertHistoriaCommand.ExecuteNonQuery();
-                        if (historiaRowsAffected == 0)
-                        {
-                            MessageBox.Show("Wystąpił błąd podczas dodawania do historii wypożyczeń.");
-                        }
-                    }
-
-                    MessageBox.Show("Pomyślnie wypożyczono zaznaczone pozycje.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Wystąpił błąd podczas wypożyczania: " + ex.Message);
-            }
-
-            LoadData();
-        }
+        
 
         private void SearchData()
         {
