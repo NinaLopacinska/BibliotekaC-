@@ -41,13 +41,13 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM zasoby WHERE Ilosc > 0"; // Filtrujemy tylko dostępne zasoby
+                    string query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Ilosc > 0"; // Filtrujemy tylko dostępne zasoby
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
                     dataGridView1.DataSource = dataTable;
-                    dataGridView1.Columns["Id"].Visible = false;
+                    //dataGridView1.Columns["Id"].Visible = false;
                     
                 }
             }

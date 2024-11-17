@@ -11,6 +11,7 @@ namespace bilbioteka.Forms
         private int userId; // Id zalogowanego użytkownika
         private string userName; // Imię zalogowanego użytkownika
         private string login;
+        private string zalogowanyLogin;
 
         public MainUzytkownikForm(int userId, string imie, string login)
         {
@@ -33,7 +34,7 @@ namespace bilbioteka.Forms
                     connection.Open();
 
                     string query = @"
-                        SELECT h.Id, z.Tytul, h.DataWypozyczenia, h.DataZwrotu 
+                        SELECT h.Id, z.Tytul, h.DataWypozyczenia as 'Wypożyczone', h.DataZwrotu  as 'Zwrot'
                         FROM HistoriaWypozyczen h
                         JOIN zasoby z ON h.ZasobId = z.Id
                         WHERE h.LoginUzytkownika = @login"; // Filtrowanie po loginie użytkownika
@@ -73,14 +74,14 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Tytul, Autor, Typ, Ocena, Kategoria, Wydawnictwo  FROM zasoby WHERE Ilosc > 0"; 
+                    string query = "SELECT Tytul, Autor, Typ, Ocena, Kategoria, Wydawnictwo  FROM zasoby WHERE Ilosc > 0";
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
                     dataGridView1.DataSource = dataTable;
-                    
-                    
+
+
                 }
             }
             catch (Exception ex)
@@ -89,24 +90,6 @@ namespace bilbioteka.Forms
             }
         }
 
-
-
-
-        private bool UserIdExists(int userId)
-        {
-            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT COUNT(1) FROM Uzytkownicy WHERE Id = @userId";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@userId", userId);
-
-                connection.Open();
-                return (int)command.ExecuteScalar() > 0;
-            }
-        }
-
-        
 
         private void SearchData()
         {
@@ -243,6 +226,12 @@ namespace bilbioteka.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             LoadDataToDataGridView2();
+        }
+
+        private void buttonEdytujKonto_Click(object sender, EventArgs e)
+        {
+            EdycjaUzytkownikaUzytkownik edycjaUzytkownikaUzytkownik = new EdycjaUzytkownikaUzytkownik(zalogowanyLogin);
+            edycjaUzytkownikaUzytkownik.Show();
         }
     }
 }

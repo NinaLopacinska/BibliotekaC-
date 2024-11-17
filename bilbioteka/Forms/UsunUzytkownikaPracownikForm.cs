@@ -17,6 +17,8 @@ namespace bilbioteka.Forms
         {
             InitializeComponent();
             this.Load += new EventHandler(Form1_Load);
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+            dataGridView1.CellClick += dataGridView1_CellClick;
         }
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
@@ -34,7 +36,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT * FROM uzytkownicy WHERE IdOsoby = 1";
+            string query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu  FROM uzytkownicy WHERE IdOsoby = 1";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -141,5 +143,78 @@ namespace bilbioteka.Forms
         {
             LoadData();
         }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            // Sprawdź, czy w DataGridView jest zaznaczony jakiś wiersz
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Pobierz zaznaczony wiersz
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+
+                // Sprawdź, czy kolumna "Tytul" istnieje i przypisz wartość do textBoxTytul
+                if (selectedRow.Cells["Imie"] != null && selectedRow.Cells["Imie"].Value != null)
+                {
+                    textBoxImie.Text = selectedRow.Cells["Imie"].Value.ToString();
+                }
+                else
+                {
+                    textBoxImie.Text = string.Empty; // Wyczyść pole, jeśli brak wartości
+                }
+                // Sprawdź, czy kolumna "Tytul" istnieje i przypisz wartość do textBoxTytul
+                if (selectedRow.Cells["Nazwisko"] != null && selectedRow.Cells["Nazwisko"].Value != null)
+                {
+                    textBoxNazwisko.Text = selectedRow.Cells["Nazwisko"].Value.ToString();
+                }
+                else
+                {
+                    textBoxNazwisko.Text = string.Empty; // Wyczyść pole, jeśli brak wartości
+                }
+                // Sprawdź, czy kolumna "Tytul" istnieje i przypisz wartość do textBoxTytul
+                if (selectedRow.Cells["Login"] != null && selectedRow.Cells["Login"].Value != null)
+                {
+                    textBoxLogin.Text = selectedRow.Cells["Login"].Value.ToString();
+                }
+                else
+                {
+                    textBoxLogin.Text = string.Empty; // Wyczyść pole, jeśli brak wartości
+                }
+            }
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Upewnij się, że kliknięto wiersz, a nie nagłówek
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+                if (selectedRow.Cells["Imie"] != null && selectedRow.Cells["Imie"].Value != null)
+                {
+                    textBoxImie.Text = selectedRow.Cells["Imie"].Value.ToString();
+                }
+                else
+                {
+                    textBoxImie.Text = string.Empty; // Wyczyść pole, jeśli brak wartości
+                }
+                // Sprawdź, czy kolumna "Tytul" istnieje i przypisz wartość do textBoxTytul
+                if (selectedRow.Cells["Nazwisko"] != null && selectedRow.Cells["Nazwisko"].Value != null)
+                {
+                    textBoxNazwisko.Text = selectedRow.Cells["Nazwisko"].Value.ToString();
+                }
+                else
+                {
+                    textBoxNazwisko.Text = string.Empty; // Wyczyść pole, jeśli brak wartości
+                }
+                // Sprawdź, czy kolumna "Tytul" istnieje i przypisz wartość do textBoxTytul
+                if (selectedRow.Cells["Login"] != null && selectedRow.Cells["Login"].Value != null)
+                {
+                    textBoxLogin.Text = selectedRow.Cells["Login"].Value.ToString();
+                }
+                else
+                {
+                    textBoxLogin.Text = string.Empty; // Wyczyść pole, jeśli brak wartości
+                }
+            }
+        }
+
+
     }
 }

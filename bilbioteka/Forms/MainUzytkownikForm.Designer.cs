@@ -109,6 +109,7 @@
             buttonEdytujKonto.TabIndex = 23;
             buttonEdytujKonto.Text = "Edytuj konto ";
             buttonEdytujKonto.UseVisualStyleBackColor = true;
+            buttonEdytujKonto.Click += buttonEdytujKonto_Click;
             // 
             // buttonHistoriaWypozyczen
             // 
