@@ -65,6 +65,7 @@
             label3 = new Label();
             label1 = new Label();
             buttonZalogujRej = new Button();
+            label2 = new Label();
             SuspendLayout();
             // 
             // panel1
@@ -423,7 +424,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(483, 9);
+            label1.Location = new Point(385, 9);
             label1.Name = "label1";
             label1.Size = new Size(426, 58);
             label1.TabIndex = 40;
@@ -440,12 +441,23 @@
             buttonZalogujRej.UseVisualStyleBackColor = true;
             buttonZalogujRej.Click += buttonZalogujRej_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(805, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(150, 58);
+            label2.TabIndex = 166;
+            label2.Text = "label2";
+            // 
             // EdycjaUzytkownikaUzytkownik
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             ClientSize = new Size(1323, 780);
+            Controls.Add(label2);
             Controls.Add(buttonZalogujRej);
             Controls.Add(panel1);
             Controls.Add(dateTimePicker1);
@@ -528,5 +540,6 @@
         private Label label3;
         private Label label1;
         private Button buttonZalogujRej;
+        private Label label2;
     }
 }

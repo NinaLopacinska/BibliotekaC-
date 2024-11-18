@@ -230,7 +230,7 @@ namespace bilbioteka.Forms
 
         private void buttonEdytujKonto_Click(object sender, EventArgs e)
         {
-            EdycjaUzytkownikaUzytkownik edycjaUzytkownikaUzytkownik = new EdycjaUzytkownikaUzytkownik(zalogowanyLogin);
+            EdycjaUzytkownikaUzytkownik edycjaUzytkownikaUzytkownik = new EdycjaUzytkownikaUzytkownik( login);
             edycjaUzytkownikaUzytkownik.Show();
         }
     }
