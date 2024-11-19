@@ -48,7 +48,7 @@ namespace bilbioteka.Forms
 
                     dataGridView1.DataSource = dataTable;
                     //dataGridView1.Columns["Id"].Visible = false;
-                    
+
                 }
             }
             catch (Exception ex)
@@ -188,5 +188,36 @@ namespace bilbioteka.Forms
             UsunUzytkownikaPracownikForm usunUzytkownikaPracownik = new UsunUzytkownikaPracownikForm();
             usunUzytkownikaPracownik.ShowDialog();
         }
+
+        private void buttonEdytujSwojeKonto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Sprawdzenie, czy formularz już jest otwarty
+                foreach (Form openForm in Application.OpenForms)
+                {
+                    if (openForm is EdycjaUzytkownikaPracownik)
+                    {
+                        openForm.Focus();
+                        return; // Jeśli formularz już otwarty, ustaw na niego fokus i zakończ funkcję
+                    }
+                }
+
+                // Otwórz nowy formularz do edycji użytkownika
+                using (EdycjaUzytkownikaPracownik edycjaUzytkownikaPracownik = new EdycjaUzytkownikaPracownik(label1.Text))
+                {
+                    edycjaUzytkownikaPracownik.ShowDialog(); // Otwiera jako okno modalne
+                }
+            }
+            catch (Exception ex)
+            {
+                // Obsługa potencjalnych błędów
+                MessageBox.Show("Wystąpił błąd podczas otwierania edycji konta: " + ex.Message,
+                                "Błąd",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
