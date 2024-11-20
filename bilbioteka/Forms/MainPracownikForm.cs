@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,11 @@ namespace bilbioteka.Forms
 {
     public partial class MainPracownikForm : Form
     {
-        public MainPracownikForm(string imie)
+        private string login;
+        public MainPracownikForm(string imie, string login)
         {
             InitializeComponent();
+            this.login = login;
             label1.Text = imie;
             this.Load += new EventHandler(Form1_Load);
         }
@@ -191,32 +194,8 @@ namespace bilbioteka.Forms
 
         private void buttonEdytujSwojeKonto_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Sprawdzenie, czy formularz już jest otwarty
-                foreach (Form openForm in Application.OpenForms)
-                {
-                    if (openForm is EdycjaUzytkownikaPracownik)
-                    {
-                        openForm.Focus();
-                        return; // Jeśli formularz już otwarty, ustaw na niego fokus i zakończ funkcję
-                    }
-                }
-
-                // Otwórz nowy formularz do edycji użytkownika
-                using (EdycjaUzytkownikaPracownik edycjaUzytkownikaPracownik = new EdycjaUzytkownikaPracownik(label1.Text))
-                {
-                    edycjaUzytkownikaPracownik.ShowDialog(); // Otwiera jako okno modalne
-                }
-            }
-            catch (Exception ex)
-            {
-                // Obsługa potencjalnych błędów
-                MessageBox.Show("Wystąpił błąd podczas otwierania edycji konta: " + ex.Message,
-                                "Błąd",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
+            EdycjaUzytkownikaPracownik edycjaUzytkownikaPracownik = new EdycjaUzytkownikaPracownik(login);
+            edycjaUzytkownikaPracownik.Show();
         }
 
     }

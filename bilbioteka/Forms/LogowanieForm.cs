@@ -78,7 +78,7 @@ namespace bilbioteka.Forms
                                 break;
 
                             case 2:
-                                mainForm = new MainPracownikForm(imie);
+                                mainForm = new MainPracownikForm(imie, login);
                                 break;
 
                             case 3:

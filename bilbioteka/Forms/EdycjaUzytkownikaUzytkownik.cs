@@ -224,5 +224,6 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Nie wprowadzono żadnych zmian.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
     }
 }

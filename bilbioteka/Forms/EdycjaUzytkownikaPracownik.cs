@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
@@ -35,7 +36,7 @@ namespace bilbioteka.Forms
 
                 if (reader.Read())
                 {
-                    textBoxImie1.Text = reader["Imie"].ToString();
+                    textBoxImie.Text = reader["Imie"].ToString();
                     textBoxNazwisko.Text = reader["Nazwisko"].ToString();
                     textBoxKodPocztowy.Text = reader["KodPocztowy"].ToString();
                     textBoxUlica.Text = reader["Ulica"].ToString();
@@ -52,16 +53,12 @@ namespace bilbioteka.Forms
             }
         }
 
-        private void buttonZalogujRej_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
 
 
         private bool WalidacjaDanych()
         {
-            if (string.IsNullOrWhiteSpace(textBoxImie1.Text) || string.IsNullOrWhiteSpace(textBoxNazwisko.Text) ||
+            if (string.IsNullOrWhiteSpace(textBoxImie.Text) || string.IsNullOrWhiteSpace(textBoxNazwisko.Text) ||
                 string.IsNullOrWhiteSpace(textBoxKodPocztowy.Text) || string.IsNullOrWhiteSpace(textBoxUlica.Text) ||
                 string.IsNullOrWhiteSpace(textBoxNrPosesji.Text) || string.IsNullOrWhiteSpace(textBoxPesel.Text) ||
                 string.IsNullOrWhiteSpace(textBoxEmail.Text) || string.IsNullOrWhiteSpace(textBoxNrTelefonu.Text))
@@ -148,7 +145,7 @@ namespace bilbioteka.Forms
                 }
             }
 
-            DodajKolumne("Imie", "Imie", textBoxImie1.Text.Trim());
+            DodajKolumne("Imie", "Imie", textBoxImie.Text.Trim());
             DodajKolumne("Nazwisko", "Nazwisko", textBoxNazwisko.Text.Trim());
             DodajKolumne("KodPocztowy", "KodPocztowy", textBoxKodPocztowy.Text.Trim());
             DodajKolumne("Ulica", "Ulica", textBoxUlica.Text.Trim());
@@ -179,7 +176,7 @@ namespace bilbioteka.Forms
             }
         }
 
-        private void buttonZapisz_Click_1(object sender, EventArgs e)
+        private void buttonZapisz_Click(object sender, EventArgs e)
         {
             try
             {
@@ -210,9 +207,9 @@ namespace bilbioteka.Forms
             }
         }
 
-        private void buttonZalogujRej_Click_1(object sender, EventArgs e)
+        private void buttonZalogujRej_Click(object sender, EventArgs e)
         {
-            this.Close(); // Zamknięcie formularza
+            this.Close();
         }
     }
 }
