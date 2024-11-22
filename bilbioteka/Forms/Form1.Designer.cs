@@ -37,7 +37,6 @@
             label2 = new Label();
             button1 = new Button();
             dataGridView1 = new DataGridView();
-            button2Nowosci = new Button();
             buttonUlubiency = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -146,17 +145,6 @@
             dataGridView1.Size = new Size(1163, 592);
             dataGridView1.TabIndex = 8;
             // 
-            // button2Nowosci
-            // 
-            button2Nowosci.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button2Nowosci.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            button2Nowosci.Location = new Point(1250, 644);
-            button2Nowosci.Name = "button2Nowosci";
-            button2Nowosci.Size = new Size(179, 61);
-            button2Nowosci.TabIndex = 9;
-            button2Nowosci.Text = "Nowości ";
-            button2Nowosci.UseVisualStyleBackColor = true;
-            // 
             // buttonUlubiency
             // 
             buttonUlubiency.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -165,8 +153,9 @@
             buttonUlubiency.Name = "buttonUlubiency";
             buttonUlubiency.Size = new Size(179, 97);
             buttonUlubiency.TabIndex = 10;
-            buttonUlubiency.Text = "Ulubieńcy miesiąca";
+            buttonUlubiency.Text = "Ulubieńcy";
             buttonUlubiency.UseVisualStyleBackColor = true;
+            buttonUlubiency.Click += buttonUlubiency_Click;
             // 
             // Form1
             // 
@@ -176,7 +165,6 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1441, 824);
             Controls.Add(buttonUlubiency);
-            Controls.Add(button2Nowosci);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
             Controls.Add(label2);
@@ -205,7 +193,6 @@
         private Label label2;
         private Button button1;
         private DataGridView dataGridView1;
-        private Button button2Nowosci;
         private Button buttonUlubiency;
     }
 }

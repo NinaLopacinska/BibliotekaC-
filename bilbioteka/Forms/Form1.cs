@@ -10,7 +10,7 @@ namespace bilbioteka
         {
             InitializeComponent();
             this.Load += new EventHandler(Form1_Load);
-            
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -82,8 +82,8 @@ namespace bilbioteka
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             string query = string.Empty;
             string searchValue = textBox1.Text;
-            int rokWydania=0;
-            decimal ocena=0;
+            int rokWydania = 0;
+            decimal ocena = 0;
             int ilosc = 0;
             // Ustal zapytanie w zale¿noœci od wybranego kryterium
             switch (comboBox1.SelectedItem.ToString())
@@ -191,6 +191,12 @@ namespace bilbioteka
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             SearchData();
+        }
+
+        private void buttonUlubiency_Click(object sender, EventArgs e)
+        {
+            UlubiencyUzytkownikow ulubiencyUzytkownikow = new UlubiencyUzytkownikow();
+            ulubiencyUzytkownikow.Show();
         }
     }
 }
