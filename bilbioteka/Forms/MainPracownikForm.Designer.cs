@@ -40,6 +40,7 @@
             textBox1 = new TextBox();
             comboBox1 = new ComboBox();
             buttonSzukaj = new Button();
+            btnStatystyki = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             // 
             buttonEdytujKontoUzytkownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujKontoUzytkownika.Location = new Point(18, 621);
-            buttonEdytujKontoUzytkownika.Margin = new Padding(4, 4, 4, 4);
+            buttonEdytujKontoUzytkownika.Margin = new Padding(4);
             buttonEdytujKontoUzytkownika.Name = "buttonEdytujKontoUzytkownika";
             buttonEdytujKontoUzytkownika.Size = new Size(261, 114);
             buttonEdytujKontoUzytkownika.TabIndex = 11;
@@ -59,7 +60,7 @@
             // 
             buttonPrzyjmijOplate.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonPrzyjmijOplate.Location = new Point(18, 364);
-            buttonPrzyjmijOplate.Margin = new Padding(4, 4, 4, 4);
+            buttonPrzyjmijOplate.Margin = new Padding(4);
             buttonPrzyjmijOplate.Name = "buttonPrzyjmijOplate";
             buttonPrzyjmijOplate.Size = new Size(261, 85);
             buttonPrzyjmijOplate.TabIndex = 10;
@@ -70,7 +71,7 @@
             // 
             buttonWydłuzTermin.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonWydłuzTermin.Location = new Point(18, 240);
-            buttonWydłuzTermin.Margin = new Padding(4, 4, 4, 4);
+            buttonWydłuzTermin.Margin = new Padding(4);
             buttonWydłuzTermin.Name = "buttonWydłuzTermin";
             buttonWydłuzTermin.Size = new Size(261, 96);
             buttonWydłuzTermin.TabIndex = 9;
@@ -81,7 +82,7 @@
             // 
             buttonWypozycz.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonWypozycz.Location = new Point(18, 126);
-            buttonWypozycz.Margin = new Padding(4, 4, 4, 4);
+            buttonWypozycz.Margin = new Padding(4);
             buttonWypozycz.Name = "buttonWypozycz";
             buttonWypozycz.Size = new Size(261, 84);
             buttonWypozycz.TabIndex = 8;
@@ -115,7 +116,7 @@
             // 
             buttonEdytujSwojeKonto.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujSwojeKonto.Location = new Point(18, 479);
-            buttonEdytujSwojeKonto.Margin = new Padding(4, 4, 4, 4);
+            buttonEdytujSwojeKonto.Margin = new Padding(4);
             buttonEdytujSwojeKonto.Name = "buttonEdytujSwojeKonto";
             buttonEdytujSwojeKonto.Size = new Size(261, 106);
             buttonEdytujSwojeKonto.TabIndex = 12;
@@ -128,7 +129,7 @@
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.Font = new Font("Book Antiqua", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(1536, 25);
-            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
             button2.Size = new Size(162, 55);
             button2.TabIndex = 13;
@@ -141,7 +142,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(322, 240);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
@@ -152,7 +153,7 @@
             // 
             textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.Location = new Point(322, 139);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(538, 60);
             textBox1.TabIndex = 16;
@@ -163,7 +164,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria", "Wydawnictwo" });
             comboBox1.Location = new Point(871, 151);
-            comboBox1.Margin = new Padding(4, 4, 4, 4);
+            comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(382, 46);
             comboBox1.TabIndex = 15;
@@ -172,13 +173,25 @@
             // 
             buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonSzukaj.Location = new Point(1262, 139);
-            buttonSzukaj.Margin = new Padding(4, 4, 4, 4);
+            buttonSzukaj.Margin = new Padding(4);
             buttonSzukaj.Name = "buttonSzukaj";
             buttonSzukaj.Size = new Size(150, 71);
             buttonSzukaj.TabIndex = 14;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;
             buttonSzukaj.Click += buttonSzukaj_Click;
+            // 
+            // btnStatystyki
+            // 
+            btnStatystyki.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStatystyki.Location = new Point(18, 767);
+            btnStatystyki.Margin = new Padding(4);
+            btnStatystyki.Name = "btnStatystyki";
+            btnStatystyki.Size = new Size(261, 114);
+            btnStatystyki.TabIndex = 18;
+            btnStatystyki.Text = "Statystyki";
+            btnStatystyki.UseVisualStyleBackColor = true;
+            btnStatystyki.Click += btnStatystyki_Click;
             // 
             // MainPracownikForm
             // 
@@ -187,6 +200,7 @@
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1731, 1005);
+            Controls.Add(btnStatystyki);
             Controls.Add(dataGridView1);
             Controls.Add(textBox1);
             Controls.Add(comboBox1);
@@ -199,7 +213,7 @@
             Controls.Add(buttonWypozycz);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "MainPracownikForm";
             Text = "MainPracownikForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -221,5 +235,6 @@
         private TextBox textBox1;
         private ComboBox comboBox1;
         private Button buttonSzukaj;
+        private Button btnStatystyki;
     }
 }

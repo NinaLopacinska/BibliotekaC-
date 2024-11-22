@@ -198,5 +198,10 @@ namespace bilbioteka.Forms
             edycjaUzytkownikaPracownik.Show();
         }
 
+        private void btnStatystyki_Click(object sender, EventArgs e)
+        {
+            StatystykiPracownik statystykiPracownik = new StatystykiPracownik();
+            statystykiPracownik.Show();
+        }
     }
 }
