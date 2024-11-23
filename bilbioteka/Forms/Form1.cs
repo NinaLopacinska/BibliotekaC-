@@ -198,5 +198,11 @@ namespace bilbioteka
             UlubiencyUzytkownikow ulubiencyUzytkownikow = new UlubiencyUzytkownikow();
             ulubiencyUzytkownikow.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UlubiiencyMiesiaca ulubiiencyMiesiaca = new UlubiiencyMiesiaca();
+            ulubiiencyMiesiaca.Show();
+        }
     }
 }

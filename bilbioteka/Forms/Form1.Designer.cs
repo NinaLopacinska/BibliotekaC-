@@ -38,6 +38,7 @@
             button1 = new Button();
             dataGridView1 = new DataGridView();
             buttonUlubiency = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -148,14 +149,26 @@
             // buttonUlubiency
             // 
             buttonUlubiency.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonUlubiency.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUlubiency.Location = new Point(1250, 711);
+            buttonUlubiency.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonUlubiency.Location = new Point(1196, 711);
             buttonUlubiency.Name = "buttonUlubiency";
-            buttonUlubiency.Size = new Size(179, 97);
+            buttonUlubiency.Size = new Size(233, 97);
             buttonUlubiency.TabIndex = 10;
-            buttonUlubiency.Text = "Ulubieńcy";
+            buttonUlubiency.Text = "Ulubieńcy czytelników";
             buttonUlubiency.UseVisualStyleBackColor = true;
             buttonUlubiency.Click += buttonUlubiency_Click;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button2.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(1196, 598);
+            button2.Name = "button2";
+            button2.Size = new Size(233, 97);
+            button2.TabIndex = 11;
+            button2.Text = "Ulubieńcy miesiąca";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Form1
             // 
@@ -164,6 +177,7 @@
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1441, 824);
+            Controls.Add(button2);
             Controls.Add(buttonUlubiency);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
@@ -194,5 +208,6 @@
         private Button button1;
         private DataGridView dataGridView1;
         private Button buttonUlubiency;
+        private Button button2;
     }
 }

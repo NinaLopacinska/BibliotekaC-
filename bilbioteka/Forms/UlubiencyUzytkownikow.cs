@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace bilbioteka.Forms
+namespace bilbioteka.Forms 
 {
     public partial class UlubiencyUzytkownikow : Form
     {
