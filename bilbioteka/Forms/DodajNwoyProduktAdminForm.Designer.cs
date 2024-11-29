@@ -237,7 +237,7 @@
             // 
             comboBox1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Ksiązka", "Film", "Album" });
+            comboBox1.Items.AddRange(new object[] { "Książka", "Film", "Album" });
             comboBox1.Location = new Point(587, 219);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(255, 36);
