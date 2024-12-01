@@ -34,7 +34,7 @@ namespace bilbioteka.Forms
                     connection.Open();
 
                     string query = @"
-                        SELECT h.Id, z.Tytul, h.DataWypozyczenia as 'Wypożyczone', h.DataZwrotu  as 'Zwrot'
+                        SELECT h.Id, z.Tytul, h.DataZwrotu  as 'Zwrot',  h.DataWypozyczenia as 'Wypożyczone'
                         FROM HistoriaWypozyczen h
                         JOIN zasoby z ON h.ZasobId = z.Id
                         WHERE h.LoginUzytkownika = @login"; // Filtrowanie po loginie użytkownika

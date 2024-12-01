@@ -203,5 +203,11 @@ namespace bilbioteka.Forms
             StatystykiPracownik statystykiPracownik = new StatystykiPracownik();
             statystykiPracownik.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OdzyskiwanieHasloPracownik odzyskiwanieHasloPracownik = new OdzyskiwanieHasloPracownik();
+            odzyskiwanieHasloPracownik.ShowDialog(this);
+        }
     }
 }
