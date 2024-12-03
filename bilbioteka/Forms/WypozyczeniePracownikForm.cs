@@ -443,6 +443,87 @@ namespace bilbioteka.Forms
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Sprawdź, czy jakiś wiersz jest zaznaczony w DataGridView
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Pobierz Id zaznaczonego wiersza
+                int selectedId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
 
+                // Pobierz StatusZwrotu zaznaczonego wiersza
+                string statusZwrotu = dataGridView1.SelectedRows[0].Cells["StatusZwrotu"].Value.ToString();
+
+                // Sprawdź, czy status to "Zwrócono"
+                if (statusZwrotu.Equals("Zwrócono", StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("Nie można przedłużyć terminu dla zasobu o statusie 'Zwrócono'.",
+                                    "Błąd",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    return; // Zakończ wykonanie metody
+                }
+
+                // Zapytanie użytkownika o potwierdzenie zmiany terminu zwrotu
+                DialogResult result = MessageBox.Show(
+                    "Czy na pewno chcesz przedłużyć termin zwrotu o dodatkowy miesiąc?",
+                    "Potwierdzenie przedłużenia terminu",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Połącz się z bazą danych
+                    string connectionString = PolaczenieBazyDanych.StringPolaczeniowy(); // Pobierz odpowiedni connection string
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        try
+                        {
+                            // Utwórz zapytanie SQL do zaktualizowania terminu zwrotu
+                            string query = "UPDATE [biblioteka].[dbo].[HistoriaWypozyczen] " +
+                                           "SET DataZwrotu = DATEADD(MONTH, 1, DataZwrotu) " +
+                                           "WHERE Id = @Id";
+
+                            // Utwórz obiekt SqlCommand z zapytaniem
+                            SqlCommand command = new SqlCommand(query, connection);
+                            command.Parameters.AddWithValue("@Id", selectedId);
+
+                            // Otwórz połączenie
+                            connection.Open();
+
+                            // Wykonaj zapytanie
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            // Sprawdź, czy rekord został zaktualizowany
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Termin zwrotu został przedłużony o dodatkowy miesiąc.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nie znaleziono rekordu do zaktualizowania.");
+                            }
+
+                            // Odśwież dane w DataGridView
+                            LoadData();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Przedłużenie terminu zwrotu zostało anulowane.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Proszę zaznaczyć wiersz w DataGridView.");
+            }
+
+
+        }
     }
 }
