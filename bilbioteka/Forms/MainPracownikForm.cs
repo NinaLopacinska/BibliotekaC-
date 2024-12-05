@@ -188,7 +188,7 @@ namespace bilbioteka.Forms
 
         private void buttonEdytujKontoUzytkownika_Click(object sender, EventArgs e)
         {
-            UsunUzytkownikaPracownikForm usunUzytkownikaPracownik = new UsunUzytkownikaPracownikForm();
+            UzytkownicyPracownik usunUzytkownikaPracownik = new UzytkownicyPracownik();
             usunUzytkownikaPracownik.ShowDialog();
         }
 

@@ -19,12 +19,12 @@ namespace bilbioteka.Forms //C:\Users\48514\Desktop\Raport.txt
             InitializeComponent();
             label1.Text = imie;
         string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-        string sciezkaPliku = @"C:\Users\48514\Desktop\Raport.txt";
-
+        string sciezkaPliku = @"";
+            
         raport = new Raport(sciezkaPliku, connectionString);
     }
 
-
+        
 
 
         private void buttonDodajPracownika_Click(object sender, EventArgs e)
@@ -58,18 +58,40 @@ namespace bilbioteka.Forms //C:\Users\48514\Desktop\Raport.txt
         {
             try
             {
-                // Wywołanie metody generującej raport
-                raport.GenerujRaport();
+                // Tworzenie dialogu do wyboru ścieżki pliku
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Title = "Wybierz miejsce zapisu raportu";
+                    saveFileDialog.Filter = "Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+                    saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    saveFileDialog.FileName = "Raport.txt";
 
-                // Wyświetlenie komunikatu o sukcesie
-                MessageBox.Show("Raport został pomyślnie wygenerowany i zapisany na dysku C:\\.",
-                                "Sukces",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Ustawienie ścieżki raportu na wybraną przez użytkownika
+                        raport.SetSciezkaPliku(saveFileDialog.FileName);
+
+                        // Wywołanie metody generującej raport
+                        raport.GenerujRaport();
+
+                        // Wyświetlenie komunikatu o sukcesie
+                        MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {saveFileDialog.FileName}.",
+                                        "Sukces",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    }
+                }
             }
             catch (InvalidOperationException ex)
             {
                 MessageBox.Show(ex.Message,
+                                "Błąd",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił nieoczekiwany błąd: {ex.Message}",
                                 "Błąd",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);

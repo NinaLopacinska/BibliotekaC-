@@ -11,16 +11,17 @@ using System.Windows.Forms;
 
 namespace bilbioteka.Forms
 {
-    public partial class UsunUzytkownikaPracownikForm : Form
+    public partial class UzytkownicyPracownik : Form
     {
-        public UsunUzytkownikaPracownikForm()
+        public UzytkownicyPracownik()
         {
             InitializeComponent();
             this.Load += new EventHandler(Form1_Load);
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             dataGridView1.CellClick += dataGridView1_CellClick;
+            //this.Load += new EventHandler(UzytkownicyPracownik_Load);
         }
-
+        
         private void buttonZalogujRej_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -215,6 +216,98 @@ namespace bilbioteka.Forms
             }
         }
 
+        private void SearchData()
+        {
+
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+            string query = string.Empty;
+            string searchValue = textBox1.Text;
+
+            // Ustal zapytanie w zależności od wybranego kryterium
+            switch (comboBox1.SelectedItem?.ToString())
+            {
+                case null:
+                case "":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy";
+                    break;
+                case "Imie":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Imie LIKE @searchValue";
+                    break;
+                case "Nazwisko":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Nazwisko LIKE @searchValue";
+                    break;
+                case "Numer Telefonu":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE NumerTelefonu = @numerTelefonu";
+                    break;
+                case "Login":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Login LIKE @searchValue";
+                    break;
+                case "Email":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Email LIKE @searchValue";
+                    break;
+                case "Pesel":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Pesel = @pesel";
+                    break;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Dodaj parametry w zależności od kryterium
+                        switch (comboBox1.SelectedItem?.ToString())
+                        {
+                            case "Imie":
+                            case "Nazwisko":
+                            case "Login":
+                            case "Email":
+                                cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
+                                break;
+                            case "Numer Telefonu":
+                                if (int.TryParse(searchValue, out int numerTelefonu))
+                                {
+                                    cmd.Parameters.AddWithValue("@numerTelefonu", numerTelefonu);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Proszę wpisać poprawny numer telefonu.");
+                                    return;
+                                }
+                                break;
+                            case "Pesel":
+                                if (long.TryParse(searchValue, out long pesel))
+                                {
+                                    cmd.Parameters.AddWithValue("@pesel", pesel);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Proszę wpisać poprawny PESEL.");
+                                    return;
+                                }
+                                break;
+                        }
+
+                        // Wypełnij DataTable i przypisz do DataGridView
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                }
+            }
+        }
+
+        private void buttonSzukaj_Click(object sender, EventArgs e)
+        {
+            SearchData();
+        }
 
     }
 }

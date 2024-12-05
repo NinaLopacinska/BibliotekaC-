@@ -1,6 +1,6 @@
 ﻿namespace bilbioteka.Forms
 {
-    partial class UsunUzytkownikaPracownikForm
+    partial class UzytkownicyPracownik
     {
         /// <summary>
         /// Required designer variable.
@@ -39,6 +39,10 @@
             textBoxLogin = new TextBox();
             label7 = new Label();
             label6 = new Label();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            comboBox1 = new ComboBox();
+            buttonSzukaj = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -46,7 +50,7 @@
             // 
             button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(879, 188);
+            button1.Location = new Point(12, 499);
             button1.Name = "button1";
             button1.Size = new Size(169, 61);
             button1.TabIndex = 179;
@@ -59,18 +63,18 @@
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 275);
+            dataGridView1.Location = new Point(414, 170);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1034, 327);
+            dataGridView1.Size = new Size(854, 482);
             dataGridView1.TabIndex = 178;
             // 
             // buttonUsun
             // 
             buttonUsun.Anchor = AnchorStyles.None;
             buttonUsun.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsun.Location = new Point(703, 188);
+            buttonUsun.Location = new Point(12, 432);
             buttonUsun.Name = "buttonUsun";
             buttonUsun.Size = new Size(169, 61);
             buttonUsun.TabIndex = 177;
@@ -82,7 +86,7 @@
             // 
             buttonZalogujRej.Anchor = AnchorStyles.None;
             buttonZalogujRej.Font = new Font("Book Antiqua", 28.2F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonZalogujRej.Location = new Point(10, 19);
+            buttonZalogujRej.Location = new Point(12, 12);
             buttonZalogujRej.Name = "buttonZalogujRej";
             buttonZalogujRej.Size = new Size(88, 69);
             buttonZalogujRej.TabIndex = 176;
@@ -94,9 +98,9 @@
             // 
             textBoxImie.Anchor = AnchorStyles.None;
             textBoxImie.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxImie.Location = new Point(90, 155);
+            textBoxImie.Location = new Point(88, 303);
             textBoxImie.Name = "textBoxImie";
-            textBoxImie.Size = new Size(366, 38);
+            textBoxImie.Size = new Size(295, 38);
             textBoxImie.TabIndex = 174;
             // 
             // label10
@@ -104,7 +108,7 @@
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(14, 161);
+            label10.Location = new Point(12, 309);
             label10.Name = "label10";
             label10.Size = new Size(77, 35);
             label10.TabIndex = 173;
@@ -114,9 +118,9 @@
             // 
             textBoxNazwisko.Anchor = AnchorStyles.None;
             textBoxNazwisko.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNazwisko.Location = new Point(152, 207);
+            textBoxNazwisko.Location = new Point(150, 355);
             textBoxNazwisko.Name = "textBoxNazwisko";
-            textBoxNazwisko.Size = new Size(305, 38);
+            textBoxNazwisko.Size = new Size(233, 38);
             textBoxNazwisko.TabIndex = 172;
             // 
             // label8
@@ -124,7 +128,7 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(14, 213);
+            label8.Location = new Point(12, 361);
             label8.Name = "label8";
             label8.Size = new Size(147, 35);
             label8.TabIndex = 171;
@@ -134,9 +138,9 @@
             // 
             textBoxLogin.Anchor = AnchorStyles.None;
             textBoxLogin.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLogin.Location = new Point(105, 104);
+            textBoxLogin.Location = new Point(103, 252);
             textBoxLogin.Name = "textBoxLogin";
-            textBoxLogin.Size = new Size(351, 38);
+            textBoxLogin.Size = new Size(280, 38);
             textBoxLogin.TabIndex = 170;
             // 
             // label7
@@ -144,7 +148,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(14, 111);
+            label7.Location = new Point(12, 259);
             label7.Name = "label7";
             label7.Size = new Size(94, 35);
             label7.TabIndex = 169;
@@ -155,19 +159,66 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(105, 24);
+            label6.Location = new Point(367, 17);
             label6.Name = "label6";
-            label6.Size = new Size(424, 58);
+            label6.Size = new Size(518, 58);
             label6.TabIndex = 168;
-            label6.Text = "Usuń użytkownika\r\n";
+            label6.Text = "Wyszukaj użytkownika";
             // 
-            // UsunUzytkownikaPracownikForm
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(12, 151);
+            label1.Name = "label1";
+            label1.Size = new Size(217, 80);
+            label1.TabIndex = 180;
+            label1.Text = "Usuń konto\r\nużytkownika";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            textBox1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(414, 121);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(443, 43);
+            textBox1.TabIndex = 183;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            comboBox1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "   ", "Imie", "Nazwisko", "Login", "Numer telefonu", "Email", "Pesel" });
+            comboBox1.Location = new Point(863, 122);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(246, 36);
+            comboBox1.TabIndex = 182;
+            // 
+            // buttonSzukaj
+            // 
+            buttonSzukaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSzukaj.Location = new Point(1115, 113);
+            buttonSzukaj.Name = "buttonSzukaj";
+            buttonSzukaj.Size = new Size(153, 51);
+            buttonSzukaj.TabIndex = 181;
+            buttonSzukaj.Text = "Szukaj";
+            buttonSzukaj.UseVisualStyleBackColor = true;
+            buttonSzukaj.Click += buttonSzukaj_Click;
+            // 
+            // UzytkownicyPracownik
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1072, 709);
+            ClientSize = new Size(1332, 709);
+            Controls.Add(textBox1);
+            Controls.Add(comboBox1);
+            Controls.Add(buttonSzukaj);
+            Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(buttonUsun);
@@ -179,7 +230,7 @@
             Controls.Add(textBoxLogin);
             Controls.Add(label7);
             Controls.Add(label6);
-            Name = "UsunUzytkownikaPracownikForm";
+            Name = "UzytkownicyPracownik";
             Text = "UsunUzytkownikaPracownik";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -199,5 +250,9 @@
         private TextBox textBoxLogin;
         private Label label7;
         private Label label6;
+        private Label label1;
+        private TextBox textBox1;
+        private ComboBox comboBox1;
+        private Button buttonSzukaj;
     }
 }

@@ -9,15 +9,18 @@ namespace bilbioteka
 {
     internal class Raport
     {
-        private readonly string sciezkaPliku;
-        private readonly string connectionString;
+        private  string sciezkaPliku;
+        private  string connectionString;
         // Konstruktor klasy Raport - ustawia ścieżkę pliku
         public Raport(string sciezka, string connectionString)
         {
             this.sciezkaPliku = sciezka;
             this.connectionString = connectionString;
         }
-        // Metoda generująca raport
+        public void SetSciezkaPliku(string nowaSciezka)
+        {
+            sciezkaPliku = nowaSciezka;
+        }
         public void GenerujRaport()
         {
             try
