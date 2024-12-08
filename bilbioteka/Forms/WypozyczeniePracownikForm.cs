@@ -101,6 +101,20 @@ namespace bilbioteka.Forms
                         zasobId = zasobReader.GetInt32(0);
                         // Można usunąć nieużywaną zmienną `ilosc`
                     }
+                    // Sprawdź, czy użytkownik ma zaległość (status 'KARA')
+                    string karaQuery = "SELECT COUNT(*) FROM HistoriaWypozyczen WHERE LoginUzytkownika = @login AND StatusZwrotu = 'KARA'";
+                    SqlCommand karaCommand = new SqlCommand(karaQuery, connection);
+                    karaCommand.Parameters.AddWithValue("@login", login);
+
+                    int count = (int)karaCommand.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Użytkownik ma na swoim koncie KATĘ, nie można mu wypożyczać zasobów, do czasu uregulowania należności.");
+                        return;
+                    }
+
+                    
 
                     // Zmniejszenie ilości dostępnych zasobów
                     string updateQuery = "UPDATE zasoby SET Ilosc = Ilosc - 1 WHERE Id = @zasobId";

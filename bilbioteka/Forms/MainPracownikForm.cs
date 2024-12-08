@@ -209,5 +209,11 @@ namespace bilbioteka.Forms
             OdzyskiwanieHasloPracownik odzyskiwanieHasloPracownik = new OdzyskiwanieHasloPracownik();
             odzyskiwanieHasloPracownik.ShowDialog(this);
         }
+
+        private void buttonPrzyjmijOplate_Click(object sender, EventArgs e)
+        {
+            KaraPracownik2 karaPracownik2 = new KaraPracownik2();
+            karaPracownik2.Show();
+        }
     }
 }

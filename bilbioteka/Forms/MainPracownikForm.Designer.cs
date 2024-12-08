@@ -64,6 +64,7 @@
             buttonPrzyjmijOplate.TabIndex = 10;
             buttonPrzyjmijOplate.Text = "Przyjmij opłatę";
             buttonPrzyjmijOplate.UseVisualStyleBackColor = true;
+            buttonPrzyjmijOplate.Click += buttonPrzyjmijOplate_Click;
             // 
             // buttonWypozycz
             // 
