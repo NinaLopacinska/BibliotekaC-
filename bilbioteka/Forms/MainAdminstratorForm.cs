@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Reflection.Metadata;
+using System.Windows.Forms;
+using iText.Kernel.Exceptions;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 
-namespace bilbioteka.Forms //C:\Users\48514\Desktop\Raport.txt
+namespace bilbioteka.Forms 
 {
     public partial class MainAdminstratorForm : Form
     {
@@ -18,13 +17,11 @@ namespace bilbioteka.Forms //C:\Users\48514\Desktop\Raport.txt
         {
             InitializeComponent();
             label1.Text = imie;
-        string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-        string sciezkaPliku = @"";
-            
-        raport = new Raport(sciezkaPliku, connectionString);
-    }
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+            raport = new Raport("", "", connectionString);
 
-        
+
+        }
 
 
         private void buttonDodajPracownika_Click(object sender, EventArgs e)
@@ -58,34 +55,51 @@ namespace bilbioteka.Forms //C:\Users\48514\Desktop\Raport.txt
         {
             try
             {
-                // Tworzenie dialogu do wyboru ścieżki pliku
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
                     saveFileDialog.Title = "Wybierz miejsce zapisu raportu";
-                    saveFileDialog.Filter = "Pliki tekstowe (*.txt)|*.txt|Wszystkie pliki (*.*)|*.*";
+                    saveFileDialog.Filter = "Pliki PDF (*.pdf)|*.pdf|Wszystkie pliki (*.*)|*.*";
                     saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    saveFileDialog.FileName = "Raport.txt";
+                    saveFileDialog.FileName = "Raport.pdf";
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        // Ustawienie ścieżki raportu na wybraną przez użytkownika
-                        raport.SetSciezkaPliku(saveFileDialog.FileName);
+                        string sciezkaPDF = saveFileDialog.FileName;
 
-                        // Wywołanie metody generującej raport
-                        raport.GenerujRaport();
+                        // Pobierz dane z klasy Raport
+                        List<string> raportDane = raport.GenerujRaport();
 
-                        // Wyświetlenie komunikatu o sukcesie
-                        MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {saveFileDialog.FileName}.",
+                        // Sprawdź, czy raport zawiera dane
+                        if (raportDane == null || raportDane.Count == 0)
+                        {
+                            MessageBox.Show("Raport nie zawiera danych do wygenerowania.",
+                                            "Błąd",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Error);
+                            return;  // Zatrzymaj dalsze generowanie PDF
+                        }
+
+                        // Sprawdź, czy ścieżka zapisu jest poprawna
+                        if (string.IsNullOrEmpty(sciezkaPDF) || !Directory.Exists(Path.GetDirectoryName(sciezkaPDF)))
+                        {
+                            MessageBox.Show("Ścieżka do pliku jest nieprawidłowa lub katalog nie istnieje.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Tworzenie pliku PDF
+                        GenerujPDF(sciezkaPDF, raportDane);
+
+                        MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {sciezkaPDF}.",
                                         "Sukces",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
                     }
                 }
             }
-            catch (InvalidOperationException ex)
+            catch (PdfException pdfEx)
             {
-                MessageBox.Show(ex.Message,
-                                "Błąd",
+                MessageBox.Show($"Błąd przy generowaniu PDF: {pdfEx.Message}",
+                                "Błąd PDF",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
@@ -96,7 +110,26 @@ namespace bilbioteka.Forms //C:\Users\48514\Desktop\Raport.txt
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
+
+        }
+
+        private void GenerujPDF(string sciezkaPDF, List<string> raportDane)
+        {
+            using (PdfWriter writer = new PdfWriter(sciezkaPDF))
+            {
+                using (PdfDocument pdf = new PdfDocument(writer))
+                {
+                    iText.Layout.Document dokument = new iText.Layout.Document(pdf);
+
+                    foreach (string linia in raportDane)
+                    {
+                        dokument.Add(new Paragraph(linia));
+                    }
+
+                    dokument.Close();
+                }
+            }
         }
     }
-    
+
 }

@@ -36,6 +36,7 @@
             buttonDodajPracownika = new Button();
             button2 = new Button();
             buttonDodajProdukt = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -124,6 +125,16 @@
             buttonDodajProdukt.UseVisualStyleBackColor = true;
             buttonDodajProdukt.Click += buttonDodajProdukt_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(256, 284);
+            button1.Name = "button1";
+            button1.Size = new Size(208, 92);
+            button1.TabIndex = 16;
+            button1.Text = "Edytuj cennik";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // MainAdminstratorForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -131,6 +142,7 @@
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(897, 571);
+            Controls.Add(button1);
             Controls.Add(buttonDodajProdukt);
             Controls.Add(button2);
             Controls.Add(buttonDodajPracownika);
@@ -155,5 +167,6 @@
         private Button buttonDodajPracownika;
         private Button button2;
         private Button buttonDodajProdukt;
+        private Button button1;
     }
 }
