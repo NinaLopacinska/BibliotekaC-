@@ -204,5 +204,11 @@ namespace bilbioteka
             UlubiiencyMiesiaca ulubiiencyMiesiaca = new UlubiiencyMiesiaca();
             ulubiiencyMiesiaca.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Regulamin regulamin = new Regulamin();
+            regulamin.Show();
+        }
     }
 }

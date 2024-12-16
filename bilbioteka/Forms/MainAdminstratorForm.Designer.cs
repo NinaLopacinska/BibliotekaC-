@@ -90,6 +90,7 @@
             buttonUsunPracownika.TabIndex = 5;
             buttonUsunPracownika.Text = "Usuń pracownika";
             buttonUsunPracownika.UseVisualStyleBackColor = true;
+            buttonUsunPracownika.Click += buttonUsunPracownika_Click;
             // 
             // buttonDodajPracownika
             // 

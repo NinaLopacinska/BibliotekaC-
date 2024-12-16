@@ -138,8 +138,15 @@ namespace bilbioteka.Forms
                 MessageBox.Show($"Wystąpił błąd przy generowaniu pliku PDF: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonUsunPracownika_Click(object sender, EventArgs e)
+        {
+            PracownicyAdministrator usunPracownikaAdministrator = new PracownicyAdministrator();
+            usunPracownikaAdministrator.Show();
+
+        }
     }
 
-    
+
 
 }

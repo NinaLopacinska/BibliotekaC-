@@ -90,7 +90,7 @@ namespace bilbioteka.Forms
                                 return;
                         }
 
-                        mainForm.Show();
+                        mainForm.ShowDialog();
                         this.Close();
                     }
                     else

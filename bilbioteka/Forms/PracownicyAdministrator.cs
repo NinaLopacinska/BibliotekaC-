@@ -11,17 +11,15 @@ using System.Windows.Forms;
 
 namespace bilbioteka.Forms
 {
-    public partial class UzytkownicyPracownik : Form
+    public partial class PracownicyAdministrator : Form
     {
-        public UzytkownicyPracownik()
+        public PracownicyAdministrator()
         {
             InitializeComponent();
             this.Load += new EventHandler(Form1_Load);
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             dataGridView1.CellClick += dataGridView1_CellClick;
-            //this.Load += new EventHandler(UzytkownicyPracownik_Load);
         }
-        
         private void buttonZalogujRej_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -37,7 +35,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu  FROM uzytkownicy WHERE IdOsoby = 1";
+            string query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu  FROM uzytkownicy WHERE IdOsoby = 2";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -98,7 +96,7 @@ namespace bilbioteka.Forms
                         {
                             // Użytkownik istnieje, wyświetl potwierdzenie usunięcia
                             DialogResult result = MessageBox.Show(
-                                $"Czy na pewno chcesz usunąć użytkownika: {login}?",
+                                $"Czy na pewno chcesz usunąć pracownika: {login}?",
                                 "Potwierdzenie usunięcia",
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Warning
@@ -113,16 +111,16 @@ namespace bilbioteka.Forms
                                     deleteCommand.Parameters.AddWithValue("@Login", login);
                                     deleteCommand.Parameters.AddWithValue("@Imie", imie);
                                     deleteCommand.Parameters.AddWithValue("@Nazwisko", nazwisko);
-                                    
+
                                     int rowsAffected = deleteCommand.ExecuteNonQuery();
 
                                     if (rowsAffected > 0)
                                     {
-                                        MessageBox.Show("Użytkownik został pomyślnie usunięty.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show("Pracownik został pomyślnie usunięty.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Nie udało się usunąć użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Nie udało się usunąć pracownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                             }
@@ -228,25 +226,25 @@ namespace bilbioteka.Forms
             {
                 case null:
                 case "":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE IdOsoby = 2";
                     break;
                 case "Imie":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Imie LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Imie LIKE @searchValue AND IdOsoby = 2";
                     break;
                 case "Nazwisko":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Nazwisko LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Nazwisko LIKE @searchValue AND IdOsoby = 2";
                     break;
                 case "Numer Telefonu":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE NumerTelefonu = @numerTelefonu AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE NumerTelefonu = @numerTelefonu AND IdOsoby = 2";
                     break;
                 case "Login":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Login LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Login LIKE @searchValue AND  IdOsoby = 2";
                     break;
                 case "Email":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Email LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Email LIKE @searchValue AND IdOsoby = 2";
                     break;
                 case "Pesel":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Pesel = @pesel AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Pesel = @pesel AND IdOsoby = 2";
                     break;
             }
 
@@ -308,6 +306,5 @@ namespace bilbioteka.Forms
         {
             SearchData();
         }
-
     }
 }

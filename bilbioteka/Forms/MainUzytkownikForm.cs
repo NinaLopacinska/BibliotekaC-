@@ -22,6 +22,38 @@ namespace bilbioteka.Forms
             label1.Text = userName;
             LoadData();
             LoadDataToDataGridView2();
+            Kara();
+        }
+
+        private void Kara()
+        {
+
+            try
+            {
+                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string karaQuery = "SELECT COUNT(*) FROM HistoriaWypozyczen WHERE LoginUzytkownika = @login AND StatusZwrotu = 'KARA'";
+                    SqlCommand karaCommand = new SqlCommand(karaQuery, connection);
+                    karaCommand.Parameters.AddWithValue("@login", login);
+
+                    int count = (int)karaCommand.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show(userName + " zalegasz z oddaniem pozycji. Opłać karę aby dalej korzystać z biblioteki!");
+                        return;
+                    }
+
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił błąd podczas ładowania danych: " + ex.Message);
+            }
         }
 
         private void LoadDataToDataGridView2()

@@ -39,6 +39,7 @@
             dataGridView1 = new DataGridView();
             buttonUlubiency = new Button();
             button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -170,6 +171,18 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // button3
+            // 
+            button3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button3.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.Location = new Point(1195, 525);
+            button3.Name = "button3";
+            button3.Size = new Size(233, 67);
+            button3.TabIndex = 12;
+            button3.Text = "Regulamin";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -177,6 +190,7 @@
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1441, 824);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(buttonUlubiency);
             Controls.Add(dataGridView1);
@@ -209,5 +223,6 @@
         private DataGridView dataGridView1;
         private Button buttonUlubiency;
         private Button button2;
+        private Button button3;
     }
 }
