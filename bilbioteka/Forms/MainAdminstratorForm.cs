@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata;
 using System.Windows.Forms;
-using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
+using iText.Kernel.Font;
+using PdfSharp.Drawing;
+
 
 namespace bilbioteka.Forms 
 {
@@ -76,7 +77,7 @@ namespace bilbioteka.Forms
                                             "Błąd",
                                             MessageBoxButtons.OK,
                                             MessageBoxIcon.Error);
-                            return;  // Zatrzymaj dalsze generowanie PDF
+                            return;
                         }
 
                         // Sprawdź, czy ścieżka zapisu jest poprawna
@@ -96,40 +97,49 @@ namespace bilbioteka.Forms
                     }
                 }
             }
-            catch (PdfException pdfEx)
-            {
-                MessageBox.Show($"Błąd przy generowaniu PDF: {pdfEx.Message}",
-                                "Błąd PDF",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił nieoczekiwany błąd: {ex.Message}",
+                MessageBox.Show($"Wystąpił błąd: {ex.Message}",
                                 "Błąd",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
-
         }
 
         private void GenerujPDF(string sciezkaPDF, List<string> raportDane)
         {
-            using (PdfWriter writer = new PdfWriter(sciezkaPDF))
+            try
             {
-                using (PdfDocument pdf = new PdfDocument(writer))
+                using (PdfWriter writer = new PdfWriter(sciezkaPDF))
                 {
-                    iText.Layout.Document dokument = new iText.Layout.Document(pdf);
-
-                    foreach (string linia in raportDane)
+                    using (PdfDocument pdf = new PdfDocument(writer))
                     {
-                        dokument.Add(new Paragraph(linia));
-                    }
+                        iText.Layout.Document dokument = new iText.Layout.Document(pdf);
 
-                    dokument.Close();
+                        // Używamy czcionki z iText
+                        PdfFont font = PdfFontFactory.CreateFont(iText.IO.Font.Constants.StandardFonts.HELVETICA);
+                        PdfFont headerFont = PdfFontFactory.CreateFont(iText.IO.Font.Constants.StandardFonts.HELVETICA_BOLD);
+
+                        // Rysowanie tytułu
+                        dokument.Add(new Paragraph("Raport Biblioteki").SetFont(headerFont).SetFontSize(14));
+
+                        // Dodawanie danych do PDF
+                        foreach (string linia in raportDane)
+                        {
+                            dokument.Add(new Paragraph(linia).SetFont(font).SetFontSize(12));
+                        }
+
+                        dokument.Close();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił błąd przy generowaniu pliku PDF: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
+
+    
 
 }

@@ -1,59 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using iText.Kernel.Font;
+using iText.Layout.Element;
+using iText.Layout;
+using PdfSharp.Diagnostics;
 
 namespace bilbioteka
 {
     internal class Raport
     {
-        private string sciezkaPliku;
-        private string _query;
+        private string _nazwaRaportu;
+        private string _opisRaportu;
         private string _connectionString;
-
-        public Raport(string sciezka, string query, string connectionString)
+        public Raport(string nazwaRaportu, string opisRaportu, string connectionString)
         {
-            this.sciezkaPliku = sciezka;
-            _query = query;
+            _nazwaRaportu = nazwaRaportu;
+            _opisRaportu = opisRaportu;
             _connectionString = connectionString;
         }
 
-        public void SetSciezkaPliku(string nowaSciezka)
-        {
-            sciezkaPliku = nowaSciezka;
-        }
 
         public List<string> GenerujRaport()
         {
-            try
-            {
-                List<string> raportDane = PobierzDaneZBazy();
-                if (raportDane == null || raportDane.Count == 0)
-                {
-                    throw new InvalidOperationException("Raport nie zawiera danych.");
-                }
-                // Zapisz dane do pliku tekstowego (jeśli konieczne)
-                // File.WriteAllText(sciezkaPliku, string.Join("\n", raportDane));
-
-                return raportDane; // Zwróć dane raportu
-            }
-            catch (UnauthorizedAccessException)
-            {
-                throw new InvalidOperationException("Brak uprawnień do zapisu pliku w lokalizacji " + sciezkaPliku);
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException($"Wystąpił błąd: {ex.Message}");
-            }
-        }
-
-        private List<string> PobierzDaneZBazy()
-        {
             List<string> raportList = new List<string>();
-            raportList.Add("RAPORT BIBLIOTEKI: \n\nSTATYSTYKI \nDotychczasową najczęściej wypożyczaną pozycją jest ") ;
+            raportList.Add("RAPORT BIBLIOTEKI: \n\n");
 
+            // Twoje zapytania SQL i logika (z istniejącego kodu)
+            // Przykład:
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -359,6 +335,47 @@ namespace bilbioteka
             }
             return raportList;
         }
+
+        public void ZapiszRaportDoPdf(List<string> raportDane, string sciezkaPliku)
+        {
+            // Tworzenie dokumentu PDF
+            PdfDocument dokument = new PdfDocument();
+            dokument.Info.Title = _nazwaRaportu;
+
+            // Dodawanie strony
+            PdfPage strona = dokument.AddPage();
+            XGraphics gfx = XGraphics.FromPdfPage(strona);
+
+            // Konfiguracja czcionki
+            XFont font = new XFont("Verdana", 12);
+            XFont headerFont = new XFont("Verdana", 16);
+
+
+
+
+            // Rysowanie tekstu
+            double yPozycja = 40; // Pozycja startowa na stronie
+            gfx.DrawString(_nazwaRaportu, headerFont, XBrushes.Black, new XPoint(40, yPozycja));
+            yPozycja += 40;
+
+            foreach (string linia in raportDane)
+            {
+                gfx.DrawString(linia, font, XBrushes.Black, new XPoint(40, yPozycja));
+                yPozycja += 20;
+
+                // Dodawanie nowej strony, jeśli treść przekroczy wysokość
+                if (yPozycja > strona.Height - 40)
+                {
+                    strona = dokument.AddPage();
+                    gfx = XGraphics.FromPdfPage(strona);
+                    yPozycja = 40;
+                }
+            }
+
+            // Zapis pliku
+            dokument.Save(sciezkaPliku);
+            Console.WriteLine($"Raport zapisano do pliku: {sciezkaPliku}");
+        }
+
     }
-    
 }
