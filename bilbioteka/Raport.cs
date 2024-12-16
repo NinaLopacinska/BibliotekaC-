@@ -351,8 +351,6 @@ namespace bilbioteka
             XFont headerFont = new XFont("Verdana", 16);
 
 
-
-
             // Rysowanie tekstu
             double yPozycja = 40; // Pozycja startowa na stronie
             gfx.DrawString(_nazwaRaportu, headerFont, XBrushes.Black, new XPoint(40, yPozycja));
