@@ -68,7 +68,6 @@
             buttonEdycjaZbioru.TabIndex = 2;
             buttonEdycjaZbioru.Text = "Edytuj zbiór";
             buttonEdycjaZbioru.UseVisualStyleBackColor = true;
-            buttonEdycjaZbioru.Click += buttonEdycjaZbioru_Click;
             // 
             // buttonGenerujRaport
             // 
@@ -101,7 +100,6 @@
             buttonDodajPracownika.TabIndex = 6;
             buttonDodajPracownika.Text = "Dodaj pracownika";
             buttonDodajPracownika.UseVisualStyleBackColor = true;
-            buttonDodajPracownika.Click += buttonDodajPracownika_Click;
             // 
             // button2
             // 
@@ -113,7 +111,6 @@
             button2.TabIndex = 14;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // buttonDodajProdukt
             // 
@@ -124,7 +121,6 @@
             buttonDodajProdukt.TabIndex = 15;
             buttonDodajProdukt.Text = "Dodaj nowy produkt";
             buttonDodajProdukt.UseVisualStyleBackColor = true;
-            buttonDodajProdukt.Click += buttonDodajProdukt_Click;
             // 
             // button1
             // 

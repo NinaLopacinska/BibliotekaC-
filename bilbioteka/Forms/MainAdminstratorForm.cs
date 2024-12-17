@@ -1,102 +1,50 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Kernel.Font;
-using PdfSharp.Drawing;
-using iText.IO.Font;
 
-
-namespace bilbioteka.Forms 
+namespace bilbioteka.Forms
 {
     public partial class MainAdminstratorForm : Form
     {
         private Raport raport;
+
         public MainAdminstratorForm(string imie)
         {
             InitializeComponent();
             label1.Text = imie;
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             raport = new Raport("", "", connectionString);
-
-
-        }
-
-
-        private void buttonDodajPracownika_Click(object sender, EventArgs e)
-        {
-            DodajPracownikaForm dodajPracownikaForm = new DodajPracownikaForm();
-            dodajPracownikaForm.Show();
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Zostałeś pomyślnie wylogowany. Do zobaczenia!");
-            this.Close();
-        }
-
-        private void buttonDodajProdukt_Click(object sender, EventArgs e)
-        {
-            DodajNwoyProduktAdminForm dodajNwoyProduktAdminForm = new DodajNwoyProduktAdminForm();
-            dodajNwoyProduktAdminForm.Show();
-
-        }
-
-        private void buttonEdycjaZbioru_Click(object sender, EventArgs e)
-        {
-            EdycjaProduktowAdminForm edycjaProduktowAdminForm = new EdycjaProduktowAdminForm();
-            edycjaProduktowAdminForm.Show();
-
         }
 
         private void buttonGenerujRaport_Click(object sender, EventArgs e)
         {
             try
             {
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                // Określenie ścieżki do zapisu na Pulpicie
+                string sciezkaExcel = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Raport.xlsx");
+
+                // Pobierz dane z klasy Raport
+                List<string> raportDane = raport.GenerujRaport();
+
+                // Sprawdź, czy raport zawiera dane
+                if (raportDane == null || raportDane.Count == 0)
                 {
-                    saveFileDialog.Title = "Wybierz miejsce zapisu raportu";
-                    saveFileDialog.Filter = "Pliki PDF (*.pdf)|*.pdf|Wszystkie pliki (*.*)|*.*";
-                    saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                    saveFileDialog.FileName = "Raport.pdf";
-
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        string sciezkaPDF = saveFileDialog.FileName;
-
-                        // Pobierz dane z klasy Raport
-                        List<string> raportDane = raport.GenerujRaport();
-
-                        // Sprawdź, czy raport zawiera dane
-                        if (raportDane == null || raportDane.Count == 0)
-                        {
-                            MessageBox.Show("Raport nie zawiera danych do wygenerowania.",
-                                            "Błąd",
-                                            MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Sprawdź, czy ścieżka zapisu jest poprawna
-                        if (string.IsNullOrEmpty(sciezkaPDF) || !Directory.Exists(Path.GetDirectoryName(sciezkaPDF)))
-                        {
-                            MessageBox.Show("Ścieżka do pliku jest nieprawidłowa lub katalog nie istnieje.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-
-                        // Tworzenie pliku PDF
-                        GenerujPDF(sciezkaPDF, raportDane);
-
-                        MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {sciezkaPDF}.",
-                                        "Sukces",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information);
-                    }
+                    MessageBox.Show("Raport nie zawiera danych do wygenerowania.",
+                                    "Błąd",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    return;
                 }
+
+                // Tworzenie pliku Excel
+                GenerujExcel(sciezkaExcel, raportDane);
+
+                MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {sciezkaExcel}.",
+                                "Sukces",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -107,56 +55,68 @@ namespace bilbioteka.Forms
             }
         }
 
-        private void GenerujPDF(string sciezkaPDF, List<string> raportDane)
+        private void GenerujExcel(string sciezkaExcel, List<string> raportDane)
         {
             try
             {
-                Console.WriteLine($"Ścieżka PDF: {sciezkaPDF}");
+                Console.WriteLine($"Ścieżka Excel: {sciezkaExcel}");
 
-                using (PdfWriter writer = new PdfWriter(sciezkaPDF))
-                using (PdfDocument pdf = new PdfDocument(writer))
-                using (iText.Layout.Document dokument = new iText.Layout.Document(pdf))
+                // Tworzenie nowego pliku Excel
+                using (var workbook = new XLWorkbook())
                 {
-                    // Ustawienie czcionek
-                    PdfFont font = PdfFontFactory.CreateFont("C:\\Windows\\Fonts\\arial.ttf", PdfEncodings.IDENTITY_H);
-                    PdfFont boldFont = PdfFontFactory.CreateFont("C:\\Windows\\Fonts\\arialbd.ttf", PdfEncodings.IDENTITY_H);
+                    var worksheet = workbook.AddWorksheet("Raport");
 
-                    // Dodanie tytułu z pogrubioną czcionką
-                    Paragraph tytul = new Paragraph("Raport Biblioteki")
-                        .SetFont(boldFont)
-                        .SetFontSize(14);
-                    dokument.Add(tytul);
+                    // Dodanie tytułu
+                    worksheet.Cell(1, 1).Value = "Raport Biblioteki";
+                    worksheet.Cell(1, 1).Style.Font.Bold = true;
+                    worksheet.Cell(1, 1).Style.Font.FontSize = 16;
+                    worksheet.Cell(1, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+                    worksheet.Range(1, 1, 1, 5).Merge();
 
-                    // Dodawanie danych z listy
+                    // Dodanie daty generacji raportu
+                    string dataRaportu = $"Data: {DateTime.Now:yyyy-MM-dd HH:mm:ss}";
+                    worksheet.Cell(2, 1).Value = dataRaportu;
+                    worksheet.Cell(2, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
+                    worksheet.Cell(2, 1).Style.Font.FontSize = 12;
+
+                    // Dodanie zawartości raportu
                     if (raportDane != null && raportDane.Count > 0)
                     {
+                        int row = 3;
                         foreach (string linia in raportDane)
                         {
-                            Console.WriteLine(linia);
+                            worksheet.Cell(row, 1).Value = linia;
+                            worksheet.Cell(row, 1).Style.Font.FontSize = 12;
+                            worksheet.Cell(row, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Left);
+                            row++;
                         }
                     }
                     else
                     {
-                        dokument.Add(new Paragraph("Brak danych do wyświetlenia.").SetFont(font).SetFontSize(12));
+                        // Jeśli brak danych
+                        worksheet.Cell(3, 1).Value = "Brak danych do wyświetlenia.";
+                        worksheet.Cell(3, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
                     }
+
+                    // Zapisanie pliku Excel
+                    workbook.SaveAs(sciezkaExcel);
                 }
 
-                MessageBox.Show("Plik PDF został wygenerowany pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Informacja o sukcesie
+                MessageBox.Show("Plik Excel został wygenerowany pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd przy generowaniu pliku PDF: {ex.Message}\n{ex.StackTrace}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Wyświetlenie błędu w MessageBox
+                MessageBox.Show($"Wystąpił błąd przy generowaniu pliku Excel: {ex.Message}\n{ex.StackTrace}",
+                                "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
 
         private void buttonUsunPracownika_Click(object sender, EventArgs e)
         {
             PracownicyAdministrator usunPracownikaAdministrator = new PracownicyAdministrator();
             usunPracownikaAdministrator.Show();
-
         }
     }
-
 }
