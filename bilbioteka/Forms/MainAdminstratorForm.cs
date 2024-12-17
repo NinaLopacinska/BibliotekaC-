@@ -7,6 +7,7 @@ using iText.Layout;
 using iText.Layout.Element;
 using iText.Kernel.Font;
 using PdfSharp.Drawing;
+using iText.IO.Font;
 
 
 namespace bilbioteka.Forms 
@@ -110,34 +111,45 @@ namespace bilbioteka.Forms
         {
             try
             {
+                Console.WriteLine($"Ścieżka PDF: {sciezkaPDF}");
+
                 using (PdfWriter writer = new PdfWriter(sciezkaPDF))
+                using (PdfDocument pdf = new PdfDocument(writer))
+                using (iText.Layout.Document dokument = new iText.Layout.Document(pdf))
                 {
-                    using (PdfDocument pdf = new PdfDocument(writer))
+                    // Ustawienie czcionek
+                    PdfFont font = PdfFontFactory.CreateFont("C:\\Windows\\Fonts\\arial.ttf", PdfEncodings.IDENTITY_H);
+                    PdfFont boldFont = PdfFontFactory.CreateFont("C:\\Windows\\Fonts\\arialbd.ttf", PdfEncodings.IDENTITY_H);
+
+                    // Dodanie tytułu z pogrubioną czcionką
+                    Paragraph tytul = new Paragraph("Raport Biblioteki")
+                        .SetFont(boldFont)
+                        .SetFontSize(14);
+                    dokument.Add(tytul);
+
+                    // Dodawanie danych z listy
+                    if (raportDane != null && raportDane.Count > 0)
                     {
-                        iText.Layout.Document dokument = new iText.Layout.Document(pdf);
-
-                        // Używamy czcionki z iText
-                        PdfFont font = PdfFontFactory.CreateFont(iText.IO.Font.Constants.StandardFonts.HELVETICA);
-                        PdfFont headerFont = PdfFontFactory.CreateFont(iText.IO.Font.Constants.StandardFonts.HELVETICA_BOLD);
-
-                        // Rysowanie tytułu
-                        dokument.Add(new Paragraph("Raport Biblioteki").SetFont(headerFont).SetFontSize(14));
-
-                        // Dodawanie danych do PDF
                         foreach (string linia in raportDane)
                         {
-                            dokument.Add(new Paragraph(linia).SetFont(font).SetFontSize(12));
+                            Console.WriteLine(linia);
                         }
-
-                        dokument.Close();
+                    }
+                    else
+                    {
+                        dokument.Add(new Paragraph("Brak danych do wyświetlenia.").SetFont(font).SetFontSize(12));
                     }
                 }
+
+                MessageBox.Show("Plik PDF został wygenerowany pomyślnie!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd przy generowaniu pliku PDF: {ex.Message}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Wystąpił błąd przy generowaniu pliku PDF: {ex.Message}\n{ex.StackTrace}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
+
 
         private void buttonUsunPracownika_Click(object sender, EventArgs e)
         {
@@ -146,7 +158,5 @@ namespace bilbioteka.Forms
 
         }
     }
-
-
 
 }

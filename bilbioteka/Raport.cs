@@ -15,6 +15,7 @@ namespace bilbioteka
         private string _nazwaRaportu;
         private string _opisRaportu;
         private string _connectionString;
+
         public Raport(string nazwaRaportu, string opisRaportu, string connectionString)
         {
             _nazwaRaportu = nazwaRaportu;
@@ -22,10 +23,10 @@ namespace bilbioteka
             _connectionString = connectionString;
         }
 
-
+         List<string> raportList = new List<string>();
         public List<string> GenerujRaport()
         {
-            List<string> raportList = new List<string>();
+            
             raportList.Add("RAPORT BIBLIOTEKI: \n\n");
 
             // Twoje zapytania SQL i logika (z istniejącego kodu)
@@ -327,7 +328,7 @@ namespace bilbioteka
                             // Dodajemy dane do raportu
                             raportList.Add("Wydawnictwer, z którego pozycje są najczęściej wypożyczane jest ");
                             raportList.Add($" {wydawnictwo}. \n");
-                            raportList.Add($" Ilośc wypożyczonych z niego pozycji wynosi {liczbaWypozyczen3}. \n");
+                            raportList.Add($"Ilość wypożyczonych z niego pozycji wynosi {liczbaWypozyczen3}. \n");
 
                         }
                     }
@@ -336,44 +337,7 @@ namespace bilbioteka
             return raportList;
         }
 
-        public void ZapiszRaportDoPdf(List<string> raportDane, string sciezkaPliku)
-        {
-            // Tworzenie dokumentu PDF
-            PdfDocument dokument = new PdfDocument();
-            dokument.Info.Title = _nazwaRaportu;
-
-            // Dodawanie strony
-            PdfPage strona = dokument.AddPage();
-            XGraphics gfx = XGraphics.FromPdfPage(strona);
-
-            // Konfiguracja czcionki
-            XFont font = new XFont("Verdana", 12);
-            XFont headerFont = new XFont("Verdana", 16);
-
-
-            // Rysowanie tekstu
-            double yPozycja = 40; // Pozycja startowa na stronie
-            gfx.DrawString(_nazwaRaportu, headerFont, XBrushes.Black, new XPoint(40, yPozycja));
-            yPozycja += 40;
-
-            foreach (string linia in raportDane)
-            {
-                gfx.DrawString(linia, font, XBrushes.Black, new XPoint(40, yPozycja));
-                yPozycja += 20;
-
-                // Dodawanie nowej strony, jeśli treść przekroczy wysokość
-                if (yPozycja > strona.Height - 40)
-                {
-                    strona = dokument.AddPage();
-                    gfx = XGraphics.FromPdfPage(strona);
-                    yPozycja = 40;
-                }
-            }
-
-            // Zapis pliku
-            dokument.Save(sciezkaPliku);
-            Console.WriteLine($"Raport zapisano do pliku: {sciezkaPliku}");
-        }
+        
 
     }
 }
