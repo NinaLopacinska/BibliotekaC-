@@ -50,19 +50,21 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(9, 155);
+            dataGridView1.Location = new Point(8, 116);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1047, 663);
+            dataGridView1.Size = new Size(916, 497);
             dataGridView1.TabIndex = 29;
             // 
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(9, 77);
+            textBox1.Location = new Point(8, 58);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(446, 51);
+            textBox1.Size = new Size(391, 43);
             textBox1.TabIndex = 28;
             // 
             // comboBox1
@@ -70,18 +72,20 @@
             comboBox1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria", "Wydawnictwo" });
-            comboBox1.Location = new Point(463, 88);
+            comboBox1.Location = new Point(405, 66);
+            comboBox1.Margin = new Padding(3, 2, 3, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(237, 40);
+            comboBox1.Size = new Size(208, 35);
             comboBox1.TabIndex = 27;
             // 
             // buttonSzukaj
             // 
             buttonSzukaj.BackColor = SystemColors.MenuBar;
             buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(707, 77);
+            buttonSzukaj.Location = new Point(619, 58);
+            buttonSzukaj.Margin = new Padding(3, 2, 3, 2);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(151, 57);
+            buttonSzukaj.Size = new Size(132, 43);
             buttonSzukaj.TabIndex = 26;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = false;
@@ -91,9 +95,10 @@
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.Font = new Font("Book Antiqua", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1355, 15);
+            button2.Location = new Point(1164, 11);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(130, 43);
+            button2.Size = new Size(136, 32);
             button2.TabIndex = 25;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
@@ -103,9 +108,10 @@
             // 
             buttonEdytujKonto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonEdytujKonto.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujKonto.Location = new Point(1330, 63);
+            buttonEdytujKonto.Location = new Point(1164, 47);
+            buttonEdytujKonto.Margin = new Padding(3, 2, 3, 2);
             buttonEdytujKonto.Name = "buttonEdytujKonto";
-            buttonEdytujKonto.Size = new Size(155, 43);
+            buttonEdytujKonto.Size = new Size(136, 32);
             buttonEdytujKonto.TabIndex = 23;
             buttonEdytujKonto.Text = "Edytuj konto ";
             buttonEdytujKonto.UseVisualStyleBackColor = true;
@@ -115,9 +121,10 @@
             // 
             buttonHistoriaWypozyczen.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonHistoriaWypozyczen.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonHistoriaWypozyczen.Location = new Point(1259, 384);
+            buttonHistoriaWypozyczen.Location = new Point(1102, 288);
+            buttonHistoriaWypozyczen.Margin = new Padding(3, 2, 3, 2);
             buttonHistoriaWypozyczen.Name = "buttonHistoriaWypozyczen";
-            buttonHistoriaWypozyczen.Size = new Size(230, 73);
+            buttonHistoriaWypozyczen.Size = new Size(201, 55);
             buttonHistoriaWypozyczen.TabIndex = 20;
             buttonHistoriaWypozyczen.Text = "Moje wypożyczenia:";
             buttonHistoriaWypozyczen.UseVisualStyleBackColor = true;
@@ -127,9 +134,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(9, 15);
+            label2.Location = new Point(8, 11);
             label2.Name = "label2";
-            label2.Size = new Size(214, 40);
+            label2.Size = new Size(172, 32);
             label2.TabIndex = 19;
             label2.Text = "Użytkownik:";
             // 
@@ -137,9 +144,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(213, 15);
+            label1.Location = new Point(186, 11);
             label1.Name = "label1";
-            label1.Size = new Size(106, 40);
+            label1.Size = new Size(86, 32);
             label1.TabIndex = 18;
             label1.Text = "label1";
             // 
@@ -148,11 +155,12 @@
             dataGridView2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(1063, 463);
+            dataGridView2.Location = new Point(930, 347);
+            dataGridView2.Margin = new Padding(3, 2, 3, 2);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(426, 212);
+            dataGridView2.Size = new Size(373, 159);
             dataGridView2.TabIndex = 32;
             // 
             // labelNoActiveLoans
@@ -160,9 +168,9 @@
             labelNoActiveLoans.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             labelNoActiveLoans.AutoSize = true;
             labelNoActiveLoans.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            labelNoActiveLoans.Location = new Point(1146, 697);
+            labelNoActiveLoans.Location = new Point(1003, 523);
             labelNoActiveLoans.Name = "labelNoActiveLoans";
-            labelNoActiveLoans.Size = new Size(381, 35);
+            labelNoActiveLoans.Size = new Size(300, 27);
             labelNoActiveLoans.TabIndex = 33;
             labelNoActiveLoans.Text = "Brak aktywnych wypożyczeń";
             // 
@@ -170,9 +178,10 @@
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button1.Font = new Font("Book Antiqua", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(1355, 752);
+            button1.Location = new Point(1186, 564);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(134, 65);
+            button1.Size = new Size(117, 49);
             button1.TabIndex = 34;
             button1.Text = "Odśwież";
             button1.UseVisualStyleBackColor = true;
@@ -180,11 +189,11 @@
             // 
             // MainUzytkownikForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1499, 832);
+            ClientSize = new Size(1312, 624);
             Controls.Add(button1);
             Controls.Add(labelNoActiveLoans);
             Controls.Add(dataGridView2);
@@ -198,9 +207,9 @@
             Controls.Add(label2);
             Controls.Add(label1);
             ForeColor = SystemColors.ControlText;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MainUzytkownikForm";
             Text = "MainUzytkownikForm";
-            WindowState = FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
