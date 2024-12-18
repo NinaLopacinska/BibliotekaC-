@@ -22,29 +22,39 @@ namespace bilbioteka.Forms
         {
             try
             {
-                // Określenie ścieżki do zapisu na Pulpicie
-                string sciezkaExcel = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Raport.xlsx");
-
-                // Pobierz dane z klasy Raport
-                List<string> raportDane = raport.GenerujRaport();
-
-                // Sprawdź, czy raport zawiera dane
-                if (raportDane == null || raportDane.Count == 0)
+                // Wyświetlenie okna dialogowego wyboru ścieżki i nazwy pliku
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    MessageBox.Show("Raport nie zawiera danych do wygenerowania.",
-                                    "Błąd",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-                    return;
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.Title = "Zapisz raport jako";
+                    saveFileDialog.FileName = "Raport.xlsx";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string sciezkaExcel = saveFileDialog.FileName;
+
+                        // Pobierz dane z klasy Raport
+                        List<string> raportDane = raport.GenerujRaport();
+
+                        // Sprawdź, czy raport zawiera dane
+                        if (raportDane == null || raportDane.Count == 0)
+                        {
+                            MessageBox.Show("Raport nie zawiera danych do wygenerowania.",
+                                            "Błąd",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Tworzenie pliku Excel
+                        GenerujExcel(sciezkaExcel, raportDane);
+
+                        MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {sciezkaExcel}.",
+                                        "Sukces",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    }
                 }
-
-                // Tworzenie pliku Excel
-                GenerujExcel(sciezkaExcel, raportDane);
-
-                MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {sciezkaExcel}.",
-                                "Sukces",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -117,6 +127,30 @@ namespace bilbioteka.Forms
         {
             PracownicyAdministrator usunPracownikaAdministrator = new PracownicyAdministrator();
             usunPracownikaAdministrator.Show();
+        }
+
+        private void buttonEdycjaZbioru_Click(object sender, EventArgs e)
+        {
+            EdycjaProduktowAdminForm edycjaIlosciProduktowAdminForm = new EdycjaProduktowAdminForm();
+            edycjaIlosciProduktowAdminForm.Show();
+        }
+
+        private void buttonDodajPracownika_Click(object sender, EventArgs e)
+        {
+            DodajPracownikaForm dodajPracownika = new DodajPracownikaForm();
+            dodajPracownika.Show();
+        }
+
+        private void buttonDodajProdukt_Click(object sender, EventArgs e)
+        {
+            DodajNwoyProduktAdminForm dodajNwoyProduktAdmin = new DodajNwoyProduktAdminForm();
+            dodajNwoyProduktAdmin.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EdytujCennikAdmin edytujCennikAdmin = new EdytujCennikAdmin();
+            edytujCennikAdmin.Show();
         }
     }
 }

@@ -75,14 +75,17 @@ namespace bilbioteka.Forms
                         {
                             case 1:
                                 mainForm = new MainUzytkownikForm(idOsoby, imie, login);
+                                this.Close();
                                 break;
 
                             case 2:
                                 mainForm = new MainPracownikForm(imie, login);
+                                this.Close();
                                 break;
 
                             case 3:
                                 mainForm = new MainAdminstratorForm(imie);
+                                this.Close();
                                 break;
 
                             default:
@@ -91,7 +94,7 @@ namespace bilbioteka.Forms
                         }
 
                         mainForm.ShowDialog();
-                        this.Close();
+                        //this.Close();
                     }
                     else
                     {
