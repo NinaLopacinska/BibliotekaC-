@@ -49,7 +49,7 @@
             buttonEdytujKontoUzytkownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujKontoUzytkownika.Location = new Point(20, 437);
             buttonEdytujKontoUzytkownika.Name = "buttonEdytujKontoUzytkownika";
-            buttonEdytujKontoUzytkownika.Size = new Size(209, 77);
+            buttonEdytujKontoUzytkownika.Size = new Size(209, 86);
             buttonEdytujKontoUzytkownika.TabIndex = 11;
             buttonEdytujKontoUzytkownika.Text = "Użytkownicy";
             buttonEdytujKontoUzytkownika.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@
             // buttonPrzyjmijOplate
             // 
             buttonPrzyjmijOplate.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonPrzyjmijOplate.Location = new Point(20, 203);
+            buttonPrzyjmijOplate.Location = new Point(20, 217);
             buttonPrzyjmijOplate.Name = "buttonPrzyjmijOplate";
             buttonPrzyjmijOplate.Size = new Size(209, 86);
             buttonPrzyjmijOplate.TabIndex = 10;
@@ -69,9 +69,9 @@
             // buttonWypozycz
             // 
             buttonWypozycz.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonWypozycz.Location = new Point(20, 121);
+            buttonWypozycz.Location = new Point(20, 111);
             buttonWypozycz.Name = "buttonWypozycz";
-            buttonWypozycz.Size = new Size(209, 67);
+            buttonWypozycz.Size = new Size(209, 86);
             buttonWypozycz.TabIndex = 8;
             buttonWypozycz.Text = "Wypożycz";
             buttonWypozycz.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             buttonEdytujSwojeKonto.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujSwojeKonto.Location = new Point(20, 323);
             buttonEdytujSwojeKonto.Name = "buttonEdytujSwojeKonto";
-            buttonEdytujSwojeKonto.Size = new Size(209, 85);
+            buttonEdytujSwojeKonto.Size = new Size(209, 86);
             buttonEdytujSwojeKonto.TabIndex = 12;
             buttonEdytujSwojeKonto.Text = "Edytuj swoje konto";
             buttonEdytujSwojeKonto.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@
             // btnStatystyki
             // 
             btnStatystyki.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStatystyki.Location = new Point(20, 554);
+            btnStatystyki.Location = new Point(20, 553);
             btnStatystyki.Name = "btnStatystyki";
-            btnStatystyki.Size = new Size(209, 91);
+            btnStatystyki.Size = new Size(209, 86);
             btnStatystyki.TabIndex = 18;
             btnStatystyki.Text = "Statystyki";
             btnStatystyki.UseVisualStyleBackColor = true;
@@ -174,9 +174,9 @@
             // button1
             // 
             button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(17, 665);
+            button1.Location = new Point(20, 669);
             button1.Name = "button1";
-            button1.Size = new Size(209, 67);
+            button1.Size = new Size(209, 86);
             button1.TabIndex = 19;
             button1.Text = "Zmiana hasła";
             button1.UseVisualStyleBackColor = true;

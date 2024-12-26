@@ -97,6 +97,7 @@ namespace bilbioteka.Forms
                 // Przenieś dane do odpowiednich TextBoxów
                 textBoxTytul.Text = selectedRow.Cells["Tytul"].Value?.ToString() ?? string.Empty;
                 textBoxNrKatalogowy.Text = selectedRow.Cells["NumerKatalogowy"].Value?.ToString() ?? string.Empty;
+                textBoxIlosc.Text = selectedRow.Cells["Ilosc"].Value?.ToString() ?? string.Empty;
             }
         }
         private void buttonUsun_Click(object sender, EventArgs e)
@@ -153,7 +154,7 @@ namespace bilbioteka.Forms
                             if (wynik == DialogResult.Yes)
                             {
                                 // Usuwanie produktu
-                                string deleteQuery = "DELETE FROM zasoby WHERE Tytul = @Tytul AND NumerKatalogowy = @NumerKatalogowy";
+                                string deleteQuery = "UPDATE zasoby SET StanZasobu = 'Nieaktywny' WHERE Tytul = @Tytul AND NumerKatalogowy = @NumerKatalogowy";
                                 using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
                                 {
                                     deleteCommand.Parameters.AddWithValue("@Tytul", tytul);
@@ -211,7 +212,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT * FROM zasoby";
+            string query = "SELECT * FROM zasoby WHERE StanZasobu = 'Aktywny'";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))

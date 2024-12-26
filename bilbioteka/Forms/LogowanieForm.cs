@@ -52,7 +52,7 @@ namespace bilbioteka.Forms
             string haslo = textBoxHaslo.Text;
 
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-            string query = "SELECT IdOsoby FROM uzytkownicy WHERE Login = @Login AND Haslo = @Haslo";
+            string query = "SELECT IdOsoby FROM uzytkownicy WHERE Login = @Login AND Haslo = @Haslo AND Stan = 'Aktywny'" ;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

@@ -37,7 +37,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu  FROM uzytkownicy WHERE IdOsoby = 1";
+            string query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu  FROM uzytkownicy WHERE IdOsoby = 1 AND Stan='Aktywny'";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -107,7 +107,7 @@ namespace bilbioteka.Forms
                             if (result == DialogResult.Yes)
                             {
                                 // Jeśli potwierdzono, usuń użytkownika
-                                string deleteQuery = "DELETE FROM uzytkownicy WHERE Login = @Login AND Imie = @Imie AND Nazwisko = @Nazwisko";
+                                string deleteQuery = "UPDATE uzytkownicy SET Stan = 'Nieaktywny' WHERE Login = @Login AND Imie = @Imie AND Nazwisko = @Nazwisko";
                                 using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
                                 {
                                     deleteCommand.Parameters.AddWithValue("@Login", login);
@@ -228,25 +228,25 @@ namespace bilbioteka.Forms
             {
                 case null:
                 case "":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE IdOsoby = 1 AND Stan = 'Aktywny'";
                     break;
                 case "Imie":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Imie LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Imie LIKE @searchValue AND IdOsoby = 1 AND Stan = 'Aktywny'";
                     break;
                 case "Nazwisko":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Nazwisko LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Nazwisko LIKE @searchValue AND IdOsoby = 1 AND Stan = 'Aktywny'";
                     break;
                 case "Numer Telefonu":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE NumerTelefonu = @numerTelefonu AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE NumerTelefonu = @numerTelefonu AND IdOsoby = 1 AND Stan = 'Aktywny'";
                     break;
                 case "Login":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Login LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Login LIKE @searchValue AND IdOsoby = 1 AND Stan = 'Aktywny'";
                     break;
                 case "Email":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Email LIKE @searchValue AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Email LIKE @searchValue AND IdOsoby = 1 AND Stan = 'Aktywny'";
                     break;
                 case "Pesel":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Pesel = @pesel AND IdOsoby = 1";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Pesel = @pesel AND IdOsoby = 1 AND Stan = 'Aktywny'";
                     break;
             }
 

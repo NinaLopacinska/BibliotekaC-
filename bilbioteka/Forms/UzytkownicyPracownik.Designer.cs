@@ -49,8 +49,8 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.None;
-            button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(12, 499);
+            button1.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(84, 561);
             button1.Name = "button1";
             button1.Size = new Size(169, 61);
             button1.TabIndex = 179;
@@ -63,18 +63,18 @@
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(414, 170);
+            dataGridView1.Location = new Point(472, 170);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(854, 482);
+            dataGridView1.Size = new Size(796, 452);
             dataGridView1.TabIndex = 178;
             // 
             // buttonUsun
             // 
             buttonUsun.Anchor = AnchorStyles.None;
-            buttonUsun.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsun.Location = new Point(12, 432);
+            buttonUsun.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonUsun.Location = new Point(84, 455);
             buttonUsun.Name = "buttonUsun";
             buttonUsun.Size = new Size(169, 61);
             buttonUsun.TabIndex = 177;
@@ -98,9 +98,9 @@
             // 
             textBoxImie.Anchor = AnchorStyles.None;
             textBoxImie.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxImie.Location = new Point(88, 303);
+            textBoxImie.Location = new Point(95, 309);
             textBoxImie.Name = "textBoxImie";
-            textBoxImie.Size = new Size(295, 38);
+            textBoxImie.Size = new Size(321, 38);
             textBoxImie.TabIndex = 174;
             // 
             // label10
@@ -118,9 +118,9 @@
             // 
             textBoxNazwisko.Anchor = AnchorStyles.None;
             textBoxNazwisko.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNazwisko.Location = new Point(150, 355);
+            textBoxNazwisko.Location = new Point(165, 358);
             textBoxNazwisko.Name = "textBoxNazwisko";
-            textBoxNazwisko.Size = new Size(233, 38);
+            textBoxNazwisko.Size = new Size(251, 38);
             textBoxNazwisko.TabIndex = 172;
             // 
             // label8
@@ -138,9 +138,9 @@
             // 
             textBoxLogin.Anchor = AnchorStyles.None;
             textBoxLogin.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLogin.Location = new Point(103, 252);
+            textBoxLogin.Location = new Point(112, 256);
             textBoxLogin.Name = "textBoxLogin";
-            textBoxLogin.Size = new Size(280, 38);
+            textBoxLogin.Size = new Size(304, 38);
             textBoxLogin.TabIndex = 170;
             // 
             // label7
@@ -170,17 +170,17 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 151);
+            label1.Location = new Point(12, 183);
             label1.Name = "label1";
-            label1.Size = new Size(217, 80);
+            label1.Size = new Size(404, 40);
             label1.TabIndex = 180;
-            label1.Text = "Usuń konto\r\nużytkownika";
+            label1.Text = "Usuń konto użytkownika";
             // 
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             textBox1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(414, 121);
+            textBox1.Location = new Point(472, 121);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(443, 43);
             textBox1.TabIndex = 183;
@@ -191,18 +191,18 @@
             comboBox1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "   ", "Imie", "Nazwisko", "Login", "Numer telefonu", "Email", "Pesel" });
-            comboBox1.Location = new Point(863, 122);
+            comboBox1.Location = new Point(921, 122);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(246, 36);
+            comboBox1.Size = new Size(214, 36);
             comboBox1.TabIndex = 182;
             // 
             // buttonSzukaj
             // 
             buttonSzukaj.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(1115, 113);
+            buttonSzukaj.Location = new Point(1141, 113);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(153, 51);
+            buttonSzukaj.Size = new Size(127, 51);
             buttonSzukaj.TabIndex = 181;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;

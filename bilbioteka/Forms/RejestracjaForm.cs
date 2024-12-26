@@ -13,7 +13,7 @@ namespace bilbioteka.Forms
             InitializeComponent();
             textBoxHaslo.PasswordChar = '*';
             dateTimePicker1.ValueChanged += new EventHandler(dateTimePicker1_ValueChanged);
-            panel1.Visible = true ;
+            panel1.Visible = true;
         }
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace bilbioteka.Forms
                     command.Parameters.AddWithValue("@Pesel", pesel);
                     command.Parameters.AddWithValue("@DataUrodzenia", dataUrodzenia);
                     command.Parameters.AddWithValue("@Email", email);
-                    command.Parameters.AddWithValue("@ImieOpiekuna",  imieOpiekuna ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("@ImieOpiekuna", imieOpiekuna ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@NazwiskoOpiekuna", nazwiskoOpiekuna ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@NumerTelefonuOpiekuna", nrTelefonuOpiekuna ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("@EmailOpiekuna", emailOpiekuna ?? (object)DBNull.Value);
@@ -198,6 +198,11 @@ namespace bilbioteka.Forms
             {
                 panel1.Visible = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

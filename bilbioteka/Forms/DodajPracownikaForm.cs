@@ -171,7 +171,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT * FROM uzytkownicy WHERE IdOsoby = 2";
+            string query = "SELECT * FROM uzytkownicy WHERE IdOsoby = 2 AND Stan = 'Aktywny'";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))

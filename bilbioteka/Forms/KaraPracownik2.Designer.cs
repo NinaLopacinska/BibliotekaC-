@@ -48,7 +48,7 @@
             // 
             button2.Anchor = AnchorStyles.None;
             button2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(81, 375);
+            button2.Location = new Point(98, 380);
             button2.Name = "button2";
             button2.Size = new Size(223, 81);
             button2.TabIndex = 189;
@@ -154,7 +154,7 @@
             // 
             button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(81, 477);
+            button1.Location = new Point(98, 496);
             button1.Name = "button1";
             button1.Size = new Size(223, 81);
             button1.TabIndex = 192;
@@ -176,7 +176,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(81, 319);
+            label2.Location = new Point(98, 322);
             label2.Name = "label2";
             label2.Size = new Size(72, 35);
             label2.TabIndex = 193;

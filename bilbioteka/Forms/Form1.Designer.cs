@@ -46,8 +46,8 @@
             // buttonZaloguj
             // 
             buttonZaloguj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonZaloguj.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonZaloguj.Location = new Point(1290, 77);
+            buttonZaloguj.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonZaloguj.Location = new Point(1291, 76);
             buttonZaloguj.Name = "buttonZaloguj";
             buttonZaloguj.Size = new Size(138, 55);
             buttonZaloguj.TabIndex = 0;
@@ -58,7 +58,7 @@
             // buttonRejstruj
             // 
             buttonRejstruj.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonRejstruj.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonRejstruj.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
             buttonRejstruj.Location = new Point(1248, 137);
             buttonRejstruj.Name = "buttonRejstruj";
             buttonRejstruj.Size = new Size(181, 56);

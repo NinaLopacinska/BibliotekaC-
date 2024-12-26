@@ -170,7 +170,7 @@ namespace bilbioteka.Forms
                 }
             }
 
-            
+
             void DodajKolumne(string nazwaKolumny, string nazwaParametru, object wartosc)
             {
                 if (wartosc != null && !(wartosc is string str && string.IsNullOrWhiteSpace(str)))
@@ -225,5 +225,6 @@ namespace bilbioteka.Forms
             }
         }
 
+        
     }
 }

@@ -106,7 +106,7 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Tytul, Autor, Typ, Ocena, Kategoria, Wydawnictwo  FROM zasoby WHERE Ilosc > 0";
+                    string query = "SELECT Tytul, Autor, Typ, Ocena, Kategoria, Wydawnictwo  FROM zasoby WHERE Ilosc > 0 AND StanZasobu = 'Aktywny'";
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
@@ -141,13 +141,13 @@ namespace bilbioteka.Forms
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "   ":
-                    query = "SELECT * FROM zasoby ";
+                    query = "SELECT * FROM zasoby WHERE StanZasobu = 'Aktywny' ";
                     break;
                 case "Tytuł":
-                    query = "SELECT * FROM zasoby WHERE Tytul LIKE @searchValue";
+                    query = "SELECT * FROM zasoby WHERE Tytul LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Autor":
-                    query = "SELECT * FROM zasoby WHERE Autor LIKE @searchValue";
+                    query = "SELECT * FROM zasoby WHERE Autor LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Rok wydania":
                     // Sprawdzenie, czy searchValue jest liczbą
@@ -156,13 +156,13 @@ namespace bilbioteka.Forms
                         MessageBox.Show("Proszę wpisać poprawny rok wydania.");
                         return;
                     }
-                    query = "SELECT * FROM zasoby WHERE RokWydania = @rokWydania";
+                    query = "SELECT * FROM zasoby WHERE RokWydania = @rokWydania AND StanZasobu = 'Aktywny'";
                     break;
                 case "Numer katalogowy":
-                    query = "SELECT * FROM zasoby WHERE NumerKatalogowy LIKE @searchValue";
+                    query = "SELECT * FROM zasoby WHERE NumerKatalogowy LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Typ produktu":
-                    query = "SELECT * FROM zasoby WHERE Typ LIKE @searchValue";
+                    query = "SELECT * FROM zasoby WHERE Typ LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Ocena":
                     // Sprawdzenie, czy searchValue jest liczbą
@@ -171,7 +171,7 @@ namespace bilbioteka.Forms
                         MessageBox.Show("Proszę wpisać poprawną ocenę.");
                         return;
                     }
-                    query = "SELECT * FROM zasoby WHERE Ocena = @ocena";
+                    query = "SELECT * FROM zasoby WHERE Ocena = @ocena AND AND StanZasobu = 'Aktywny'";
                     break;
                 case "Ilość":
 
@@ -180,17 +180,17 @@ namespace bilbioteka.Forms
                         MessageBox.Show("Proszę wpisać poprawną ilość.");
                         return;
                     }
-                    query = "SELECT * FROM zasoby WHERE Ilosc = @ilosc";
+                    query = "SELECT * FROM zasoby WHERE Ilosc = @ilosc AND AND StanZasobu = 'Aktywny'";
                     break;
                 case "Kategoria":
-                    query = "SELECT * FROM zasoby WHERE Kategoria LIKE @searchValue";
+                    query = "SELECT * FROM zasoby WHERE Kategoria LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 default:
                     MessageBox.Show("Proszę wybrać kryterium wyszukiwania.");
                     return;
 
                 case "Wydawnictwo":
-                    query = "SELECT * FROM zasoby WHERE Wydawnictwo LIKE @searchValue";
+                    query = "SELECT * FROM zasoby WHERE Wydawnictwo LIKE @searchValue AND StanZasobu = 'Aktywny''";
                     break;
 
             }

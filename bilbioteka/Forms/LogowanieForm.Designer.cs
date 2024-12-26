@@ -43,7 +43,7 @@
             // 
             buttonRejestrujLog.Anchor = AnchorStyles.None;
             buttonRejestrujLog.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonRejestrujLog.Location = new Point(215, 379);
+            buttonRejestrujLog.Location = new Point(215, 383);
             buttonRejestrujLog.Name = "buttonRejestrujLog";
             buttonRejestrujLog.Size = new Size(176, 57);
             buttonRejestrujLog.TabIndex = 0;
@@ -79,7 +79,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(125, 329);
+            label2.Location = new Point(123, 332);
             label2.Name = "label2";
             label2.Size = new Size(400, 35);
             label2.TabIndex = 3;
@@ -111,7 +111,7 @@
             // 
             textBoxLogin.Anchor = AnchorStyles.None;
             textBoxLogin.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLogin.Location = new Point(237, 135);
+            textBoxLogin.Location = new Point(246, 140);
             textBoxLogin.Name = "textBoxLogin";
             textBoxLogin.Size = new Size(250, 43);
             textBoxLogin.TabIndex = 6;
@@ -120,7 +120,7 @@
             // 
             textBoxHaslo.Anchor = AnchorStyles.None;
             textBoxHaslo.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxHaslo.Location = new Point(237, 201);
+            textBoxHaslo.Location = new Point(246, 205);
             textBoxHaslo.Name = "textBoxHaslo";
             textBoxHaslo.Size = new Size(250, 43);
             textBoxHaslo.TabIndex = 7;

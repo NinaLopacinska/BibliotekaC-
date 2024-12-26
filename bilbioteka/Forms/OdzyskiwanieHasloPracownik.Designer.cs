@@ -44,11 +44,11 @@
             // 
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(459, 223);
+            dataGridView1.Location = new Point(459, 140);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(757, 398);
+            dataGridView1.Size = new Size(757, 376);
             dataGridView1.TabIndex = 178;
             // 
             // buttonZalogujRej
@@ -66,9 +66,9 @@
             // 
             buttonDodaj.Anchor = AnchorStyles.None;
             buttonDodaj.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodaj.Location = new Point(206, 560);
+            buttonDodaj.Location = new Point(162, 455);
             buttonDodaj.Name = "buttonDodaj";
-            buttonDodaj.Size = new Size(169, 61);
+            buttonDodaj.Size = new Size(252, 61);
             buttonDodaj.TabIndex = 175;
             buttonDodaj.Text = "Zapisz";
             buttonDodaj.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             textBoxHaslo.Anchor = AnchorStyles.None;
             textBoxHaslo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxHaslo.Location = new Point(206, 412);
+            textBoxHaslo.Location = new Point(162, 302);
             textBoxHaslo.Name = "textBoxHaslo";
-            textBoxHaslo.Size = new Size(187, 38);
+            textBoxHaslo.Size = new Size(252, 38);
             textBoxHaslo.TabIndex = 174;
             // 
             // label10
@@ -88,7 +88,7 @@
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(168, 360);
+            label10.Location = new Point(159, 255);
             label10.Name = "label10";
             label10.Size = new Size(255, 35);
             label10.TabIndex = 173;
@@ -98,9 +98,9 @@
             // 
             textBoxTytul.Anchor = AnchorStyles.None;
             textBoxTytul.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxTytul.Location = new Point(206, 307);
+            textBoxTytul.Location = new Point(162, 195);
             textBoxTytul.Name = "textBoxTytul";
-            textBoxTytul.Size = new Size(187, 38);
+            textBoxTytul.Size = new Size(252, 38);
             textBoxTytul.TabIndex = 170;
             // 
             // label7
@@ -108,7 +108,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(254, 245);
+            label7.Location = new Point(245, 140);
             label7.Name = "label7";
             label7.Size = new Size(94, 35);
             label7.TabIndex = 169;
@@ -119,7 +119,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(206, 82);
+            label6.Location = new Point(159, 12);
             label6.Name = "label6";
             label6.Size = new Size(976, 58);
             label6.TabIndex = 168;
@@ -128,10 +128,10 @@
             // button2
             // 
             button2.Anchor = AnchorStyles.None;
-            button2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(206, 478);
+            button2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(159, 373);
             button2.Name = "button2";
-            button2.Size = new Size(169, 61);
+            button2.Size = new Size(255, 61);
             button2.TabIndex = 180;
             button2.Text = "Generuj hasło";
             button2.UseVisualStyleBackColor = true;
@@ -142,7 +142,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
-            ClientSize = new Size(1441, 824);
+            ClientSize = new Size(1441, 673);
             Controls.Add(button2);
             Controls.Add(dataGridView1);
             Controls.Add(buttonZalogujRej);
