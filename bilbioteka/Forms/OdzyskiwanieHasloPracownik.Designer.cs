@@ -65,10 +65,10 @@
             // buttonDodaj
             // 
             buttonDodaj.Anchor = AnchorStyles.None;
-            buttonDodaj.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDodaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDodaj.Location = new Point(162, 455);
             buttonDodaj.Name = "buttonDodaj";
-            buttonDodaj.Size = new Size(252, 61);
+            buttonDodaj.Size = new Size(198, 61);
             buttonDodaj.TabIndex = 175;
             buttonDodaj.Text = "Zapisz";
             buttonDodaj.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(245, 140);
+            label7.Location = new Point(159, 140);
             label7.Name = "label7";
             label7.Size = new Size(94, 35);
             label7.TabIndex = 169;
@@ -119,7 +119,7 @@
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(159, 12);
+            label6.Location = new Point(159, 23);
             label6.Name = "label6";
             label6.Size = new Size(976, 58);
             label6.TabIndex = 168;
@@ -131,7 +131,7 @@
             button2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(159, 373);
             button2.Name = "button2";
-            button2.Size = new Size(255, 61);
+            button2.Size = new Size(201, 61);
             button2.TabIndex = 180;
             button2.Text = "Generuj hasło";
             button2.UseVisualStyleBackColor = true;

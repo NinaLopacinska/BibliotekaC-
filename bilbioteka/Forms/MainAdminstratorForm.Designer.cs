@@ -62,7 +62,7 @@
             // buttonEdycjaZbioru
             // 
             buttonEdycjaZbioru.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdycjaZbioru.Location = new Point(50, 83);
+            buttonEdycjaZbioru.Location = new Point(83, 142);
             buttonEdycjaZbioru.Name = "buttonEdycjaZbioru";
             buttonEdycjaZbioru.Size = new Size(221, 71);
             buttonEdycjaZbioru.TabIndex = 2;
@@ -73,7 +73,7 @@
             // buttonGenerujRaport
             // 
             buttonGenerujRaport.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonGenerujRaport.Location = new Point(340, 83);
+            buttonGenerujRaport.Location = new Point(373, 142);
             buttonGenerujRaport.Name = "buttonGenerujRaport";
             buttonGenerujRaport.Size = new Size(221, 71);
             buttonGenerujRaport.TabIndex = 4;
@@ -84,7 +84,7 @@
             // buttonUsunPracownika
             // 
             buttonUsunPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsunPracownika.Location = new Point(340, 198);
+            buttonUsunPracownika.Location = new Point(373, 257);
             buttonUsunPracownika.Name = "buttonUsunPracownika";
             buttonUsunPracownika.Size = new Size(221, 92);
             buttonUsunPracownika.TabIndex = 5;
@@ -95,7 +95,7 @@
             // buttonDodajPracownika
             // 
             buttonDodajPracownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajPracownika.Location = new Point(52, 198);
+            buttonDodajPracownika.Location = new Point(85, 257);
             buttonDodajPracownika.Name = "buttonDodajPracownika";
             buttonDodajPracownika.Size = new Size(221, 92);
             buttonDodajPracownika.TabIndex = 6;
@@ -107,17 +107,18 @@
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(425, 20);
+            button2.Location = new Point(553, 14);
             button2.Name = "button2";
             button2.Size = new Size(136, 43);
             button2.TabIndex = 14;
             button2.Text = "Wyloguj";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // buttonDodajProdukt
             // 
             buttonDodajProdukt.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajProdukt.Location = new Point(50, 327);
+            buttonDodajProdukt.Location = new Point(83, 386);
             buttonDodajProdukt.Name = "buttonDodajProdukt";
             buttonDodajProdukt.Size = new Size(221, 97);
             buttonDodajProdukt.TabIndex = 15;
@@ -128,7 +129,7 @@
             // button1
             // 
             button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(340, 332);
+            button1.Location = new Point(373, 391);
             button1.Name = "button1";
             button1.Size = new Size(221, 92);
             button1.TabIndex = 16;

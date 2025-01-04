@@ -133,5 +133,114 @@ namespace bilbioteka.Forms
         {
             LoadData();
         }
+
+        private void buttonDodaj_Click_1(object sender, EventArgs e)
+        {
+            // Walidacja pól
+            if (string.IsNullOrWhiteSpace(textBoxProdukt.Text) ||
+                string.IsNullOrWhiteSpace(textBoxZaDzien.Text) ||
+                string.IsNullOrWhiteSpace(textBoxNowe.Text))
+            {
+                MessageBox.Show("Wszystkie pola muszą być wypełnione!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(textBoxZaDzien.Text, out int cena) || cena < 0)
+            {
+                MessageBox.Show("Cena musi być większa od zera!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!int.TryParse(textBoxNowe.Text, out int cena2) || cena2 < 0)
+            {
+                MessageBox.Show("Cena musi być większa od zera!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string produkt = textBoxProdukt.Text;
+            string cenaZaDzien = textBoxZaDzien.Text;
+            string cenaZaNowe = textBoxNowe.Text;
+
+            // Sprawdzanie czy tytuł i numer katalogowy istnieją w bazie danych
+            using (SqlConnection connection = new SqlConnection(PolaczenieBazyDanych.StringPolaczeniowy()))
+            {
+                connection.Open();
+
+                string updateQuery = "INSERT INTO Cennik ( Produkt,CenaZaDzien, CenaZaNowe) VALUES (@produkt, @cenaZaDzien, @cenaZaNowe)";
+                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@CenaZaDzien", cenaZaDzien);
+                    updateCommand.Parameters.AddWithValue("@CenaZaNowe", cenaZaNowe);
+                    updateCommand.Parameters.AddWithValue("@Produkt", produkt);
+                    updateCommand.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Nowy typ produktu został zmnieniony pomyślnie.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void buttonUsun_Click(object sender, EventArgs e)
+        {
+            {
+                // Walidacja pól
+                if (string.IsNullOrWhiteSpace(textBoxProdukt.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxZaDzien.Text) ||
+                    string.IsNullOrWhiteSpace(textBoxNowe.Text))
+                {
+                    MessageBox.Show("Wszystkie pola muszą być wypełnione!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!int.TryParse(textBoxZaDzien.Text, out int cena) || cena < 0)
+                {
+                    MessageBox.Show("Cena musi być większa od zera!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!int.TryParse(textBoxNowe.Text, out int cena2) || cena2 < 0)
+                {
+                    MessageBox.Show("Cena musi być większa od zera!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string produkt = textBoxProdukt.Text;
+                string cenaZaDzien = textBoxZaDzien.Text;
+                string cenaZaNowe = textBoxNowe.Text;
+
+                // Sprawdzanie czy tytuł i numer katalogowy istnieją w bazie danych
+                using (SqlConnection connection = new SqlConnection(PolaczenieBazyDanych.StringPolaczeniowy()))
+                {
+                    connection.Open();
+
+                    // Sprawdzanie zasobu
+                    string query = "SELECT Produkt FROM Cennik WHERE produkt = @Produkt";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Produkt", produkt);
+
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+
+
+                            string deleteQuery = "DELETE FROM Cennik WHERE cenaZaDzien = @CenaZaDzien AND cenaZaNowe = @CenaZaNowe AND produkt = @Produkt";
+                            using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, connection))
+                            {
+                                deleteCommand.Parameters.AddWithValue("@CenaZaDzien", cenaZaDzien);
+                                deleteCommand.Parameters.AddWithValue("@CenaZaNowe", cenaZaNowe);
+                                deleteCommand.Parameters.AddWithValue("@Produkt", produkt);
+                                deleteCommand.ExecuteNonQuery();
+                            }
+
+                            MessageBox.Show("Typ produktu został usunięty. Pamiętaj aby usunąć wszystkie zasoby tego typu!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Produkt nie znajduje się w cenniku!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+    
+

@@ -72,7 +72,7 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = SystemColors.ButtonFace;
-            panel1.Location = new Point(561, 379);
+            panel1.Location = new Point(561, 363);
             panel1.Name = "panel1";
             panel1.Size = new Size(683, 301);
             panel1.TabIndex = 78;

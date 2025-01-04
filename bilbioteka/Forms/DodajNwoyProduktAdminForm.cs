@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -14,7 +15,8 @@ namespace bilbioteka.Forms
         }
         private void buttonZalogujRej_Click(object sender, EventArgs e) { this.Close(); }
 
-        private void buttonDodajPracownika_Click(object sender, EventArgs e)
+        
+        private void buttonDodajProdukt_Click_1(object sender, EventArgs e)
         {
             // Pobieranie danych z pól formularza
             string tytul = textBoxTytul.Text;
@@ -23,14 +25,16 @@ namespace bilbioteka.Forms
             decimal ocena;
             int ilosc;
             string kategoria = comboBox2.SelectedItem?.ToString();
-            string typ = comboBox1.SelectedItem?.ToString();
+            string typ = textBoxTyp.Text;
             string numerKatalogowy = textBoxNrKatagolowy.Text;
             string wydawnictwo = textBoxWydawnictwo.Text;
 
             // Walidacja pól wymaganych
-            if (!int.TryParse(textBoxRokWydania.Text, out rokWydania))
+
+
+            if (!int.TryParse(textBoxRokWydania.Text, out rokWydania) || rokWydania < 1500 || rokWydania >= 2025)
             {
-                MessageBox.Show("Rok wydania musi być liczbą całkowitą.");
+                MessageBox.Show("Podaj poprawny rok wydania.");
                 return;
             }
             if (!decimal.TryParse(textBoxOcena.Text, out ocena) || ocena < 1.00m || ocena > 10.00m)
@@ -43,28 +47,32 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Ilość musi być liczbą całkowitą większą od 0.");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(kategoria) || string.IsNullOrWhiteSpace(typ))
-            {
-                MessageBox.Show("Wybierz poprawną kategorię i typ.");
-                return;
-            }
-
-            if (rokWydania < 1500 || rokWydania >= 2025)
-            {
-                MessageBox.Show("Podaj poprawny rok wydania.");
-                return;
-            }
-
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(PolaczenieBazyDanych.StringPolaczeniowy()))
+                string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    // Sprawdzanie istnienia rekordu o tym samym tytule i typie oraz zgodności oceny
-                    string queryCheck = @"SELECT Ocena FROM zasoby 
-                                  WHERE Tytul = @Tytul AND Typ = @Typ";
+                    // Sprawdzanie istnienia produktu w tabeli Cennik
+                    string query = "SELECT Produkt FROM Cennik WHERE Produkt = @produkt";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@produkt", typ);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (!reader.Read())
+                            {
+                                MessageBox.Show("Nie istnieje taki typ produktu w bazie.");
+                                return;
+                            }
+                        }
+                    }
+
+                    // Sprawdzanie istnienia zasobu z taką oceną
+                    string queryCheck = @"SELECT Ocena FROM zasoby WHERE Tytul = @Tytul AND Typ = @Typ";
                     using (SqlCommand commandCheck = new SqlCommand(queryCheck, connection))
                     {
                         commandCheck.Parameters.AddWithValue("@Tytul", tytul);
@@ -80,8 +88,6 @@ namespace bilbioteka.Forms
                                 return;
                             }
                         }
-
-
                     }
 
                     // Wstawianie nowego rekordu
@@ -115,9 +121,8 @@ namespace bilbioteka.Forms
             {
                 MessageBox.Show($"Wystąpił błąd: {ex.Message}");
             }
-
-            this.Close();
         }
-
     }
+
 }
+

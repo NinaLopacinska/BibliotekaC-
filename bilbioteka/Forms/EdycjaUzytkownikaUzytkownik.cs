@@ -44,6 +44,12 @@ namespace bilbioteka.Forms
                     dateTimePicker1.Value = Convert.ToDateTime(reader["DataUrodzenia"]);
                     textBoxEmail.Text = reader["Email"].ToString();
                     textBoxNrTelefonu.Text = reader["NumerTelefonu"].ToString();
+                    textBoxImieOpiekuna.Text = reader["ImieOpiekuna"].ToString() ;
+                    textBoxNazwiskoOpiekuna.Text = reader["NazwiskoOpiekuna"].ToString();
+                    textBoxEmailOpiekuna.Text = reader["EmailOpiekuna"].ToString();
+                    textBoxNrTelefonuOpiekuna.Text = reader["NumerTelefonuOpiekuna"].ToString();
+
+
 
                     int wiek = ObliczWiek(Convert.ToDateTime(reader["DataUrodzenia"]));
                     if (wiek > 13)

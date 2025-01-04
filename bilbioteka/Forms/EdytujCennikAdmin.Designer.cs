@@ -30,7 +30,7 @@
         {
             dataGridView1 = new DataGridView();
             buttonZalogujRej = new Button();
-            buttonDodaj = new Button();
+            buttonEdytuj = new Button();
             textBoxZaDzien = new TextBox();
             label10 = new Label();
             textBoxNowe = new TextBox();
@@ -38,7 +38,10 @@
             textBoxProdukt = new TextBox();
             label7 = new Label();
             label4 = new Label();
-            button1 = new Button();
+            buttonOdswiez = new Button();
+            label1 = new Label();
+            buttonDodaj = new Button();
+            buttonUsun = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -66,17 +69,17 @@
             buttonZalogujRej.UseVisualStyleBackColor = true;
             buttonZalogujRej.Click += buttonZalogujRej_Click_1;
             // 
-            // buttonDodaj
+            // buttonEdytuj
             // 
-            buttonDodaj.Anchor = AnchorStyles.None;
-            buttonDodaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodaj.Location = new Point(204, 375);
-            buttonDodaj.Name = "buttonDodaj";
-            buttonDodaj.Size = new Size(169, 61);
-            buttonDodaj.TabIndex = 199;
-            buttonDodaj.Text = "Zapisz";
-            buttonDodaj.UseVisualStyleBackColor = true;
-            buttonDodaj.Click += buttonDodaj_Click;
+            buttonEdytuj.Anchor = AnchorStyles.None;
+            buttonEdytuj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonEdytuj.Location = new Point(310, 367);
+            buttonEdytuj.Name = "buttonEdytuj";
+            buttonEdytuj.Size = new Size(169, 61);
+            buttonEdytuj.TabIndex = 199;
+            buttonEdytuj.Text = "Edytuj";
+            buttonEdytuj.UseVisualStyleBackColor = true;
+            buttonEdytuj.Click += buttonDodaj_Click;
             // 
             // textBoxZaDzien
             // 
@@ -142,23 +145,57 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(258, 27);
+            label4.Location = new Point(246, 19);
             label4.Name = "label4";
             label4.Size = new Size(394, 58);
             label4.TabIndex = 200;
             label4.Text = "Edytuj cennik kar";
             // 
-            // button1
+            // buttonOdswiez
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(204, 452);
-            button1.Name = "button1";
-            button1.Size = new Size(169, 61);
-            button1.TabIndex = 201;
-            button1.Text = "Odśwież";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonOdswiez.Anchor = AnchorStyles.None;
+            buttonOdswiez.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonOdswiez.Location = new Point(310, 446);
+            buttonOdswiez.Name = "buttonOdswiez";
+            buttonOdswiez.Size = new Size(169, 62);
+            buttonOdswiez.TabIndex = 201;
+            buttonOdswiez.Text = "Odśwież";
+            buttonOdswiez.UseVisualStyleBackColor = true;
+            buttonOdswiez.Click += button1_Click;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(38, 98);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 35);
+            label1.TabIndex = 202;
+            // 
+            // buttonDodaj
+            // 
+            buttonDodaj.Anchor = AnchorStyles.None;
+            buttonDodaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDodaj.Location = new Point(120, 367);
+            buttonDodaj.Name = "buttonDodaj";
+            buttonDodaj.Size = new Size(169, 61);
+            buttonDodaj.TabIndex = 203;
+            buttonDodaj.Text = "Dodaj";
+            buttonDodaj.UseVisualStyleBackColor = true;
+            buttonDodaj.Click += buttonDodaj_Click_1;
+            // 
+            // buttonUsun
+            // 
+            buttonUsun.Anchor = AnchorStyles.None;
+            buttonUsun.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonUsun.Location = new Point(120, 446);
+            buttonUsun.Name = "buttonUsun";
+            buttonUsun.Size = new Size(169, 61);
+            buttonUsun.TabIndex = 204;
+            buttonUsun.Text = "Usuń";
+            buttonUsun.UseVisualStyleBackColor = true;
+            buttonUsun.Click += buttonUsun_Click;
             // 
             // EdytujCennikAdmin
             // 
@@ -166,9 +203,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             ClientSize = new Size(1008, 547);
-            Controls.Add(button1);
-            Controls.Add(label4);
+            Controls.Add(buttonUsun);
             Controls.Add(buttonDodaj);
+            Controls.Add(label1);
+            Controls.Add(buttonOdswiez);
+            Controls.Add(label4);
+            Controls.Add(buttonEdytuj);
             Controls.Add(textBoxZaDzien);
             Controls.Add(label10);
             Controls.Add(textBoxNowe);
@@ -188,7 +228,7 @@
 
         private DataGridView dataGridView1;
         private Button buttonZalogujRej;
-        private Button buttonDodaj;
+        private Button buttonEdytuj;
         private TextBox textBoxZaDzien;
         private Label label10;
         private TextBox textBoxNowe;
@@ -196,6 +236,9 @@
         private TextBox textBoxProdukt;
         private Label label7;
         private Label label4;
-        private Button button1;
+        private Button buttonOdswiez;
+        private Label label1;
+        private Button buttonDodaj;
+        private Button buttonUsun;
     }
 }

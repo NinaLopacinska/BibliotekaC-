@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonDodajPracownika = new Button();
+            buttonDodajProdukt = new Button();
             textBoxAutor = new TextBox();
             textBoxRokWydania = new TextBox();
             textBoxNrKatagolowy = new TextBox();
@@ -47,22 +47,22 @@
             label1 = new Label();
             buttonRejstracja = new Button();
             buttonZalogujRej = new Button();
-            comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
             textBoxWydawnictwo = new TextBox();
             label4 = new Label();
+            textBoxTyp = new TextBox();
             SuspendLayout();
             // 
-            // buttonDodajPracownika
+            // buttonDodajProdukt
             // 
-            buttonDodajPracownika.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajPracownika.Location = new Point(499, 571);
-            buttonDodajPracownika.Name = "buttonDodajPracownika";
-            buttonDodajPracownika.Size = new Size(169, 61);
-            buttonDodajPracownika.TabIndex = 143;
-            buttonDodajPracownika.Text = "Dodaj";
-            buttonDodajPracownika.UseVisualStyleBackColor = true;
-            buttonDodajPracownika.Click += buttonDodajPracownika_Click;
+            buttonDodajProdukt.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDodajProdukt.Location = new Point(499, 571);
+            buttonDodajProdukt.Name = "buttonDodajProdukt";
+            buttonDodajProdukt.Size = new Size(169, 61);
+            buttonDodajProdukt.TabIndex = 143;
+            buttonDodajProdukt.Text = "Dodaj";
+            buttonDodajProdukt.UseVisualStyleBackColor = true;
+            buttonDodajProdukt.Click += buttonDodajProdukt_Click_1;
             // 
             // textBoxAutor
             // 
@@ -233,16 +233,6 @@
             buttonZalogujRej.UseVisualStyleBackColor = true;
             buttonZalogujRej.Click += buttonZalogujRej_Click;
             // 
-            // comboBox1
-            // 
-            comboBox1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Książka", "Film", "Album" });
-            comboBox1.Location = new Point(674, 308);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(330, 36);
-            comboBox1.TabIndex = 145;
-            // 
             // comboBox2
             // 
             comboBox2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -271,6 +261,14 @@
             label4.TabIndex = 147;
             label4.Text = "Wydawnictwo:";
             // 
+            // textBoxTyp
+            // 
+            textBoxTyp.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxTyp.Location = new Point(674, 308);
+            textBoxTyp.Name = "textBoxTyp";
+            textBoxTyp.Size = new Size(330, 38);
+            textBoxTyp.TabIndex = 149;
+            // 
             // DodajNwoyProduktAdminForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -278,11 +276,11 @@
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1229, 757);
+            Controls.Add(textBoxTyp);
             Controls.Add(textBoxWydawnictwo);
             Controls.Add(label4);
             Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
-            Controls.Add(buttonDodajPracownika);
+            Controls.Add(buttonDodajProdukt);
             Controls.Add(textBoxAutor);
             Controls.Add(textBoxRokWydania);
             Controls.Add(textBoxNrKatagolowy);
@@ -308,7 +306,7 @@
         }
 
         #endregion
-        private Button buttonDodajPracownika;
+        private Button buttonDodajProdukt;
         private TextBox textBoxAutor;
         private TextBox textBoxRokWydania;
         private TextBox textBoxNrKatagolowy;
@@ -327,9 +325,9 @@
         private Label label1;
         private Button buttonRejstracja;
         private Button buttonZalogujRej;
-        private ComboBox comboBox1;
         private ComboBox comboBox2;
         private TextBox textBoxWydawnictwo;
         private Label label4;
+        private TextBox textBoxTyp;
     }
 }

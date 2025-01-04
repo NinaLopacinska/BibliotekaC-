@@ -41,15 +41,16 @@
             buttonSzukaj = new Button();
             btnStatystyki = new Button();
             button1 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // buttonEdytujKontoUzytkownika
             // 
             buttonEdytujKontoUzytkownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujKontoUzytkownika.Location = new Point(20, 437);
+            buttonEdytujKontoUzytkownika.Location = new Point(20, 400);
             buttonEdytujKontoUzytkownika.Name = "buttonEdytujKontoUzytkownika";
-            buttonEdytujKontoUzytkownika.Size = new Size(209, 86);
+            buttonEdytujKontoUzytkownika.Size = new Size(209, 65);
             buttonEdytujKontoUzytkownika.TabIndex = 11;
             buttonEdytujKontoUzytkownika.Text = "Użytkownicy";
             buttonEdytujKontoUzytkownika.UseVisualStyleBackColor = true;
@@ -58,9 +59,9 @@
             // buttonPrzyjmijOplate
             // 
             buttonPrzyjmijOplate.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonPrzyjmijOplate.Location = new Point(20, 217);
+            buttonPrzyjmijOplate.Location = new Point(20, 292);
             buttonPrzyjmijOplate.Name = "buttonPrzyjmijOplate";
-            buttonPrzyjmijOplate.Size = new Size(209, 86);
+            buttonPrzyjmijOplate.Size = new Size(209, 83);
             buttonPrzyjmijOplate.TabIndex = 10;
             buttonPrzyjmijOplate.Text = "Przyjmij opłatę";
             buttonPrzyjmijOplate.UseVisualStyleBackColor = true;
@@ -71,7 +72,7 @@
             buttonWypozycz.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonWypozycz.Location = new Point(20, 111);
             buttonWypozycz.Name = "buttonWypozycz";
-            buttonWypozycz.Size = new Size(209, 86);
+            buttonWypozycz.Size = new Size(209, 65);
             buttonWypozycz.TabIndex = 8;
             buttonWypozycz.Text = "Wypożycz";
             buttonWypozycz.UseVisualStyleBackColor = true;
@@ -100,9 +101,9 @@
             // buttonEdytujSwojeKonto
             // 
             buttonEdytujSwojeKonto.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujSwojeKonto.Location = new Point(20, 323);
+            buttonEdytujSwojeKonto.Location = new Point(20, 673);
             buttonEdytujSwojeKonto.Name = "buttonEdytujSwojeKonto";
-            buttonEdytujSwojeKonto.Size = new Size(209, 86);
+            buttonEdytujSwojeKonto.Size = new Size(209, 83);
             buttonEdytujSwojeKonto.TabIndex = 12;
             buttonEdytujSwojeKonto.Text = "Edytuj swoje konto";
             buttonEdytujSwojeKonto.UseVisualStyleBackColor = true;
@@ -163,9 +164,9 @@
             // btnStatystyki
             // 
             btnStatystyki.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStatystyki.Location = new Point(20, 553);
+            btnStatystyki.Location = new Point(20, 581);
             btnStatystyki.Name = "btnStatystyki";
-            btnStatystyki.Size = new Size(209, 86);
+            btnStatystyki.Size = new Size(209, 65);
             btnStatystyki.TabIndex = 18;
             btnStatystyki.Text = "Statystyki";
             btnStatystyki.UseVisualStyleBackColor = true;
@@ -174,13 +175,24 @@
             // button1
             // 
             button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(20, 669);
+            button1.Location = new Point(20, 494);
             button1.Name = "button1";
-            button1.Size = new Size(209, 86);
+            button1.Size = new Size(209, 65);
             button1.TabIndex = 19;
             button1.Text = "Zmiana hasła";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // button3
+            // 
+            button3.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.Location = new Point(20, 201);
+            button3.Name = "button3";
+            button3.Size = new Size(209, 65);
+            button3.TabIndex = 20;
+            button3.Text = "Zwróć";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // MainPracownikForm
             // 
@@ -189,6 +201,7 @@
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1385, 804);
+            Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(btnStatystyki);
             Controls.Add(dataGridView1);
@@ -224,5 +237,6 @@
         private Button buttonSzukaj;
         private Button btnStatystyki;
         private Button button1;
+        private Button button3;
     }
 }

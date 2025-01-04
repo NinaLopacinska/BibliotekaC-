@@ -50,7 +50,7 @@
             // 
             button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(84, 561);
+            button1.Location = new Point(112, 474);
             button1.Name = "button1";
             button1.Size = new Size(169, 61);
             button1.TabIndex = 179;
@@ -74,7 +74,7 @@
             // 
             buttonUsun.Anchor = AnchorStyles.None;
             buttonUsun.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsun.Location = new Point(84, 455);
+            buttonUsun.Location = new Point(112, 395);
             buttonUsun.Name = "buttonUsun";
             buttonUsun.Size = new Size(169, 61);
             buttonUsun.TabIndex = 177;
@@ -98,7 +98,7 @@
             // 
             textBoxImie.Anchor = AnchorStyles.None;
             textBoxImie.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxImie.Location = new Point(95, 309);
+            textBoxImie.Location = new Point(112, 283);
             textBoxImie.Name = "textBoxImie";
             textBoxImie.Size = new Size(321, 38);
             textBoxImie.TabIndex = 174;
@@ -108,7 +108,7 @@
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(12, 309);
+            label10.Location = new Point(29, 283);
             label10.Name = "label10";
             label10.Size = new Size(77, 35);
             label10.TabIndex = 173;
@@ -118,7 +118,7 @@
             // 
             textBoxNazwisko.Anchor = AnchorStyles.None;
             textBoxNazwisko.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNazwisko.Location = new Point(165, 358);
+            textBoxNazwisko.Location = new Point(182, 332);
             textBoxNazwisko.Name = "textBoxNazwisko";
             textBoxNazwisko.Size = new Size(251, 38);
             textBoxNazwisko.TabIndex = 172;
@@ -128,7 +128,7 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(12, 361);
+            label8.Location = new Point(29, 335);
             label8.Name = "label8";
             label8.Size = new Size(147, 35);
             label8.TabIndex = 171;
@@ -138,7 +138,7 @@
             // 
             textBoxLogin.Anchor = AnchorStyles.None;
             textBoxLogin.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLogin.Location = new Point(112, 256);
+            textBoxLogin.Location = new Point(129, 230);
             textBoxLogin.Name = "textBoxLogin";
             textBoxLogin.Size = new Size(304, 38);
             textBoxLogin.TabIndex = 170;
@@ -148,7 +148,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(12, 259);
+            label7.Location = new Point(29, 233);
             label7.Name = "label7";
             label7.Size = new Size(94, 35);
             label7.TabIndex = 169;
@@ -170,7 +170,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 183);
+            label1.Location = new Point(29, 170);
             label1.Name = "label1";
             label1.Size = new Size(404, 40);
             label1.TabIndex = 180;

@@ -37,19 +37,19 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(13, 101);
+            dataGridView1.Location = new Point(113, 124);
             dataGridView1.Margin = new Padding(2, 3, 2, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(1089, 412);
+            dataGridView1.Size = new Size(692, 412);
             dataGridView1.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(119, 29);
+            label2.Location = new Point(141, 37);
             label2.Name = "label2";
             label2.Size = new Size(613, 58);
             label2.TabIndex = 20;
@@ -72,7 +72,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1147, 676);
+            ClientSize = new Size(904, 548);
             Controls.Add(buttonZalogujRej);
             Controls.Add(label2);
             Controls.Add(dataGridView1);

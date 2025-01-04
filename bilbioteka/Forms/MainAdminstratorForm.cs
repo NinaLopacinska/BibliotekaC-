@@ -152,5 +152,11 @@ namespace bilbioteka.Forms
             EdytujCennikAdmin edytujCennikAdmin = new EdytujCennikAdmin();
             edytujCennikAdmin.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Zostałeś pomyślnie wylogowany. Do zobaczenia!");
+            this.Close();
+        }
     }
 }

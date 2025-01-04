@@ -28,7 +28,6 @@ namespace bilbioteka.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Zostałeś pomyślnie wylogowany. Do zobaczenia!");
-
             this.Close();
 
         }
@@ -214,6 +213,12 @@ namespace bilbioteka.Forms
         {
             KaraPracownik2 karaPracownik2 = new KaraPracownik2();
             karaPracownik2.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ZwrotPracownik zwrotPracownik = new ZwrotPracownik();
+            zwrotPracownik.Show();
         }
     }
 }
