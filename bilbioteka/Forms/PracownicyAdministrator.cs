@@ -35,7 +35,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu  FROM uzytkownicy WHERE IdOsoby = 2 AND Stan = 'Aktywny'";
+            string query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica  FROM uzytkownicy WHERE IdOsoby = 2 AND Stan = 'Aktywny'";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -216,7 +216,6 @@ namespace bilbioteka.Forms
 
         private void SearchData()
         {
-
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
             string query = string.Empty;
             string searchValue = textBox1.Text;
@@ -226,25 +225,25 @@ namespace bilbioteka.Forms
             {
                 case null:
                 case "":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE IdOsoby = 2 AND Stan = 'Aktywny'";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, Ulica FROM uzytkownicy WHERE IdOsoby = 2 AND Stan = 'Aktywny'";
                     break;
                 case "Imie":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Imie LIKE @searchValue AND IdOsoby = 2 AND Stan = 'Aktywny'";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, Ulica FROM uzytkownicy WHERE Imie LIKE @searchValue AND IdOsoby = 2 AND Stan = 'Aktywny'";
                     break;
                 case "Nazwisko":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Nazwisko LIKE @searchValue AND IdOsoby = 2 AND Stan = 'Aktywny'";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, Ulica FROM uzytkownicy WHERE Nazwisko LIKE @searchValue AND IdOsoby = 2 AND Stan = 'Aktywny'";
                     break;
-                case "Numer Telefonu":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE NumerTelefonu = @numerTelefonu AND IdOsoby = 2 AND Stan = 'Aktywny'";
+                case "Numer telefonu":
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, Ulica FROM uzytkownicy WHERE CAST(NumerTelefonu AS VARCHAR) LIKE @numerTelefonu AND IdOsoby = 2 AND Stan = 'Aktywny'";
                     break;
                 case "Login":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Login LIKE @searchValue AND  IdOsoby = 2 AND Stan = 'Aktywny'";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, Ulica FROM uzytkownicy WHERE Login LIKE @searchValue AND IdOsoby = 2 AND Stan = 'Aktywny'";
                     break;
                 case "Email":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Email LIKE @searchValue AND IdOsoby = 2 AND Stan = 'Aktywny'";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, Ulica FROM uzytkownicy WHERE Email LIKE @searchValue AND IdOsoby = 2 AND Stan = 'Aktywny'";
                     break;
                 case "Pesel":
-                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, KodPocztowy, Ulica, NrPosesji, NrLokalu FROM uzytkownicy WHERE Pesel = @pesel AND IdOsoby = 2 AND Stan = 'Aktywny'";
+                    query = "SELECT Imie, Nazwisko, NumerTelefonu as 'Telefon', Login, Pesel, Email, Ulica FROM uzytkownicy WHERE Pesel LIKE @pesel AND IdOsoby = 2 AND Stan = 'Aktywny'";
                     break;
             }
 
@@ -264,27 +263,11 @@ namespace bilbioteka.Forms
                             case "Email":
                                 cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                                 break;
-                            case "Numer Telefonu":
-                                if (int.TryParse(searchValue, out int numerTelefonu))
-                                {
-                                    cmd.Parameters.AddWithValue("@numerTelefonu", numerTelefonu);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Proszę wpisać poprawny numer telefonu.");
-                                    return;
-                                }
+                            case "Numer telefonu":
+                                cmd.Parameters.AddWithValue("@numerTelefonu", $"%{searchValue}%");
                                 break;
                             case "Pesel":
-                                if (long.TryParse(searchValue, out long pesel))
-                                {
-                                    cmd.Parameters.AddWithValue("@pesel", pesel);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Proszę wpisać poprawny PESEL.");
-                                    return;
-                                }
+                                cmd.Parameters.AddWithValue("@pesel", $"%{searchValue}%");
                                 break;
                         }
 

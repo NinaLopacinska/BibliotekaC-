@@ -529,7 +529,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "RejestracjaForm";
-            Text = "RejestracjaForm";
+            Text = "Rejestracja";
             ResumeLayout(false);
             PerformLayout();
         }

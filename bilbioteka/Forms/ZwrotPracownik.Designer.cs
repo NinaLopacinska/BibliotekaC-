@@ -169,7 +169,7 @@
             Controls.Add(buttonOdswiez);
             Controls.Add(dataGridView1);
             Name = "ZwrotPracownik";
-            Text = "ZwrotPracownik";
+            Text = "Zwroty";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

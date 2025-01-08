@@ -36,13 +36,14 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(113, 124);
+            dataGridView1.Location = new Point(106, 124);
             dataGridView1.Margin = new Padding(2, 3, 2, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(692, 412);
+            dataGridView1.Size = new Size(671, 412);
             dataGridView1.TabIndex = 0;
             // 
             // label2
@@ -78,7 +79,7 @@
             Controls.Add(dataGridView1);
             Margin = new Padding(2, 3, 2, 3);
             Name = "HistoriaWypozycenForm";
-            Text = "HistoriaWypozycenForm";
+            Text = "Historia wypożyczeń";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

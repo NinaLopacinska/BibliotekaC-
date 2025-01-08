@@ -216,7 +216,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "MainPracownikForm";
-            Text = "MainPracownikForm";
+            Text = "Menu Pracownik";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

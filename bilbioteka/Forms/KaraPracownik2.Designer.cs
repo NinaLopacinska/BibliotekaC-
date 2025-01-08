@@ -202,7 +202,7 @@
             Controls.Add(label7);
             Controls.Add(label6);
             Name = "KaraPracownik2";
-            Text = "KaraPracownik2";
+            Text = "Przyjmowanie opłat";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

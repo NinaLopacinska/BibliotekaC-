@@ -499,7 +499,7 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Name = "EdycjaUzytkownikaUzytkownik";
-            Text = "EdycjaUzytkownikaUzytkownik";
+            Text = "Edycja konta użytkownika";
             ResumeLayout(false);
             PerformLayout();
         }

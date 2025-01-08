@@ -378,7 +378,7 @@
             Controls.Add(label12);
             Margin = new Padding(2);
             Name = "EdycjaUzytkownikaPracownik";
-            Text = "EdycjaUzytkownikaPracownik";
+            Text = "Edycja konta użytkownika przez pracownika";
             ResumeLayout(false);
             PerformLayout();
         }

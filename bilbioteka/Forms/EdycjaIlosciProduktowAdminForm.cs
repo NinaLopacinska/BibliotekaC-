@@ -212,7 +212,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT * FROM zasoby WHERE StanZasobu = 'Aktywny'";
+            string query = "SELECT Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE StanZasobu = 'Aktywny'";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -242,14 +242,123 @@ namespace bilbioteka.Forms
             }
         }
 
-        private void EdycjaProduktowAdminForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void SearchData()
+        {
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Proszę wybrać kryterium wyszukiwania.");
+                return;
+            }
+
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+            string query = string.Empty;
+            string searchValue = textBox1.Text;
+            int rokWydania = 0;
+            decimal ocena = 0;
+            int ilosc = 0;
+            // Ustal zapytanie w zależności od wybranego kryterium
+            switch (comboBox2.SelectedItem.ToString())
+            {
+                case "   ":
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE StanZasobu = 'Aktywny' ";
+                    break;
+                case "Tytuł":
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Tytul LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    break;
+                case "Autor":
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Autor LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    break;
+                case "Rok wydania":
+                    query = "SELECT Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE RokWydania LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    break;
+                case "Numer katalogowy":
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE NumerKatalogowy LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    break;
+                case "Typ produktu":
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Typ LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    break;
+                case "Ocena":
+                    // Sprawdzenie, czy searchValue jest liczbą
+                    if (!decimal.TryParse(searchValue, out ocena))
+                    {
+                        MessageBox.Show("Proszę wpisać poprawną ocenę.");
+                        return;
+                    }
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Ocena = @ocena AND StanZasobu = 'Aktywny'";
+                    break;
+                case "Ilość":
+
+                    if (!int.TryParse(searchValue, out ilosc))
+                    {
+                        MessageBox.Show("Proszę wpisać poprawną ilość.");
+                        return;
+                    }
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Ilosc = @ilosc AND StanZasobu = 'Aktywny'";
+                    break;
+                case "Kategoria":
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Kategoria LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    break;
+                default:
+                    MessageBox.Show("Proszę wybrać kryterium wyszukiwania.");
+                    return;
+
+                case "Wydawnictwo":
+                    query = "SELECT  Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Wydawnictwo LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    break;
+
+            }
+
+            // Tworzenie połączenia z bazą
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    // Dodaj parametr w zależności od wybranego kryterium
+                    switch (comboBox2.SelectedItem.ToString())
+                    {
+                        case "Tytuł":
+                        case "Autor":
+                        case "Numer katalogowy":
+                        case "Typ produktu":
+                        case "Wydawnictwo":
+                        case "Kategoria":
+                            cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
+                            break;
+                        case "Ocena":
+                            cmd.Parameters.AddWithValue("@ocena", ocena);
+                            break;
+                        case "Rok wydania":
+                            cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
+                            break;
+
+                        case "Ilość":
+                            cmd.Parameters.AddWithValue("@ilosc", ilosc);
+                            break;
+                    }
+
+                    // Wypełnij DataTable i przypisz do DataGridView
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dataGridView1.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                }
+            }
+        }
+        private void buttonSzukaj_Click(object sender, EventArgs e)
+        {
+            SearchData();
         }
     }
 }

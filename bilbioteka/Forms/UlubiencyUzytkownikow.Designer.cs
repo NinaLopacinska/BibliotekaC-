@@ -96,9 +96,9 @@
             label4.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(427, 40);
             label4.Name = "label4";
-            label4.Size = new Size(578, 58);
+            label4.Size = new Size(569, 58);
             label4.TabIndex = 170;
-            label4.Text = "Ulubieńcy Użytkowników";
+            label4.Text = "Ulubieńcy użytkowników";
             // 
             // label3
             // 
@@ -172,7 +172,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Name = "UlubiencyUzytkownikow";
-            Text = "UlubiencyMiesiaca";
+            Text = "Ulubiency użytkowników";
             ((System.ComponentModel.ISupportInitialize)dataGridViewGatunki).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPozycja).EndInit();
             ResumeLayout(false);

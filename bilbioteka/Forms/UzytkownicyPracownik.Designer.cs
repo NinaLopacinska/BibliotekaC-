@@ -231,7 +231,7 @@
             Controls.Add(label7);
             Controls.Add(label6);
             Name = "UzytkownicyPracownik";
-            Text = "UsunUzytkownikaPracownik";
+            Text = "Usuń użytkownika";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

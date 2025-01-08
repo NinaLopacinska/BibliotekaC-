@@ -153,7 +153,7 @@
             Controls.Add(buttonZaloguj);
             Controls.Add(buttonRejestrujLog);
             Name = "LogowanieForm";
-            Text = "LogowanieForm";
+            Text = "Logowanie";
             ResumeLayout(false);
             PerformLayout();
         }

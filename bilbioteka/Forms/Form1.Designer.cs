@@ -204,7 +204,7 @@
             Controls.Add(buttonZaloguj);
             ForeColor = SystemColors.ControlText;
             Name = "Form1";
-            Text = "Form1";
+            Text = "Manu";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

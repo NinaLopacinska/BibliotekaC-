@@ -49,7 +49,7 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(524, 153);
+            dataGridView1.Location = new Point(548, 153);
             dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
@@ -73,11 +73,11 @@
             // 
             buttonEdytuj.Anchor = AnchorStyles.None;
             buttonEdytuj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytuj.Location = new Point(310, 367);
+            buttonEdytuj.Location = new Point(295, 367);
             buttonEdytuj.Name = "buttonEdytuj";
-            buttonEdytuj.Size = new Size(169, 61);
+            buttonEdytuj.Size = new Size(214, 61);
             buttonEdytuj.TabIndex = 199;
-            buttonEdytuj.Text = "Edytuj";
+            buttonEdytuj.Text = "Zapisz zmiany";
             buttonEdytuj.UseVisualStyleBackColor = true;
             buttonEdytuj.Click += buttonDodaj_Click;
             // 
@@ -85,9 +85,9 @@
             // 
             textBoxZaDzien.Anchor = AnchorStyles.None;
             textBoxZaDzien.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxZaDzien.Location = new Point(310, 221);
+            textBoxZaDzien.Location = new Point(295, 221);
             textBoxZaDzien.Name = "textBoxZaDzien";
-            textBoxZaDzien.Size = new Size(187, 38);
+            textBoxZaDzien.Size = new Size(214, 38);
             textBoxZaDzien.TabIndex = 198;
             // 
             // label10
@@ -105,9 +105,9 @@
             // 
             textBoxNowe.Anchor = AnchorStyles.None;
             textBoxNowe.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNowe.Location = new Point(310, 302);
+            textBoxNowe.Location = new Point(295, 302);
             textBoxNowe.Name = "textBoxNowe";
-            textBoxNowe.Size = new Size(187, 38);
+            textBoxNowe.Size = new Size(214, 38);
             textBoxNowe.TabIndex = 196;
             // 
             // label8
@@ -125,9 +125,9 @@
             // 
             textBoxProdukt.Anchor = AnchorStyles.None;
             textBoxProdukt.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxProdukt.Location = new Point(310, 150);
+            textBoxProdukt.Location = new Point(295, 150);
             textBoxProdukt.Name = "textBoxProdukt";
-            textBoxProdukt.Size = new Size(187, 38);
+            textBoxProdukt.Size = new Size(214, 38);
             textBoxProdukt.TabIndex = 194;
             // 
             // label7
@@ -135,11 +135,11 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(172, 150);
+            label7.Location = new Point(154, 150);
             label7.Name = "label7";
-            label7.Size = new Size(117, 35);
+            label7.Size = new Size(135, 35);
             label7.TabIndex = 193;
-            label7.Text = "Produkt";
+            label7.Text = "Kategoria";
             // 
             // label4
             // 
@@ -155,9 +155,9 @@
             // 
             buttonOdswiez.Anchor = AnchorStyles.None;
             buttonOdswiez.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonOdswiez.Location = new Point(310, 446);
+            buttonOdswiez.Location = new Point(295, 446);
             buttonOdswiez.Name = "buttonOdswiez";
-            buttonOdswiez.Size = new Size(169, 62);
+            buttonOdswiez.Size = new Size(214, 62);
             buttonOdswiez.TabIndex = 201;
             buttonOdswiez.Text = "Odśwież";
             buttonOdswiez.UseVisualStyleBackColor = true;
@@ -177,11 +177,11 @@
             // 
             buttonDodaj.Anchor = AnchorStyles.None;
             buttonDodaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodaj.Location = new Point(120, 367);
+            buttonDodaj.Location = new Point(101, 367);
             buttonDodaj.Name = "buttonDodaj";
-            buttonDodaj.Size = new Size(169, 61);
+            buttonDodaj.Size = new Size(188, 61);
             buttonDodaj.TabIndex = 203;
-            buttonDodaj.Text = "Dodaj";
+            buttonDodaj.Text = "Dodaj nową";
             buttonDodaj.UseVisualStyleBackColor = true;
             buttonDodaj.Click += buttonDodaj_Click_1;
             // 
@@ -189,9 +189,9 @@
             // 
             buttonUsun.Anchor = AnchorStyles.None;
             buttonUsun.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonUsun.Location = new Point(120, 446);
+            buttonUsun.Location = new Point(101, 446);
             buttonUsun.Name = "buttonUsun";
-            buttonUsun.Size = new Size(169, 61);
+            buttonUsun.Size = new Size(188, 62);
             buttonUsun.TabIndex = 204;
             buttonUsun.Text = "Usuń";
             buttonUsun.UseVisualStyleBackColor = true;
@@ -218,7 +218,7 @@
             Controls.Add(buttonZalogujRej);
             Controls.Add(dataGridView1);
             Name = "EdytujCennikAdmin";
-            Text = "EdytujCennikAdmin";
+            Text = "Edycja cennika";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

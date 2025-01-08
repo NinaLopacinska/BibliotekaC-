@@ -66,7 +66,7 @@ namespace bilbioteka
                 string autor = reader["Autor"].ToString();
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaWypozyczen"]);
 
-                return $"DANE DOTYCZĄCE ZASOBÓW\n\nNajczęściej wypożyczany zasób: {typ} '{tytul}' autorstwa {autor}.\nLiczba wypożyczeń wypożyczeń: {liczbaWypozyczen}.\n\n";
+                return $"DANE DOTYCZĄCE ZASOBÓW \n\nNajczęściej wypożyczany zasób: {typ} '{tytul}' autorstwa {autor}. \nLiczba wypożyczeń wypożyczeń: {liczbaWypozyczen}. \n\n";
             });
         }
 
@@ -87,7 +87,7 @@ namespace bilbioteka
                 string autor = reader["Autor"].ToString();
                 int liczbaWypozyczen = Convert.ToInt32(reader["Wypozyczenia"]);
 
-                return $"Najczęściej wypożyczany w tym miesiącu: {typ} '{tytul}' autorstwa {autor}.\n Liczba wypożyczeń: {liczbaWypozyczen}.\n\n";
+                return $"Najczęściej wypożyczany w tym miesiącu: {typ} '{tytul}' autorstwa {autor}. \n Liczba wypożyczeń: {liczbaWypozyczen}. \n\n";
             });
         }
 
@@ -105,7 +105,7 @@ namespace bilbioteka
             return WykonajZapytanieSQL(query, reader =>
             {
                 double srednia = Convert.ToDouble(reader["SredniaWypozyczenWMiesiacu"]);
-                return $"Średnia liczba wypożyczeń w miesiącu: {srednia:F2}\n";
+                return $"Średnia liczba wypożyczeń w miesiącu: {srednia:F2}. \n";
             });
         }
 
@@ -117,7 +117,8 @@ namespace bilbioteka
                     COUNT(CASE WHEN Typ LIKE 'Film' THEN 1 END) AS LiczbaFilmow,
                     COUNT(CASE WHEN Typ LIKE 'Album' THEN 1 END) AS LiczbaAlbumow,
                     COUNT(Id) AS LiczbaZasobow
-                FROM [biblioteka].[dbo].[zasoby]";
+                FROM [biblioteka].[dbo].[zasoby]
+                WHERE StanZasobu = 'Aktywny'";
 
             return WykonajZapytanieSQL(query, reader =>
             {
@@ -126,7 +127,7 @@ namespace bilbioteka
                 int albumy = Convert.ToInt32(reader["LiczbaAlbumow"]);
                 int zasoby = Convert.ToInt32(reader["LiczbaZasobow"]);
 
-                return $"Statystyki zasobów:\n" +
+                return $"Statystyki zasobów: \n" +
                        $"Liczba książek: {ksiazki} \n" +
                        $"Liczba filmów: {filmy} \n" +
                        $"Liczba albumów: {albumy} \n" +
@@ -146,7 +147,7 @@ namespace bilbioteka
 
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaPozaBiblio"]);
 
-                return $"Liczba obecnie wypożyczonych pozycji wynosi: {liczbaWypozyczen}.\n";
+                return $"Liczba obecnie wypożyczonych pozycji wynosi: {liczbaWypozyczen}. \n";
             });
         }
 
@@ -164,7 +165,7 @@ namespace bilbioteka
                 string wydawnictwo = reader["Wydawnictwo"].ToString();
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaWypozyczen"]);
 
-                return $"Najczęściej wypożyczane wydawnictwo: {wydawnictwo}. \nLiczba wypożyczeń: {liczbaWypozyczen}.\n";
+                return $"Najczęściej wypożyczane wydawnictwo: {wydawnictwo}. \nLiczba wypożyczeń: {liczbaWypozyczen}. \n";
             });
         }
 
@@ -173,14 +174,14 @@ namespace bilbioteka
             const string query = @"
                 SELECT COUNT(Id) AS LiczbaUzytkownikow
                 FROM [biblioteka].[dbo].[uzytkownicy] 
-                WHERE IdOsoby = 1";
+                WHERE IdOsoby = 1 AND Stan = 'Aktywny'";
 
             return WykonajZapytanieSQL(query, reader =>
             {
                 
                 int liczbaWUzytkownikow = Convert.ToInt32(reader["LiczbaUzytkownikow"]);
 
-                return $"DANE DOTYCZĄCE UŻYTKOWNIKÓW I PERSONELU\n\n Liczba zarejestrowanych użytkowników wynoi: {liczbaWUzytkownikow}.\n";
+                return $"DANE DOTYCZĄCE UŻYTKOWNIKÓW I PERSONELU \n\n Liczba zarejestrowanych użytkowników wynoi: {liczbaWUzytkownikow}. \n";
             });
         }
 
@@ -196,7 +197,7 @@ namespace bilbioteka
                 string liczbaDluznikow = reader["LiczbaDluznikow"].ToString();
                 
 
-                return $"Liczba dłużników biblioteki wynosi {liczbaDluznikow}.\n";
+                return $"Liczba dłużników biblioteki wynosi {liczbaDluznikow}. \n";
             });
         }
         private string PobierzLiczbePracownikow()
@@ -204,14 +205,14 @@ namespace bilbioteka
             const string query = @"
                SELECT TOP 1 COUNT(Id) AS LiczbaPracownikow
                 FROM [biblioteka].[dbo].[uzytkownicy] 
-                WHERE IdOsoby = 2";
+                WHERE IdOsoby = 2 AND Stan = 'Aktywny'";
 
             return WykonajZapytanieSQL(query, reader =>
             {
                 string liczbaPracownikow = reader["LiczbaPracownikow"].ToString();
 
 
-                return $"Liczba zatrudnionych pracowników biblioteki wynosi: {liczbaPracownikow}.\n";
+                return $"Liczba zatrudnionych pracowników biblioteki wynosi: {liczbaPracownikow}. \n";
             });
         }
 
@@ -237,7 +238,7 @@ namespace bilbioteka
                 return $"Błąd wykonania zapytania SQL: {ex.Message}\n";
             }
 
-            return "Brak danych do wyświetlenia.\n";
+            return "Brak danych do wyświetlenia. \n";
         }
     }
 }

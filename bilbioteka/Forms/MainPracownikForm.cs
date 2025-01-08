@@ -77,28 +77,22 @@ namespace bilbioteka.Forms
             switch (comboBox1.SelectedItem.ToString())
             {
                 case "   ":
-                    query = "SELECT * FROM zasoby ";
+                    query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE StanZasobu = 'Aktywny'";
                     break;
                 case "Tytuł":
-                    query = "SELECT * FROM zasoby WHERE Tytul LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Tytul LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Autor":
-                    query = "SELECT * FROM zasoby WHERE Autor LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Autor LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Rok wydania":
-                    // Sprawdzenie, czy searchValue jest liczbą
-                    if (!int.TryParse(searchValue, out rokWydania))
-                    {
-                        MessageBox.Show("Proszę wpisać poprawny rok wydania.");
-                        return;
-                    }
-                    query = "SELECT * FROM zasoby WHERE RokWydania = @rokWydania AND StanZasobu = 'Aktywny'";
+                    query = "SELECT Tytul, Autor, RokWydania AS 'Rok', NumerKatalogowy AS 'Nr. Kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE RokWydania LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Numer katalogowy":
-                    query = "SELECT * FROM zasoby WHERE NumerKatalogowy LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE NumerKatalogowy LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Typ produktu":
-                    query = "SELECT * FROM zasoby WHERE Typ LIKE @searchValue AND StanZasobu = 'Aktywny'";
+                    query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Typ LIKE @searchValue AND StanZasobu = 'Aktywny'";
                     break;
                 case "Ocena":
                     // Sprawdzenie, czy searchValue jest liczbą
@@ -151,7 +145,7 @@ namespace bilbioteka.Forms
                             cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                             break;
                         case "Rok wydania":
-                            cmd.Parameters.AddWithValue("@rokWydania", rokWydania);
+                            cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                             break;
                         case "Ocena":
                             cmd.Parameters.AddWithValue("@ocena", ocena);

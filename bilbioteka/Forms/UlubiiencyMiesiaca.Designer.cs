@@ -90,7 +90,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Name = "UlubiiencyMiesiaca";
-            Text = "UlubiiencyMiesiaca";
+            Text = "Ulubieńcy miesiąca";
             ((System.ComponentModel.ISupportInitialize)dataGridViewPozycja).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -43,6 +43,9 @@
             label4 = new Label();
             label5 = new Label();
             textBoxTyp = new TextBox();
+            textBoxSzukanaWartosc = new TextBox();
+            comboBox1 = new ComboBox();
+            buttonSzukaj2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -102,12 +105,12 @@
             dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(436, 517);
+            dataGridView1.Location = new Point(409, 535);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(835, 297);
+            dataGridView1.Size = new Size(835, 315);
             dataGridView1.TabIndex = 19;
             // 
             // buttonZalogujRej
@@ -126,21 +129,21 @@
             // 
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(436, 131);
+            dataGridView2.Location = new Point(409, 103);
             dataGridView2.Margin = new Padding(3, 2, 3, 2);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(1059, 326);
+            dataGridView2.Size = new Size(1059, 318);
             dataGridView2.TabIndex = 172;
             // 
             // textBox1
             // 
-            textBox1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(436, 71);
+            textBox1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(409, 55);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(480, 47);
+            textBox1.Size = new Size(480, 43);
             textBox1.TabIndex = 171;
             // 
             // comboBox2
@@ -148,7 +151,7 @@
             comboBox2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox2.FormattingEnabled = true;
             comboBox2.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria", "Wydawnictwo" });
-            comboBox2.Location = new Point(923, 83);
+            comboBox2.Location = new Point(895, 63);
             comboBox2.Margin = new Padding(3, 2, 3, 2);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(263, 36);
@@ -157,21 +160,21 @@
             // buttonSzukaj
             // 
             buttonSzukaj.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(1194, 65);
+            buttonSzukaj.Location = new Point(1164, 47);
             buttonSzukaj.Margin = new Padding(3, 2, 3, 2);
             buttonSzukaj.Name = "buttonSzukaj";
-            buttonSzukaj.Size = new Size(120, 62);
+            buttonSzukaj.Size = new Size(114, 52);
             buttonSzukaj.TabIndex = 169;
             buttonSzukaj.Text = "Szukaj";
             buttonSzukaj.UseVisualStyleBackColor = true;
-            buttonSzukaj.Click += buttonSzukaj_Click;
+            buttonSzukaj.Click += buttonSzukaj_Click_1;
             // 
             // label6
             // 
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(436, 26);
+            label6.Location = new Point(409, 8);
             label6.Name = "label6";
             label6.Size = new Size(928, 37);
             label6.TabIndex = 179;
@@ -182,7 +185,7 @@
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(436, 478);
+            label4.Location = new Point(409, 435);
             label4.Name = "label4";
             label4.Size = new Size(758, 37);
             label4.TabIndex = 180;
@@ -208,13 +211,48 @@
             textBoxTyp.Size = new Size(286, 38);
             textBoxTyp.TabIndex = 182;
             // 
+            // textBoxSzukanaWartosc
+            // 
+            textBoxSzukanaWartosc.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            textBoxSzukanaWartosc.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSzukanaWartosc.Location = new Point(410, 487);
+            textBoxSzukanaWartosc.Name = "textBoxSzukanaWartosc";
+            textBoxSzukanaWartosc.Size = new Size(443, 43);
+            textBoxSzukanaWartosc.TabIndex = 186;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            comboBox1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "   ", "Imie", "Nazwisko", "Login", "Numer telefonu", "Email", "Pesel" });
+            comboBox1.Location = new Point(859, 488);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(214, 36);
+            comboBox1.TabIndex = 185;
+            // 
+            // buttonSzukaj2
+            // 
+            buttonSzukaj2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonSzukaj2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSzukaj2.Location = new Point(1079, 479);
+            buttonSzukaj2.Name = "buttonSzukaj2";
+            buttonSzukaj2.Size = new Size(127, 51);
+            buttonSzukaj2.TabIndex = 184;
+            buttonSzukaj2.Text = "Szukaj";
+            buttonSzukaj2.UseVisualStyleBackColor = true;
+            buttonSzukaj2.Click += buttonSzukaj2_Click_1;
+            // 
             // WypozyczeniePracownikForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1512, 825);
+            ClientSize = new Size(1512, 861);
+            Controls.Add(textBoxSzukanaWartosc);
+            Controls.Add(comboBox1);
+            Controls.Add(buttonSzukaj2);
             Controls.Add(textBoxTyp);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -232,7 +270,7 @@
             Controls.Add(label2);
             Margin = new Padding(2);
             Name = "WypozyczeniePracownikForm";
-            Text = "WypozyczeniePracownikForm";
+            Text = "Wypożyczenia";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
@@ -256,5 +294,8 @@
         private Label label4;
         private Label label5;
         private TextBox textBoxTyp;
+        private TextBox textBoxSzukanaWartosc;
+        private ComboBox comboBox1;
+        private Button buttonSzukaj2;
     }
 }

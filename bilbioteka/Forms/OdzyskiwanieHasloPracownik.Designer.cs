@@ -153,7 +153,7 @@
             Controls.Add(label7);
             Controls.Add(label6);
             Name = "OdzyskiwanieHasloPracownik";
-            Text = "OdzyskiwanieHasloPracownik";
+            Text = "Hasło tymczasowe dla użytkownika";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

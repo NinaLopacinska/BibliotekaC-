@@ -127,7 +127,7 @@
             // 
             dataGridViewPozycja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPozycja.Location = new Point(173, 326);
-            dataGridViewPozycja.Margin = new Padding(2, 2, 2, 2);
+            dataGridViewPozycja.Margin = new Padding(2);
             dataGridViewPozycja.Name = "dataGridViewPozycja";
             dataGridViewPozycja.RowHeadersWidth = 62;
             dataGridViewPozycja.RowTemplate.Height = 33;
@@ -138,7 +138,7 @@
             // 
             dataGridViewGatunki.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewGatunki.Location = new Point(173, 596);
-            dataGridViewGatunki.Margin = new Padding(2, 2, 2, 2);
+            dataGridViewGatunki.Margin = new Padding(2);
             dataGridViewGatunki.Name = "dataGridViewGatunki";
             dataGridViewGatunki.RowHeadersWidth = 62;
             dataGridViewGatunki.RowTemplate.Height = 33;
@@ -174,9 +174,9 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(label2);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "StatystykiPracownik";
-            Text = "StatystykiPracownik";
+            Text = "Statystyki";
             ((System.ComponentModel.ISupportInitialize)dataGridViewPozycja).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGatunki).EndInit();
             ResumeLayout(false);

@@ -300,7 +300,7 @@
             Controls.Add(buttonRejstracja);
             Controls.Add(buttonZalogujRej);
             Name = "DodajNwoyProduktAdminForm";
-            Text = "EdycjaZbioruAdminForm";
+            Text = "Dodaj nowy produkt";
             ResumeLayout(false);
             PerformLayout();
         }

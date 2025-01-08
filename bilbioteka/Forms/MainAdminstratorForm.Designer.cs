@@ -154,7 +154,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "MainAdminstratorForm";
-            Text = "MainAdminstratorForm";
+            Text = "Menu Adminstrator";
             ResumeLayout(false);
             PerformLayout();
         }

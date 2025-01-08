@@ -199,7 +199,7 @@
             Controls.Add(label1);
             ForeColor = SystemColors.ControlText;
             Name = "MainUzytkownikForm";
-            Text = "MainUzytkownikForm";
+            Text = "Menu Użytkownik";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
