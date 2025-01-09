@@ -55,7 +55,7 @@
             // buttonDodajProdukt
             // 
             buttonDodajProdukt.Font = new Font("Book Antiqua", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDodajProdukt.Location = new Point(437, 428);
+            buttonDodajProdukt.Location = new Point(430, 427);
             buttonDodajProdukt.Margin = new Padding(3, 2, 3, 2);
             buttonDodajProdukt.Name = "buttonDodajProdukt";
             buttonDodajProdukt.Size = new Size(148, 46);
