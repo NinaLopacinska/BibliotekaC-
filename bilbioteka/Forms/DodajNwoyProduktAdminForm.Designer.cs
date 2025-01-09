@@ -275,7 +275,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1060, 557);
+            ClientSize = new Size(1048, 538);
             Controls.Add(textBoxTyp);
             Controls.Add(textBoxWydawnictwo);
             Controls.Add(label4);
