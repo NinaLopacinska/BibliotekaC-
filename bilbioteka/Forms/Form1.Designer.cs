@@ -151,7 +151,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1018, 444);
+            dataGridView1.Size = new Size(948, 444);
             dataGridView1.TabIndex = 8;
             // 
             // buttonUlubiency
