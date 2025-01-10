@@ -96,7 +96,7 @@ namespace bilbioteka.Forms
 
                 // Przenieś dane do odpowiednich TextBoxów
                 textBoxTytul.Text = selectedRow.Cells["Tytul"].Value?.ToString() ?? string.Empty;
-                textBoxNrKatalogowy.Text = selectedRow.Cells["NumerKatalogowy"].Value?.ToString() ?? string.Empty;
+                textBoxNrKatalogowy.Text = selectedRow.Cells["Nr. Kat."].Value?.ToString() ?? string.Empty;
                 textBoxIlosc.Text = selectedRow.Cells["Ilosc"].Value?.ToString() ?? string.Empty;
             }
         }
