@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.IO.Packaging;
-using System.Text;
-using iText;
-
 
 namespace bilbioteka
 {
@@ -21,26 +17,27 @@ namespace bilbioteka
             _connectionString = connectionString;
         }
 
-        public List<string> GenerujRaport()
+        public List<string> GenerujRaport(DateTime dataOd, DateTime dataDo)
         {
-            List<string> raportList = new List<string>();
-            raportList.Add($"RAPORT: {_nazwaRaportu.ToUpper()}\n");
-            raportList.Add($"Opis: {_opisRaportu}\n");
-            raportList.Add(new string('-', 50) + "\n");
+            List<string> raportList = new List<string>
+            {
+                $"RAPORT: {_nazwaRaportu.ToUpper()}\n",
+                $"Opis: {_opisRaportu}\n",
+                $"Zakres dat: od {dataOd:yyyy-MM-dd} do {dataDo:yyyy-MM-dd}\n",
+                new string('-', 50) + "\n"
+            };
 
             try
             {
-                // Dodanie wyników z zapytań do raportu
-                raportList.Add(PobierzNajczesciejWypozyczanaPozycje());
-                raportList.Add(PobierzNajczesciejWypozyczanaPozycjeWMiesiacu());
-                raportList.Add(PobierzSredniaLiczbeWypozyczenWMiesiacu());
+                
+                raportList.Add(PobierzNajczesciejWypozyczanaPozycjeWMiesiacu(dataOd, dataDo));
+                raportList.Add(PobierzSredniaLiczbeWypozyczenWMiesiacu(dataOd, dataDo));
                 raportList.Add(PobierzStatystykiZasobow());
-                raportList.Add(PobierzNajczestszeWydawnictwo());
-                raportList.Add(PobierzZasowbyWbiblio());
+                raportList.Add(PobierzNajczestszeWydawnictwo(dataOd, dataDo));
+                raportList.Add(PobierzZasobyWBibliotece());
                 raportList.Add(PobierzLiczbeUzytkownikow());
                 raportList.Add(PobierzLiczbeDluznikow());
                 raportList.Add(PobierzLiczbePracownikow());
-
             }
             catch (Exception ex)
             {
@@ -50,12 +47,13 @@ namespace bilbioteka
             return raportList;
         }
 
-        private string PobierzNajczesciejWypozyczanaPozycje()
+        private string PobierzNajczesciejWypozyczanaPozycje(DateTime dataOd, DateTime dataDo)
         {
             const string query = @"
                 SELECT TOP 1 z.Tytul, z.Typ, z.Autor, COUNT(h.Id) AS LiczbaWypozyczen
                 FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
                 JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
+                WHERE h.DataWypozyczenia BETWEEN @DataOd AND @DataDo
                 GROUP BY z.Tytul, z.Typ, z.Autor
                 ORDER BY LiczbaWypozyczen DESC";
 
@@ -66,17 +64,17 @@ namespace bilbioteka
                 string autor = reader["Autor"].ToString();
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaWypozyczen"]);
 
-                return $"DANE DOTYCZĄCE ZASOBÓW \n\nNajczęściej wypożyczany zasób: {typ} '{tytul}' autorstwa {autor}. \nLiczba wypożyczeń wypożyczeń: {liczbaWypozyczen}. \n\n";
-            });
+                return $"Najczęściej wypożyczany zasób: {typ} '{tytul}' autorstwa {autor}. Liczba wypożyczeń: {liczbaWypozyczen}.\n";
+            }, dataOd, dataDo);
         }
 
-        private string PobierzNajczesciejWypozyczanaPozycjeWMiesiacu()
+        private string PobierzNajczesciejWypozyczanaPozycjeWMiesiacu(DateTime dataOd, DateTime dataDo)
         {
             const string query = @"
                 SELECT TOP 1 z.Tytul, z.Autor, z.Typ, COUNT(h.Id) AS Wypozyczenia
                 FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
                 JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
-                WHERE MONTH(h.DataWypozyczenia) = MONTH(GETDATE())
+                WHERE h.DataWypozyczenia BETWEEN @DataOd AND @DataDo
                 GROUP BY z.Tytul, z.Autor, z.Typ
                 ORDER BY Wypozyczenia DESC";
 
@@ -87,16 +85,17 @@ namespace bilbioteka
                 string autor = reader["Autor"].ToString();
                 int liczbaWypozyczen = Convert.ToInt32(reader["Wypozyczenia"]);
 
-                return $"Najczęściej wypożyczany w tym miesiącu: {typ} '{tytul}' autorstwa {autor}. \n Liczba wypożyczeń: {liczbaWypozyczen}. \n\n";
-            });
+                return $"Najczęściej wypożyczany w podanym okresie: {typ} '{tytul}' autorstwa {autor}. Liczba wypożyczeń: {liczbaWypozyczen}.\n";
+            }, dataOd, dataDo);
         }
 
-        private string PobierzSredniaLiczbeWypozyczenWMiesiacu()
+        private string PobierzSredniaLiczbeWypozyczenWMiesiacu(DateTime dataOd, DateTime dataDo)
         {
             const string query = @"
                 WITH WypozyczeniaNaMiesiac AS (
                     SELECT YEAR(DataWypozyczenia) AS Rok, MONTH(DataWypozyczenia) AS Miesiac, COUNT(Id) AS LiczbaWypozyczen
                     FROM HistoriaWypozyczen
+                    WHERE DataWypozyczenia BETWEEN @DataOd AND @DataDo
                     GROUP BY YEAR(DataWypozyczenia), MONTH(DataWypozyczenia)
                 )
                 SELECT AVG(LiczbaWypozyczen) AS SredniaWypozyczenWMiesiacu
@@ -105,8 +104,8 @@ namespace bilbioteka
             return WykonajZapytanieSQL(query, reader =>
             {
                 double srednia = Convert.ToDouble(reader["SredniaWypozyczenWMiesiacu"]);
-                return $"Średnia liczba wypożyczeń w miesiącu: {srednia:F2}. \n";
-            });
+                return $"Średnia liczba wypożyczeń w miesiącu: {srednia:F2}.\n";
+            }, dataOd, dataDo);
         }
 
         private string PobierzStatystykiZasobow()
@@ -127,38 +126,34 @@ namespace bilbioteka
                 int albumy = Convert.ToInt32(reader["LiczbaAlbumow"]);
                 int zasoby = Convert.ToInt32(reader["LiczbaZasobow"]);
 
-                return $"Statystyki zasobów: \n" +
-                       $"Liczba książek: {ksiazki} \n" +
-                       $"Liczba filmów: {filmy} \n" +
-                       $"Liczba albumów: {albumy} \n" +
-                       $"Łączna liczba zasobów: {zasoby} \n";
+                return $"Statystyki zasobów: \nLiczba książek: {ksiazki} \nLiczba filmów: {filmy} \nLiczba albumów: {albumy} \nŁączna liczba zasobów: {zasoby} \n";
             });
         }
-        private string PobierzZasowbyWbiblio()
+
+        private string PobierzZasobyWBibliotece()
         {
             const string query = @"
-                SELECT TOP 1 COUNT(h.Id) AS LiczbaPozaBiblio
+                SELECT COUNT(h.Id) AS LiczbaPozaBiblio
                 FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
                 JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
                 WHERE StatusZwrotu = 'Nie zwrócono'";
 
             return WykonajZapytanieSQL(query, reader =>
             {
-
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaPozaBiblio"]);
-
                 return $"Liczba obecnie wypożyczonych pozycji wynosi: {liczbaWypozyczen}. \n";
             });
         }
 
-        private string PobierzNajczestszeWydawnictwo()
+        private string PobierzNajczestszeWydawnictwo(DateTime dataOd, DateTime dataDo)
         {
             const string query = @"
-                SELECT z.Wydawnictwo, COUNT(h.Id) AS LiczbaWypozyczen
-                FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
-                JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
-                GROUP BY z.Wydawnictwo
-                ORDER BY LiczbaWypozyczen DESC";
+        SELECT TOP 1 z.Wydawnictwo, COUNT(h.Id) AS LiczbaWypozyczen
+        FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
+        JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
+        WHERE h.DataWypozyczenia BETWEEN @DataOd AND @DataDo
+        GROUP BY z.Wydawnictwo
+        ORDER BY LiczbaWypozyczen DESC";
 
             return WykonajZapytanieSQL(query, reader =>
             {
@@ -166,57 +161,53 @@ namespace bilbioteka
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaWypozyczen"]);
 
                 return $"Najczęściej wypożyczane wydawnictwo: {wydawnictwo}. \nLiczba wypożyczeń: {liczbaWypozyczen}. \n";
-            });
+            }, dataOd, dataDo);
         }
+
 
         private string PobierzLiczbeUzytkownikow()
         {
             const string query = @"
                 SELECT COUNT(Id) AS LiczbaUzytkownikow
-                FROM [biblioteka].[dbo].[uzytkownicy] 
+                FROM [biblioteka].[dbo].[uzytkownicy]
                 WHERE IdOsoby = 1 AND Stan = 'Aktywny'";
 
             return WykonajZapytanieSQL(query, reader =>
             {
-                
-                int liczbaWUzytkownikow = Convert.ToInt32(reader["LiczbaUzytkownikow"]);
-
-                return $"DANE DOTYCZĄCE UŻYTKOWNIKÓW I PERSONELU \n\n Liczba zarejestrowanych użytkowników wynoi: {liczbaWUzytkownikow}. \n";
+                int liczbaUzytkownikow = Convert.ToInt32(reader["LiczbaUzytkownikow"]);
+                return $"Liczba zarejestrowanych użytkowników wynosi: {liczbaUzytkownikow}. \n";
             });
         }
 
         private string PobierzLiczbeDluznikow()
         {
             const string query = @"
-               SELECT COUNT(Id) AS LiczbaDluznikow
-                FROM [biblioteka].[dbo].[kary] 
+                SELECT COUNT(Id) AS LiczbaDluznikow
+                FROM [biblioteka].[dbo].[kary]
                 WHERE StatusKary = 'KARA'";
 
             return WykonajZapytanieSQL(query, reader =>
             {
-                string liczbaDluznikow = reader["LiczbaDluznikow"].ToString();
-                
-
-                return $"Liczba dłużników biblioteki wynosi {liczbaDluznikow}. \n";
+                int liczbaDluznikow = Convert.ToInt32(reader["LiczbaDluznikow"]);
+                return $"Liczba dłużników biblioteki wynosi: {liczbaDluznikow}. \n";
             });
         }
+
         private string PobierzLiczbePracownikow()
         {
             const string query = @"
-               SELECT TOP 1 COUNT(Id) AS LiczbaPracownikow
-                FROM [biblioteka].[dbo].[uzytkownicy] 
+                SELECT COUNT(Id) AS LiczbaPracownikow
+                FROM [biblioteka].[dbo].[uzytkownicy]
                 WHERE IdOsoby = 2 AND Stan = 'Aktywny'";
 
             return WykonajZapytanieSQL(query, reader =>
             {
-                string liczbaPracownikow = reader["LiczbaPracownikow"].ToString();
-
-
+                int liczbaPracownikow = Convert.ToInt32(reader["LiczbaPracownikow"]);
                 return $"Liczba zatrudnionych pracowników biblioteki wynosi: {liczbaPracownikow}. \n";
             });
         }
 
-        private string WykonajZapytanieSQL(string query, Func<SqlDataReader, string> processRow)
+        private string WykonajZapytanieSQL(string query, Func<SqlDataReader, string> processRow, DateTime dataOd = default, DateTime dataDo = default)
         {
             try
             {
@@ -224,11 +215,19 @@ namespace bilbioteka
                 {
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
-                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.Read())
+                        if (dataOd != default && dataDo != default)
                         {
-                            return processRow(reader);
+                            command.Parameters.AddWithValue("@DataOd", dataOd);
+                            command.Parameters.AddWithValue("@DataDo", dataDo);
+                        }
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return processRow(reader);
+                            }
                         }
                     }
                 }
@@ -238,7 +237,7 @@ namespace bilbioteka
                 return $"Błąd wykonania zapytania SQL: {ex.Message}\n";
             }
 
-            return "Brak danych do wyświetlenia. \n";
+            return "Brak danych do wyświetlenia.\n";
         }
     }
 }
