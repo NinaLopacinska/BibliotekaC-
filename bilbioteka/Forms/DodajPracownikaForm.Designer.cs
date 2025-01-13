@@ -360,7 +360,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(848, 369);
+            dataGridView1.Size = new Size(857, 369);
             dataGridView1.TabIndex = 114;
             // 
             // ButtonOdswiez

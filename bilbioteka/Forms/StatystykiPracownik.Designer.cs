@@ -125,17 +125,19 @@
             // 
             // dataGridViewPozycja
             // 
+            dataGridViewPozycja.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewPozycja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewPozycja.Location = new Point(173, 326);
             dataGridViewPozycja.Margin = new Padding(2);
             dataGridViewPozycja.Name = "dataGridViewPozycja";
             dataGridViewPozycja.RowHeadersWidth = 62;
             dataGridViewPozycja.RowTemplate.Height = 33;
-            dataGridViewPozycja.Size = new Size(796, 180);
+            dataGridViewPozycja.Size = new Size(796, 174);
             dataGridViewPozycja.TabIndex = 16;
             // 
             // dataGridViewGatunki
             // 
+            dataGridViewGatunki.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewGatunki.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewGatunki.Location = new Point(173, 596);
             dataGridViewGatunki.Margin = new Padding(2);

@@ -50,7 +50,7 @@
             buttonEdytujKontoUzytkownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujKontoUzytkownika.Location = new Point(20, 400);
             buttonEdytujKontoUzytkownika.Name = "buttonEdytujKontoUzytkownika";
-            buttonEdytujKontoUzytkownika.Size = new Size(209, 65);
+            buttonEdytujKontoUzytkownika.Size = new Size(209, 83);
             buttonEdytujKontoUzytkownika.TabIndex = 11;
             buttonEdytujKontoUzytkownika.Text = "Użytkownicy";
             buttonEdytujKontoUzytkownika.UseVisualStyleBackColor = true;
@@ -70,9 +70,9 @@
             // buttonWypozycz
             // 
             buttonWypozycz.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonWypozycz.Location = new Point(20, 111);
+            buttonWypozycz.Location = new Point(20, 87);
             buttonWypozycz.Name = "buttonWypozycz";
-            buttonWypozycz.Size = new Size(209, 65);
+            buttonWypozycz.Size = new Size(209, 83);
             buttonWypozycz.TabIndex = 8;
             buttonWypozycz.Text = "Wypożycz";
             buttonWypozycz.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             // buttonEdytujSwojeKonto
             // 
             buttonEdytujSwojeKonto.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujSwojeKonto.Location = new Point(20, 673);
+            buttonEdytujSwojeKonto.Location = new Point(20, 707);
             buttonEdytujSwojeKonto.Name = "buttonEdytujSwojeKonto";
             buttonEdytujSwojeKonto.Size = new Size(209, 83);
             buttonEdytujSwojeKonto.TabIndex = 12;
@@ -113,7 +113,7 @@
             // 
             button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.Font = new Font("Book Antiqua", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(1229, 20);
+            button2.Location = new Point(1420, 20);
             button2.Name = "button2";
             button2.Size = new Size(130, 44);
             button2.TabIndex = 13;
@@ -125,17 +125,17 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(258, 192);
+            dataGridView1.Location = new Point(275, 169);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1101, 563);
+            dataGridView1.Size = new Size(1251, 621);
             dataGridView1.TabIndex = 17;
             // 
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(258, 111);
+            textBox1.Location = new Point(275, 87);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(431, 51);
             textBox1.TabIndex = 16;
@@ -145,7 +145,7 @@
             comboBox1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "   ", "Tytuł", "Autor", "Rok wydania", "Numer katalogowy", "Typ produktu", "Ocena", "Ilość", "Kategoria", "Wydawnictwo" });
-            comboBox1.Location = new Point(697, 121);
+            comboBox1.Location = new Point(714, 97);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(306, 40);
             comboBox1.TabIndex = 15;
@@ -153,7 +153,7 @@
             // buttonSzukaj
             // 
             buttonSzukaj.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSzukaj.Location = new Point(1010, 111);
+            buttonSzukaj.Location = new Point(1027, 87);
             buttonSzukaj.Name = "buttonSzukaj";
             buttonSzukaj.Size = new Size(120, 57);
             buttonSzukaj.TabIndex = 14;
@@ -164,9 +164,9 @@
             // btnStatystyki
             // 
             btnStatystyki.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStatystyki.Location = new Point(20, 581);
+            btnStatystyki.Location = new Point(20, 607);
             btnStatystyki.Name = "btnStatystyki";
-            btnStatystyki.Size = new Size(209, 65);
+            btnStatystyki.Size = new Size(209, 83);
             btnStatystyki.TabIndex = 18;
             btnStatystyki.Text = "Statystyki";
             btnStatystyki.UseVisualStyleBackColor = true;
@@ -175,9 +175,9 @@
             // button1
             // 
             button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(20, 494);
+            button1.Location = new Point(20, 504);
             button1.Name = "button1";
-            button1.Size = new Size(209, 65);
+            button1.Size = new Size(209, 83);
             button1.TabIndex = 19;
             button1.Text = "Zmiana hasła";
             button1.UseVisualStyleBackColor = true;
@@ -186,9 +186,9 @@
             // button3
             // 
             button3.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(20, 201);
+            button3.Location = new Point(20, 189);
             button3.Name = "button3";
-            button3.Size = new Size(209, 65);
+            button3.Size = new Size(209, 83);
             button3.TabIndex = 20;
             button3.Text = "Zwróć";
             button3.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1385, 804);
+            ClientSize = new Size(1562, 830);
             Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(btnStatystyki);

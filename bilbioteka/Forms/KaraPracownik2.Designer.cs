@@ -41,16 +41,18 @@
             button1 = new Button();
             textBoxTyp = new TextBox();
             label2 = new Label();
+            dataGridView2 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // button2
             // 
             button2.Anchor = AnchorStyles.None;
-            button2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(98, 380);
+            button2.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(48, 368);
             button2.Name = "button2";
-            button2.Size = new Size(223, 81);
+            button2.Size = new Size(160, 81);
             button2.TabIndex = 189;
             button2.Text = "Przyjmij karę";
             button2.UseVisualStyleBackColor = true;
@@ -61,11 +63,11 @@
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(442, 147);
+            dataGridView1.Location = new Point(493, 138);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(732, 430);
+            dataGridView1.Size = new Size(709, 526);
             dataGridView1.TabIndex = 188;
             // 
             // buttonZalogujRej
@@ -83,7 +85,7 @@
             // 
             textBoxKwota.Anchor = AnchorStyles.None;
             textBoxKwota.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxKwota.Location = new Point(194, 260);
+            textBoxKwota.Location = new Point(233, 249);
             textBoxKwota.Name = "textBoxKwota";
             textBoxKwota.Size = new Size(187, 38);
             textBoxKwota.TabIndex = 185;
@@ -93,7 +95,7 @@
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(3, 263);
+            label10.Location = new Point(42, 252);
             label10.Name = "label10";
             label10.Size = new Size(167, 35);
             label10.TabIndex = 184;
@@ -103,7 +105,7 @@
             // 
             textBoxTytul.Anchor = AnchorStyles.None;
             textBoxTytul.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxTytul.Location = new Point(194, 205);
+            textBoxTytul.Location = new Point(233, 194);
             textBoxTytul.Name = "textBoxTytul";
             textBoxTytul.Size = new Size(187, 38);
             textBoxTytul.TabIndex = 183;
@@ -113,7 +115,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(81, 205);
+            label7.Location = new Point(120, 194);
             label7.Name = "label7";
             label7.Size = new Size(89, 35);
             label7.TabIndex = 182;
@@ -123,10 +125,10 @@
             // 
             label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
-            label6.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Book Antiqua", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point);
             label6.Location = new Point(123, 23);
             label6.Name = "label6";
-            label6.Size = new Size(1132, 58);
+            label6.Size = new Size(1049, 54);
             label6.TabIndex = 181;
             label6.Text = "Użytkownicy, którzy zalegają ze zwrtotem produktu";
             // 
@@ -134,7 +136,7 @@
             // 
             textBox1.Anchor = AnchorStyles.None;
             textBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(194, 147);
+            textBox1.Location = new Point(233, 136);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(187, 38);
             textBox1.TabIndex = 191;
@@ -144,7 +146,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(76, 147);
+            label1.Location = new Point(115, 136);
             label1.Name = "label1";
             label1.Size = new Size(94, 35);
             label1.TabIndex = 190;
@@ -154,9 +156,9 @@
             // 
             button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(98, 496);
+            button1.Location = new Point(233, 369);
             button1.Name = "button1";
-            button1.Size = new Size(223, 81);
+            button1.Size = new Size(214, 81);
             button1.TabIndex = 192;
             button1.Text = "Przyjmij opłatę za nowy produkt";
             button1.UseVisualStyleBackColor = true;
@@ -166,7 +168,7 @@
             // 
             textBoxTyp.Anchor = AnchorStyles.None;
             textBoxTyp.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxTyp.Location = new Point(194, 319);
+            textBoxTyp.Location = new Point(233, 308);
             textBoxTyp.Name = "textBoxTyp";
             textBoxTyp.Size = new Size(187, 38);
             textBoxTyp.TabIndex = 194;
@@ -176,11 +178,23 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(98, 322);
+            label2.Location = new Point(137, 311);
             label2.Name = "label2";
             label2.Size = new Size(72, 35);
             label2.TabIndex = 193;
             label2.Text = "Typ:";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(48, 477);
+            dataGridView2.Margin = new Padding(2);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersWidth = 62;
+            dataGridView2.RowTemplate.Height = 33;
+            dataGridView2.Size = new Size(399, 187);
+            dataGridView2.TabIndex = 195;
             // 
             // KaraPracownik2
             // 
@@ -188,6 +202,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
             ClientSize = new Size(1267, 690);
+            Controls.Add(dataGridView2);
             Controls.Add(textBoxTyp);
             Controls.Add(label2);
             Controls.Add(button1);
@@ -204,6 +219,7 @@
             Name = "KaraPracownik2";
             Text = "Przyjmowanie opłat";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,5 +239,6 @@
         private Button button1;
         private TextBox textBoxTyp;
         private Label label2;
+        private DataGridView dataGridView2;
     }
 }

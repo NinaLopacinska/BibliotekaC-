@@ -83,7 +83,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(12, 183);
+            label1.Location = new Point(12, 208);
             label1.Name = "label1";
             label1.Size = new Size(382, 40);
             label1.TabIndex = 195;
@@ -106,11 +106,11 @@
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(410, 183);
+            dataGridView1.Location = new Point(410, 208);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(957, 482);
+            dataGridView1.Size = new Size(957, 418);
             dataGridView1.TabIndex = 193;
             // 
             // buttonUsun

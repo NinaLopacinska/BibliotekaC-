@@ -18,6 +18,7 @@ namespace bilbioteka.Forms
         {
             InitializeComponent();
             LoadData();
+            LoadData2();
             dataGridView1.CellClick += dataGridView1_CellClick;
         }
 
@@ -322,6 +323,32 @@ namespace bilbioteka.Forms
             //koniec
 
             
+        }
+
+        private void LoadData2()
+        {
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+            string query = "SELECT Produkt, CenaZaDzien AS 'Cena za dzień [zł]', CenaZaNowe AS 'Cena za nowy [zł]' FROM Cennik ";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+                    dataGridView2.DataSource = dataTable;
+                }
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show("Wystąpił błąd w bazie danych: " + sqlEx.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd: " + ex.Message);
+                }
+            }
         }
     }
 }

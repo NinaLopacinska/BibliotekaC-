@@ -35,7 +35,7 @@ namespace bilbioteka.Forms
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
 
             // Zapytanie SQL, które wybiera dane z tabeli 'zasoby'
-            string query = "SELECT Imie, Nazwisko, Login, NumerTelefonu As 'Telefon', Email FROM uzytkownicy WHERE IdOsoby = 1 AND Stan = 'Aktywny'";
+            string query = "SELECT Imie, Nazwisko, Login, NumerTelefonu As 'Telefon', Email, Ulica FROM uzytkownicy WHERE IdOsoby = 1 AND Stan = 'Aktywny'";
 
             // Tworzenie obiektu SqlConnection z connection string
             using (SqlConnection conn = new SqlConnection(connectionString))
