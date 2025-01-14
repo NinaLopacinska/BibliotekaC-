@@ -69,7 +69,7 @@ namespace bilbioteka.Forms
                         SELECT h.Id, z.Tytul, h.DataWypozyczenia as 'Wypożyczone', h.DataZwrotu  as 'Zwrot' 
                         FROM HistoriaWypozyczen h
                         JOIN zasoby z ON h.ZasobId = z.Id
-                        WHERE h.LoginUzytkownika = @login"; // Filtrowanie po loginie użytkownika
+                        WHERE h.LoginUzytkownika = @login AND h.StatusZwrotu='Nie zwrócono'"; // Filtrowanie po loginie użytkownika
 
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@login", login); // Przekazujemy login jako parametr

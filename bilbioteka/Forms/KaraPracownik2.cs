@@ -169,6 +169,7 @@ namespace bilbioteka.Forms
             {
                 MessageBox.Show("Wystąpił błąd: " + ex.Message);
             }
+            LoadData();
         }
 
 
@@ -320,9 +321,10 @@ namespace bilbioteka.Forms
             {
                 MessageBox.Show("Wystąpił błąd: " + ex.Message);
             }
+            LoadData();
             //koniec
 
-            
+
         }
 
         private void LoadData2()
