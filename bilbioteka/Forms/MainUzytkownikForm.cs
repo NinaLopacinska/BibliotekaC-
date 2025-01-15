@@ -22,7 +22,7 @@ namespace bilbioteka.Forms
             label1.Text = userName;
             LoadData();
             LoadDataToDataGridView2();
-            Kara();
+            Kara(); 
         }
 
         private void Kara()
