@@ -26,7 +26,7 @@ namespace bilbioteka.Forms
         private void LoadData()
         {
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-            string query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary ";
+            string query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary WHERE StatusKary = 'KARA' ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -110,8 +110,8 @@ namespace bilbioteka.Forms
                 {
                     connection.Open();
 
-                    // Sprawdź, czy istnieje rekord dla podanego loginu i tytułu
-                    string selectQuery = "SELECT Login, Tytul, KwotaKary FROM kary WHERE Login = @login AND Tytul = @tytul";
+                    // Sprawdź, czy istnieje rekord dla podanego loginu, tytułu i statusu
+                    string selectQuery = "SELECT StatusKary, KwotaKary FROM kary WHERE Login = @login AND Tytul = @tytul";
                     SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
                     selectCommand.Parameters.AddWithValue("@login", login);
                     selectCommand.Parameters.AddWithValue("@tytul", tytul);
@@ -124,8 +124,17 @@ namespace bilbioteka.Forms
                             return;
                         }
 
-                        // Sprawdzenie poprawności kwoty
+                        string statusKary = reader.GetString(reader.GetOrdinal("StatusKary"));
                         int kwotaZBazy = reader.GetInt32(reader.GetOrdinal("KwotaKary"));
+
+                        // Sprawdź, czy status kary wynosi "KARA"
+                        if (statusKary != "KARA")
+                        {
+                            MessageBox.Show("Pozycja została już zwrócona.");
+                            return;
+                        }
+
+                        // Sprawdź zgodność kwoty
                         if (kwotaZBazy.ToString() != kwota)
                         {
                             MessageBox.Show("Podana kwota kary jest niezgodna.");

@@ -215,5 +215,10 @@ namespace bilbioteka.Forms
             zwrotPracownik.Show();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            WypozyczeniaUzytkownikowPracownik wypozyczeniaUzytkownikowPracownik = new WypozyczeniaUzytkownikowPracownik();
+            wypozyczeniaUzytkownikowPracownik.Show();
+        }
     }
 }

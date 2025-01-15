@@ -63,11 +63,11 @@
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(493, 138);
+            dataGridView1.Location = new Point(453, 138);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(709, 526);
+            dataGridView1.Size = new Size(802, 526);
             dataGridView1.TabIndex = 188;
             // 
             // buttonZalogujRej

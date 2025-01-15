@@ -42,26 +42,27 @@
             btnStatystyki = new Button();
             button1 = new Button();
             button3 = new Button();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // buttonEdytujKontoUzytkownika
             // 
-            buttonEdytujKontoUzytkownika.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdytujKontoUzytkownika.Location = new Point(20, 400);
+            buttonEdytujKontoUzytkownika.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonEdytujKontoUzytkownika.Location = new Point(20, 335);
             buttonEdytujKontoUzytkownika.Name = "buttonEdytujKontoUzytkownika";
             buttonEdytujKontoUzytkownika.Size = new Size(209, 83);
             buttonEdytujKontoUzytkownika.TabIndex = 11;
-            buttonEdytujKontoUzytkownika.Text = "Użytkownicy";
+            buttonEdytujKontoUzytkownika.Text = "Dane użytkowników";
             buttonEdytujKontoUzytkownika.UseVisualStyleBackColor = true;
             buttonEdytujKontoUzytkownika.Click += buttonEdytujKontoUzytkownika_Click;
             // 
             // buttonPrzyjmijOplate
             // 
-            buttonPrzyjmijOplate.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonPrzyjmijOplate.Location = new Point(20, 292);
+            buttonPrzyjmijOplate.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonPrzyjmijOplate.Location = new Point(20, 254);
             buttonPrzyjmijOplate.Name = "buttonPrzyjmijOplate";
-            buttonPrzyjmijOplate.Size = new Size(209, 83);
+            buttonPrzyjmijOplate.Size = new Size(209, 63);
             buttonPrzyjmijOplate.TabIndex = 10;
             buttonPrzyjmijOplate.Text = "Przyjmij opłatę";
             buttonPrzyjmijOplate.UseVisualStyleBackColor = true;
@@ -69,10 +70,10 @@
             // 
             // buttonWypozycz
             // 
-            buttonWypozycz.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonWypozycz.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             buttonWypozycz.Location = new Point(20, 87);
             buttonWypozycz.Name = "buttonWypozycz";
-            buttonWypozycz.Size = new Size(209, 83);
+            buttonWypozycz.Size = new Size(209, 63);
             buttonWypozycz.TabIndex = 8;
             buttonWypozycz.Text = "Wypożycz";
             buttonWypozycz.UseVisualStyleBackColor = true;
@@ -100,7 +101,7 @@
             // 
             // buttonEdytujSwojeKonto
             // 
-            buttonEdytujSwojeKonto.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonEdytujSwojeKonto.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             buttonEdytujSwojeKonto.Location = new Point(20, 707);
             buttonEdytujSwojeKonto.Name = "buttonEdytujSwojeKonto";
             buttonEdytujSwojeKonto.Size = new Size(209, 83);
@@ -163,10 +164,10 @@
             // 
             // btnStatystyki
             // 
-            btnStatystyki.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStatystyki.Location = new Point(20, 607);
+            btnStatystyki.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStatystyki.Location = new Point(20, 622);
             btnStatystyki.Name = "btnStatystyki";
-            btnStatystyki.Size = new Size(209, 83);
+            btnStatystyki.Size = new Size(209, 63);
             btnStatystyki.TabIndex = 18;
             btnStatystyki.Text = "Statystyki";
             btnStatystyki.UseVisualStyleBackColor = true;
@@ -174,10 +175,10 @@
             // 
             // button1
             // 
-            button1.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(20, 504);
+            button1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(20, 537);
             button1.Name = "button1";
-            button1.Size = new Size(209, 83);
+            button1.Size = new Size(209, 63);
             button1.TabIndex = 19;
             button1.Text = "Zmiana hasła";
             button1.UseVisualStyleBackColor = true;
@@ -185,14 +186,25 @@
             // 
             // button3
             // 
-            button3.Font = new Font("Book Antiqua", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(20, 189);
+            button3.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.Location = new Point(20, 169);
             button3.Name = "button3";
-            button3.Size = new Size(209, 83);
+            button3.Size = new Size(209, 63);
             button3.TabIndex = 20;
             button3.Text = "Zwróć";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.Location = new Point(20, 439);
+            button4.Name = "button4";
+            button4.Size = new Size(209, 83);
+            button4.TabIndex = 21;
+            button4.Text = "Wypożyczenia użytkowników";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // MainPracownikForm
             // 
@@ -201,6 +213,7 @@
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1562, 830);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button1);
             Controls.Add(btnStatystyki);
@@ -238,5 +251,6 @@
         private Button btnStatystyki;
         private Button button1;
         private Button button3;
+        private Button button4;
     }
 }
