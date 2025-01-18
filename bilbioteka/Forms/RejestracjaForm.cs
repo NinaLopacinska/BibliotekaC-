@@ -76,43 +76,48 @@ namespace bilbioteka.Forms
                 string.IsNullOrWhiteSpace(haslo) || string.IsNullOrWhiteSpace(kodPocztowy) || string.IsNullOrWhiteSpace(ulica) ||
                 string.IsNullOrWhiteSpace(nrPosesji) || string.IsNullOrWhiteSpace(pesel) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(numerTelefonu))
             {
-                MessageBox.Show("Wszystkie pola muszą być wypełnione (poza numerem lokalu).", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Wszystkie pola muszą być wypełnione (poza numerem lokalu).", "Błąd rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (login.Length < 5 || login.Length > 30)
             {
-                MessageBox.Show("Login musi mieć od 5 do 30 znaków.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Login musi mieć od 5 do 30 znaków.", "Błąd rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!Regex.IsMatch(haslo, @"^(?=.*[0-9]).{5,}$"))
             {
-                MessageBox.Show("Hasło musi mieć przynajmniej 5 znaków i zawierać co najmniej jedną cyfrę.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hasło musi mieć przynajmniej 5 znaków i zawierać co najmniej jedną cyfrę.", "Błąd rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!Regex.IsMatch(kodPocztowy, @"^9[0-4]-[0-9]{3}$"))
             {
-                MessageBox.Show("Kod pocztowy musi być w formacie 90-001 do 94-413.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Kod pocztowy musi być w formacie 90-001 do 94-413.", "Błąd rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!email.Contains("@") || !email.Contains("."))
             {
-                MessageBox.Show("Email musi zawierać znak '@' oraz '.'", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Email musi zawierać znak '@' oraz '.'", "Błąd rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!Regex.IsMatch(numerTelefonu, @"^\d{9}$"))
             {
-                MessageBox.Show("Numer telefonu musi składać się z 9 cyfr.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Numer telefonu musi składać się z 9 cyfr.", "Błąd rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!Regex.IsMatch(pesel, @"^\d{11}$"))
             {
-                MessageBox.Show("PESEL musi składać się z 11 cyfr.", "Błąd walidacji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("PESEL musi składać się z 11 cyfr.", "Błąd rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if ( dataUrodzenia > DateTime.Now)
+            {
+                MessageBox.Show("Data urodzenia nie może być póżniejsz niż dzień dzsiejszy!", "Bład rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

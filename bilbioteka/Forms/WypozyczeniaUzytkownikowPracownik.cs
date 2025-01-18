@@ -22,7 +22,7 @@ namespace bilbioteka.Forms
         private void LoadData()
         {
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-            string query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul , Typ, StatusKary FROM kary  ";
+            string query = "SELECT LoginUzytkownika AS 'Login', TytulPozycji AS 'Tytul', TypProduktu AS 'Typ', DataWypozyczenia AS 'Wypożyczenie', DataZwrotu AS 'Zwrot',  StatusZwrotu AS 'Status' FROM HistoriaWypozyczen  ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -62,16 +62,16 @@ namespace bilbioteka.Forms
             {
                 case null:
                 case "":
-                    query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary ";
+                    query = "SELECT LoginUzytkownika AS 'Login', TytulPozycji AS 'Tytul', TypProduktu AS 'Typ', DataWypozyczenia AS 'Wypożyczenie', DataZwrotu AS 'Zwrot',  StatusZwrotu AS 'Status' FROM HistoriaWypozyczen ";
                     break;
                 case "Login":
-                    query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary WHERE Login LIKE @searchValue";
+                    query = "SELECT LoginUzytkownika AS 'Login', TytulPozycji AS 'Tytul', TypProduktu AS 'Typ', DataWypozyczenia AS 'Wypożyczenie', DataZwrotu AS 'Zwrot',  StatusZwrotu AS 'Status' FROM HistoriaWypozyczen WHERE LoginUzytkownika LIKE @searchValue";
                     break;
                 case "Tytul":
-                    query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary WHERE Tytul LIKE @searchValue ";
+                    query = "SELECT LoginUzytkownika AS 'Login', TytulPozycji AS 'Tytul', TypProduktu AS 'Typ', DataWypozyczenia AS 'Wypożyczenie', DataZwrotu AS 'Zwrot',  StatusZwrotu AS 'Status' FROM HistoriaWypozyczen WHERE TytulPozycji LIKE @searchValue ";
                     break;
-                case "StatusKary":
-                    query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary WHERE StatusKary LIKE @searchValue";
+                case "Status":
+                    query = "SELECT LoginUzytkownika AS 'Login', TytulPozycji AS 'Tytul', TypProduktu AS 'Typ', DataWypozyczenia AS 'Wypożyczenie', DataZwrotu AS 'Zwrot',  StatusZwrotu AS 'Status' FROM HistoriaWypozyczen WHERE StatusZwrotu LIKE @searchValue";
                     break;
 
             }
@@ -93,7 +93,7 @@ namespace bilbioteka.Forms
                             case "Tytul":
                                 cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                                 break;
-                            case "StatusKary":
+                            case "Status":
                                 cmd.Parameters.AddWithValue("@searchValue", $"%{searchValue}%");
                                 break;
 

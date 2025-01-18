@@ -15,7 +15,7 @@ namespace bilbioteka.Forms
         }
         private void buttonZalogujRej_Click(object sender, EventArgs e) { this.Close(); }
 
-        
+
         private void buttonDodajProdukt_Click_1(object sender, EventArgs e)
         {
             // Pobieranie danych z pól formularza
@@ -30,18 +30,26 @@ namespace bilbioteka.Forms
             string wydawnictwo = textBoxWydawnictwo.Text;
 
             // Walidacja pól wymaganych
-
-
-            if (!int.TryParse(textBoxRokWydania.Text, out rokWydania) || rokWydania < 1500 || rokWydania >= 2025)
+            if (string.IsNullOrWhiteSpace(tytul) || string.IsNullOrWhiteSpace(autor) ||
+                string.IsNullOrWhiteSpace(numerKatalogowy) || string.IsNullOrWhiteSpace(typ) ||
+                string.IsNullOrWhiteSpace(wydawnictwo) || string.IsNullOrWhiteSpace(kategoria))
             {
-                MessageBox.Show("Podaj poprawny rok wydania.");
+                MessageBox.Show("Wszystkie pola muszą być wypełnione.");
                 return;
             }
+
+            if (!int.TryParse(textBoxRokWydania.Text, out rokWydania) || rokWydania < 1500 || rokWydania > DateTime.Now.Year)
+            {
+                MessageBox.Show($"Rok wydania musi być liczbą w przedziale 1500 - {DateTime.Now.Year}.");
+                return;
+            }
+
             if (!decimal.TryParse(textBoxOcena.Text, out ocena) || ocena < 1.00m || ocena > 10.00m)
             {
                 MessageBox.Show("Ocena musi być liczbą dziesiętną w przedziale 1.00 - 10.00.");
                 return;
             }
+
             if (!int.TryParse(textBoxIlosc.Text, out ilosc) || ilosc <= 0)
             {
                 MessageBox.Show("Ilość musi być liczbą całkowitą większą od 0.");
@@ -55,6 +63,19 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
+
+                    // Sprawdzanie unikalności numeru katalogowego
+                    string queryCheckCatalogNumber = "SELECT COUNT(*) FROM zasoby WHERE NumerKatalogowy = @NumerKatalogowy";
+                    using (SqlCommand commandCheckCatalogNumber = new SqlCommand(queryCheckCatalogNumber, connection))
+                    {
+                        commandCheckCatalogNumber.Parameters.AddWithValue("@NumerKatalogowy", numerKatalogowy);
+                        int count = (int)commandCheckCatalogNumber.ExecuteScalar();
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Podany numer katalogowy już istnieje w bazie danych.");
+                            return;
+                        }
+                    }
 
                     // Sprawdzanie istnienia produktu w tabeli Cennik
                     string query = "SELECT Produkt FROM Cennik WHERE Produkt = @produkt";
@@ -92,7 +113,7 @@ namespace bilbioteka.Forms
 
                     // Wstawianie nowego rekordu
                     string queryInsert = @"INSERT INTO zasoby (Tytul, Autor, RokWydania, NumerKatalogowy, Typ, Ocena, Ilosc, Kategoria, Wydawnictwo) 
-                                   VALUES (@Tytul, @Autor, @RokWydania, @NumerKatalogowy, @Typ, @Ocena, @Ilosc, @Kategoria, @Wydawnictwo)";
+                           VALUES (@Tytul, @Autor, @RokWydania, @NumerKatalogowy, @Typ, @Ocena, @Ilosc, @Kategoria, @Wydawnictwo)";
                     using (SqlCommand commandInsert = new SqlCommand(queryInsert, connection))
                     {
                         commandInsert.Parameters.AddWithValue("@Tytul", tytul);

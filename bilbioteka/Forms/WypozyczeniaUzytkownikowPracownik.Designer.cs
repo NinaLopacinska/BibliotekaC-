@@ -46,7 +46,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(715, 462);
+            dataGridView1.Size = new Size(811, 462);
             dataGridView1.TabIndex = 194;
             // 
             // buttonZalogujRej
@@ -85,7 +85,7 @@
             comboBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             comboBox1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "", "Login", "Tytul", "StatusKary" });
+            comboBox1.Items.AddRange(new object[] { "", "Login", "Tytul", "Status" });
             comboBox1.Location = new Point(536, 129);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(255, 36);

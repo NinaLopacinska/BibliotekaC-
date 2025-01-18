@@ -150,31 +150,46 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Cena musi być większa od zera!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             if (!int.TryParse(textBoxNowe.Text, out int cena2) || cena2 < 0)
             {
                 MessageBox.Show("Cena musi być większa od zera!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             string produkt = textBoxProdukt.Text;
             string cenaZaDzien = textBoxZaDzien.Text;
             string cenaZaNowe = textBoxNowe.Text;
 
-            // Sprawdzanie czy tytuł i numer katalogowy istnieją w bazie danych
+            // Sprawdzanie czy produkt istnieje w bazie danych
             using (SqlConnection connection = new SqlConnection(PolaczenieBazyDanych.StringPolaczeniowy()))
             {
                 connection.Open();
 
-                string updateQuery = "INSERT INTO Cennik ( Produkt,CenaZaDzien, CenaZaNowe) VALUES (@produkt, @cenaZaDzien, @cenaZaNowe)";
-                using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                string checkQuery = "SELECT COUNT(*) FROM Cennik WHERE Produkt = @produkt";
+                using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
                 {
-                    updateCommand.Parameters.AddWithValue("@CenaZaDzien", cenaZaDzien);
-                    updateCommand.Parameters.AddWithValue("@CenaZaNowe", cenaZaNowe);
-                    updateCommand.Parameters.AddWithValue("@Produkt", produkt);
-                    updateCommand.ExecuteNonQuery();
+                    checkCommand.Parameters.AddWithValue("@produkt", produkt);
+                    int count = (int)checkCommand.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Produkt o podanej nazwie już istnieje w tabeli Cennik!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
 
-                MessageBox.Show("Nowy typ produktu został zmnieniony pomyślnie.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Jeśli produkt nie istnieje, wykonaj zapytanie INSERT
+                string insertQuery = "INSERT INTO Cennik (Produkt, CenaZaDzien, CenaZaNowe) VALUES (@produkt, @cenaZaDzien, @cenaZaNowe)";
+                using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@produkt", produkt);
+                    insertCommand.Parameters.AddWithValue("@cenaZaDzien", cenaZaDzien);
+                    insertCommand.Parameters.AddWithValue("@cenaZaNowe", cenaZaNowe);
+                    insertCommand.ExecuteNonQuery();
+                }
 
+                MessageBox.Show("Nowy produkt został dodany pomyślnie.", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

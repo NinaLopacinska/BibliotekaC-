@@ -72,11 +72,6 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Kod pocztowy pracownika musi być z terenu Łodzi czyli od 90-001 do 94-413!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (kodPocztowy.Length < 1 || !Regex.IsMatch(nrLokalu, @"\d"))
-            {
-                MessageBox.Show("Numer lokalu musi zawierać cyfry!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
             if (pesel.Length != 11 || !long.TryParse(pesel, out _))
             {
@@ -95,7 +90,7 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Numer telefonu pracownika musi mieć 9 cyfr!", "Błąd rejestracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (DateTime.Now.Year - dataUrodzenia.Year < 16)
+            if (DateTime.Now.Year - dataUrodzenia.Year < 16 || dataUrodzenia> DateTime.Now)
             {
                 MessageBox.Show("Pracownik musi mieć cob najmniej 16 lat!", "Bład rejstracji", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
