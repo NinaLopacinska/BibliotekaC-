@@ -23,7 +23,7 @@ namespace bilbioteka.Forms
         private void LoadData()
         {
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-            string query = "SELECT DataWypozyczenia AS 'Wypożyczono', DataZwrotu AS 'Zwrot', LoginUzytkownika, TytulPozycji , TypProduktu AS 'Typ', StatusZwrotu AS 'Status' FROM HistoriaWypozyczen";
+            string query = "SELECT DataWypozyczenia AS 'Wypożyczono', DataZwrotu AS 'Zwrot', LoginUzytkownika, TytulPozycji , TypProduktu AS 'Typ', StatusZwrotu AS 'Status' FROM HistoriaWypozyczen WHERE StatusZwrotu = 'Nie zwrócono' OR StatusZwrotu = 'KARA'";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

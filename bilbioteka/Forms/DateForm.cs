@@ -29,6 +29,7 @@ namespace bilbioteka.Forms
                 // Pobierz zakres dat z kontrolek
                 DateTime dataOd = dateTimePicker1.Value.Date;
                 DateTime dataDo = dateTimePicker2.Value.Date;
+                
 
                 if (dataOd > dataDo)
                 {
@@ -38,7 +39,22 @@ namespace bilbioteka.Forms
                                     MessageBoxIcon.Error);
                     return;
                 }
-
+                if (dataDo > DateTime.Now)
+                {
+                    MessageBox.Show("Raport nie może wybiegać w przyszłość.",
+                                    "Błąd",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    return;
+                }
+                if (dataOd < new DateTime(2024, 10, 1))
+                {
+                    MessageBox.Show("Raport nie może obejmować czasu przed powstaniem Biblioteki.",
+                                    "Błąd",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    return;
+                }
                 // Wyświetlenie okna dialogowego wyboru ścieżki i nazwy pliku
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
