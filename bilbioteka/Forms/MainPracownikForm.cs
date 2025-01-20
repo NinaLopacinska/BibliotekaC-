@@ -43,7 +43,7 @@ namespace bilbioteka.Forms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Ilosc > 0 AND StanZasobu = 'Aktywny'"; // Filtrujemy tylko dostępne zasoby
+                    string query = "SELECT Tytul, Autor, RokWydania as Rok, NumerKatalogowy as 'Nr. kat.', Typ, Ocena, Ilosc, Kategoria, Wydawnictwo FROM zasoby WHERE Ilosc > 0 AND StanZasobu = 'Aktywny'"; 
                     SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);

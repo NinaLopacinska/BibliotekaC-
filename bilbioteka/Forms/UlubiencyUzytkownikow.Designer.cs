@@ -59,12 +59,12 @@
             dataGridViewGatunki.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewGatunki.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewGatunki.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewGatunki.Location = new Point(175, 540);
+            dataGridViewGatunki.Location = new Point(224, 542);
             dataGridViewGatunki.Margin = new Padding(2);
             dataGridViewGatunki.Name = "dataGridViewGatunki";
             dataGridViewGatunki.RowHeadersWidth = 62;
             dataGridViewGatunki.RowTemplate.Height = 33;
-            dataGridViewGatunki.Size = new Size(687, 242);
+            dataGridViewGatunki.Size = new Size(663, 242);
             dataGridViewGatunki.TabIndex = 176;
             // 
             // dataGridViewPozycja
@@ -72,19 +72,19 @@
             dataGridViewPozycja.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewPozycja.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewPozycja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPozycja.Location = new Point(175, 209);
+            dataGridViewPozycja.Location = new Point(224, 211);
             dataGridViewPozycja.Margin = new Padding(2);
             dataGridViewPozycja.Name = "dataGridViewPozycja";
             dataGridViewPozycja.RowHeadersWidth = 62;
             dataGridViewPozycja.RowTemplate.Height = 33;
-            dataGridViewPozycja.Size = new Size(687, 242);
+            dataGridViewPozycja.Size = new Size(663, 242);
             dataGridViewPozycja.TabIndex = 175;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(175, 480);
+            label5.Location = new Point(224, 482);
             label5.Name = "label5";
             label5.Size = new Size(652, 40);
             label5.TabIndex = 171;
@@ -94,7 +94,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Book Antiqua", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(427, 40);
+            label4.Location = new Point(278, 37);
             label4.Name = "label4";
             label4.Size = new Size(569, 58);
             label4.TabIndex = 170;
@@ -104,7 +104,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Book Antiqua", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(175, 134);
+            label3.Location = new Point(224, 136);
             label3.Name = "label3";
             label3.Size = new Size(676, 40);
             label3.TabIndex = 169;
@@ -147,7 +147,7 @@
             // 
             button1.Anchor = AnchorStyles.None;
             button1.Font = new Font("Book Antiqua", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(905, 708);
+            button1.Location = new Point(905, 733);
             button1.Name = "button1";
             button1.Size = new Size(157, 51);
             button1.TabIndex = 181;
@@ -160,7 +160,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
-            ClientSize = new Size(1385, 804);
+            ClientSize = new Size(1230, 804);
             Controls.Add(button1);
             Controls.Add(checkBoxAlbumy);
             Controls.Add(checkBoxFilmy);

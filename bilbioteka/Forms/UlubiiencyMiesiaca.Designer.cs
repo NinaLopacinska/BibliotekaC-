@@ -56,7 +56,7 @@
             dataGridViewPozycja.Name = "dataGridViewPozycja";
             dataGridViewPozycja.RowHeadersWidth = 62;
             dataGridViewPozycja.RowTemplate.Height = 33;
-            dataGridViewPozycja.Size = new Size(860, 380);
+            dataGridViewPozycja.Size = new Size(809, 301);
             dataGridViewPozycja.TabIndex = 185;
             // 
             // label4
@@ -84,7 +84,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.stan_czytelnictwa_w_polsce1;
-            ClientSize = new Size(1385, 804);
+            ClientSize = new Size(1199, 616);
             Controls.Add(buttonZalogujRej);
             Controls.Add(dataGridViewPozycja);
             Controls.Add(label4);

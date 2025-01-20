@@ -110,7 +110,7 @@ namespace bilbioteka.Forms
 
                 if ((statusZwrotu.Equals("Zwrócono", StringComparison.OrdinalIgnoreCase)) || (statusZwrotu.Equals("KARA", StringComparison.OrdinalIgnoreCase)))
                 {
-                    MessageBox.Show("Nie można przedłużyć terminu dla zasobu o statusie 'Zwrócono' lub 'KARA'.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Nie można dokonać zwrotu dla zasobu o statusie 'Zwrócono' lub 'KARA'.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
