@@ -9,13 +9,70 @@ namespace bilbioteka
         public Form1()
         {
             InitializeComponent();
+            
             this.Load += new EventHandler(Form1_Load);
 
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadData();
+            AktualizujKary();
+            OdswiezKary();
         }
+        public void AktualizujKary()
+        {
+            // Pobranie connection stringa
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+
+            // Nawi¹zanie po³¹czenia z baz¹ danych
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Instrukcja SQL do aktualizacji danych
+                string sqlQuery = "UPDATE HistoriaWypozyczen SET StatusZwrotu = 'KARA' WHERE DataZwrotu < CAST(GETDATE() AS DATE) AND StatusZwrotu != 'KARA';";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    try
+                    {
+                        // Otwarcie po³¹czenia
+                        connection.Open();
+
+                        // Wykonanie zapytania SQL (ExecuteNonQuery dla UPDATE)
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                      
+                    }
+                    catch (SqlException e)
+                    {
+                      
+                    }
+                }
+            }
+        }
+        public void OdswiezKary()
+        {
+            string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("Odœwie¿Kary", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                       
+                    }
+                    catch (SqlException ex)
+                    {
+                       
+                    }
+                }
+            }
+        }
+
         private void buttonZaloguj_Click(object sender, EventArgs e)
         {
             LogowanieForm logowanieForm = new LogowanieForm();

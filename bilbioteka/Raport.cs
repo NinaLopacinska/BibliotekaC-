@@ -29,13 +29,13 @@ namespace bilbioteka
 
             try
             {
-                
-                raportList.Add(PobierzNajczesciejWypozyczanaPozycjeWMiesiacu(dataOd, dataDo));
+                // Dodanie wyników z poszczególnych zapytań
+                raportList.Add(PobierzNajczesciejWypozyczanaPozycje(dataOd, dataDo));
                 raportList.Add(PobierzSredniaLiczbeWypozyczenWMiesiacu(dataOd, dataDo));
                 raportList.Add(PobierzStatystykiZasobow());
                 raportList.Add(PobierzNajczestszeWydawnictwo(dataOd, dataDo));
-                raportList.Add(PobierzZasobyWBibliotece());
-                raportList.Add(PobierzLiczbeUzytkownikow());
+                raportList.Add(PobierzZasobyWBibliotece(dataOd, dataDo));
+                raportList.Add(PobierzLiczbeUzytkownikow(dataOd, dataDo));
                 raportList.Add(PobierzLiczbeDluznikow());
                 raportList.Add(PobierzLiczbePracownikow());
             }
@@ -65,27 +65,6 @@ namespace bilbioteka
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaWypozyczen"]);
 
                 return $"Najczęściej wypożyczany zasób: {typ} '{tytul}' autorstwa {autor}. Liczba wypożyczeń: {liczbaWypozyczen}.\n";
-            }, dataOd, dataDo);
-        }
-
-        private string PobierzNajczesciejWypozyczanaPozycjeWMiesiacu(DateTime dataOd, DateTime dataDo)
-        {
-            const string query = @"
-                SELECT TOP 1 z.Tytul, z.Autor, z.Typ, COUNT(h.Id) AS Wypozyczenia
-                FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
-                JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
-                WHERE h.DataWypozyczenia BETWEEN @DataOd AND @DataDo
-                GROUP BY z.Tytul, z.Autor, z.Typ
-                ORDER BY Wypozyczenia DESC";
-
-            return WykonajZapytanieSQL(query, reader =>
-            {
-                string typ = reader["Typ"].ToString();
-                string tytul = reader["Tytul"].ToString();
-                string autor = reader["Autor"].ToString();
-                int liczbaWypozyczen = Convert.ToInt32(reader["Wypozyczenia"]);
-
-                return $"Najczęściej wypożyczany w podanym okresie: {typ} '{tytul}' autorstwa {autor}. Liczba wypożyczeń: {liczbaWypozyczen}.\n";
             }, dataOd, dataDo);
         }
 
@@ -130,20 +109,21 @@ namespace bilbioteka
             });
         }
 
-        private string PobierzZasobyWBibliotece()
+        private string PobierzZasobyWBibliotece(DateTime dataOd, DateTime dataDo)
         {
             const string query = @"
-                SELECT COUNT(h.Id) AS LiczbaPozaBiblio
-                FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
-                JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
-                WHERE StatusZwrotu = 'Nie zwrócono'";
+        SELECT COUNT(h.Id) AS LiczbaPozaBiblio
+        FROM [biblioteka].[dbo].[HistoriaWypozyczen] h
+        JOIN [biblioteka].[dbo].[zasoby] z ON h.ZasobId = z.Id
+        WHERE StatusZwrotu = 'Nie zwrócono' AND h.DataWypozyczenia BETWEEN @DataOd AND @DataDo";
 
             return WykonajZapytanieSQL(query, reader =>
             {
                 int liczbaWypozyczen = Convert.ToInt32(reader["LiczbaPozaBiblio"]);
                 return $"Liczba obecnie wypożyczonych pozycji wynosi: {liczbaWypozyczen}. \n";
-            });
+            }, dataOd, dataDo); // Przekazanie parametrów dataOd i dataDo
         }
+
 
         private string PobierzNajczestszeWydawnictwo(DateTime dataOd, DateTime dataDo)
         {
@@ -164,20 +144,24 @@ namespace bilbioteka
             }, dataOd, dataDo);
         }
 
-
-        private string PobierzLiczbeUzytkownikow()
+        private string PobierzLiczbeUzytkownikow(DateTime dataOd, DateTime dataDo)
         {
+          
+
             const string query = @"
-                SELECT COUNT(Id) AS LiczbaUzytkownikow
-                FROM [biblioteka].[dbo].[uzytkownicy]
-                WHERE IdOsoby = 1 AND Stan = 'Aktywny'";
+        SELECT COUNT(Id) AS LiczbaUzytkownikow
+        FROM [biblioteka].[dbo].[uzytkownicy]
+        WHERE IdOsoby = 1 AND Stan = 'Aktywny' 
+        AND CAST(DataUtworzenia AS DATE) BETWEEN CAST(@DataOd AS DATE) AND CAST(@DataDo AS DATE)";
 
             return WykonajZapytanieSQL(query, reader =>
             {
                 int liczbaUzytkownikow = Convert.ToInt32(reader["LiczbaUzytkownikow"]);
-                return $"Liczba zarejestrowanych użytkowników wynosi: {liczbaUzytkownikow}. \n";
-            });
+                return $"Liczba aktywnych użytkowników zarejestrowanych w okresie od {dataOd:yyyy-MM-dd} do {dataDo:yyyy-MM-dd}: {liczbaUzytkownikow}. \n";
+            }, dataOd, dataDo);
         }
+
+
 
         private string PobierzLiczbeDluznikow()
         {

@@ -1,12 +1,7 @@
 ﻿using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace bilbioteka.Forms
@@ -14,6 +9,7 @@ namespace bilbioteka.Forms
     public partial class DateForm : Form
     {
         private Raport raport;
+
         public DateForm()
         {
             InitializeComponent();
@@ -23,38 +19,34 @@ namespace bilbioteka.Forms
 
         private void buttonGenerujRaport_Click(object sender, EventArgs e)
         {
-
             try
             {
                 // Pobierz zakres dat z kontrolek
                 DateTime dataOd = dateTimePicker1.Value.Date;
                 DateTime dataDo = dateTimePicker2.Value.Date;
-                
 
+                // Sprawdzenie, czy data początkowa jest wcześniejsza niż data końcowa
                 if (dataOd > dataDo)
                 {
                     MessageBox.Show("Data początkowa nie może być późniejsza niż data końcowa.",
-                                    "Błąd",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                                    "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                // Sprawdzenie, czy data końcowa nie jest w przyszłości
                 if (dataDo > DateTime.Now)
                 {
                     MessageBox.Show("Raport nie może wybiegać w przyszłość.",
-                                    "Błąd",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                                    "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                // Sprawdzenie, czy data początkowa jest późniejsza niż 1 października 2024
                 if (dataOd < new DateTime(2024, 10, 1))
                 {
                     MessageBox.Show("Raport nie może obejmować czasu przed powstaniem Biblioteki.",
-                                    "Błąd",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
+                                    "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 // Wyświetlenie okna dialogowego wyboru ścieżki i nazwy pliku
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
@@ -69,13 +61,11 @@ namespace bilbioteka.Forms
                         // Pobierz dane z klasy Raport dla wybranego zakresu dat
                         List<string> raportDane = raport.GenerujRaport(dataOd, dataDo);
 
-                        // Sprawdź, czy raport zawiera dane
+                        // Sprawdzenie, czy raport zawiera dane
                         if (raportDane == null || raportDane.Count == 0)
                         {
                             MessageBox.Show("Raport nie zawiera danych dla wybranego zakresu dat.",
-                                            "Błąd",
-                                            MessageBoxButtons.OK,
-                                            MessageBoxIcon.Error);
+                                            "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
@@ -83,18 +73,14 @@ namespace bilbioteka.Forms
                         GenerujExcel(sciezkaExcel, raportDane);
 
                         MessageBox.Show($"Raport został pomyślnie wygenerowany i zapisany w lokalizacji: {sciezkaExcel}.",
-                                        "Sukces",
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information);
+                                        "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Wystąpił błąd: {ex.Message}",
-                                "Błąd",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                                "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -158,8 +144,7 @@ namespace bilbioteka.Forms
 
         private void buttonZalogujRej_Click(object sender, EventArgs e)
         {
-            this.Close();   
+            this.Close();
         }
     }
 }
-

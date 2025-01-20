@@ -9,6 +9,7 @@ namespace bilbioteka.Forms
         public LogowanieForm()
         {
             InitializeComponent();
+            
             textBoxHaslo.PasswordChar = '*';
         }
 
@@ -45,6 +46,8 @@ namespace bilbioteka.Forms
 
             return userName;
         }
+
+      
 
         private void buttonZaloguj_Click_1(object sender, EventArgs e)
         {
