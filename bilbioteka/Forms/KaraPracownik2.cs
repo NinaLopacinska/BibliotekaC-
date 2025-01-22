@@ -26,7 +26,7 @@ namespace bilbioteka.Forms
         private void LoadData()
         {
             string connectionString = PolaczenieBazyDanych.StringPolaczeniowy();
-            string query = "SELECT IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary WHERE StatusKary = 'KARA' ";
+            string query = "SELECT Id, IloscDniKary AS 'Długość kary', KwotaKary AS 'Kwota [zł]', Login, Tytul, Typ, StatusKary FROM kary WHERE StatusKary = 'KARA' ";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -54,6 +54,7 @@ namespace bilbioteka.Forms
         private string selectedTytul = string.Empty;
         private string selectedTyp = string.Empty;
         private int selectedKwotaKary = 0;
+        private int id = 0;
 
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -69,12 +70,18 @@ namespace bilbioteka.Forms
                 selectedTyp = selectedRow.Cells["Typ"]?.Value?.ToString() ?? string.Empty;
                 int selectedKwotaKary = selectedRow.Cells["Kwota [zł]"]?.Value != null
                 ? Convert.ToInt32(selectedRow.Cells["Kwota [zł]"].Value) : 0;
+                int selectedId = selectedRow.Cells["id"]?.Value != null
+                ? Convert.ToInt32(selectedRow.Cells["id"].Value)
+                 : 0;
+
 
                 // Wstaw wartości do odpowiednich pól tekstowych
                 textBox1.Text = selectedLogin;
                 textBoxTytul.Text = selectedTytul;
                 textBoxTyp.Text = selectedTyp;
                 textBoxKwota.Text = selectedKwotaKary.ToString();
+                textBox4.Text = selectedId.ToString();
+
             }
         }
 
@@ -83,6 +90,7 @@ namespace bilbioteka.Forms
             string login = textBox1.Text;
             string tytul = textBoxTytul.Text;
             string kwota = textBoxKwota.Text;
+            string idText = textBox4.Text;
 
             if (string.IsNullOrWhiteSpace(login))
             {
@@ -96,9 +104,15 @@ namespace bilbioteka.Forms
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(kwota))
+            if (!int.TryParse(kwota, out int kwotaInt))
             {
-                MessageBox.Show("Proszę wpisać kwotę kary.");
+                MessageBox.Show("Proszę wpisać poprawną kwotę kary.");
+                return;
+            }
+
+            if (!int.TryParse(idText, out int id))
+            {
+                MessageBox.Show("Proszę wpisać poprawne ID.");
                 return;
             }
 
@@ -110,63 +124,77 @@ namespace bilbioteka.Forms
                 {
                     connection.Open();
 
-                    // Sprawdź, czy istnieje rekord dla podanego loginu, tytułu i statusu
-                    string selectQuery = "SELECT StatusKary, KwotaKary FROM kary WHERE Login = @login AND Tytul = @tytul";
-                    SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
-                    selectCommand.Parameters.AddWithValue("@login", login);
-                    selectCommand.Parameters.AddWithValue("@tytul", tytul);
-
-                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    string selectQuery = "SELECT StatusKary, KwotaKary FROM kary WHERE Login = @login AND Tytul = @tytul AND Id = @id";
+                    using (SqlCommand selectCommand = new SqlCommand(selectQuery, connection))
                     {
-                        if (!reader.Read())
-                        {
-                            MessageBox.Show("Nie znaleziono takiego użytkownika lub tytułu w bazie danych.");
-                            return;
-                        }
+                        selectCommand.Parameters.AddWithValue("@login", login);
+                        selectCommand.Parameters.AddWithValue("@tytul", tytul);
+                        selectCommand.Parameters.AddWithValue("@id", id);
 
-                        string statusKary = reader.GetString(reader.GetOrdinal("StatusKary"));
-                        int kwotaZBazy = reader.GetInt32(reader.GetOrdinal("KwotaKary"));
-
-                        // Sprawdź, czy status kary wynosi "KARA"
-                        if (statusKary != "KARA")
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
                         {
-                            MessageBox.Show("Pozycja została już zwrócona.");
-                            return;
-                        }
+                            if (!reader.Read())
+                            {
+                                MessageBox.Show("Nie znaleziono takiego użytkownika, tytułu lub ID w bazie danych.");
+                                return;
+                            }
 
-                        // Sprawdź zgodność kwoty
-                        if (kwotaZBazy.ToString() != kwota)
-                        {
-                            MessageBox.Show("Podana kwota kary jest niezgodna.");
-                            return;
+                            string statusKary = reader.GetString(reader.GetOrdinal("StatusKary"));
+                            int kwotaZBazy = reader.GetInt32(reader.GetOrdinal("KwotaKary"));
+
+                            if (statusKary != "KARA")
+                            {
+                                MessageBox.Show("Pozycja została już zwrócona.");
+                                return;
+                            }
+
+                            if (kwotaZBazy != kwotaInt)
+                            {
+                                MessageBox.Show("Podana kwota kary jest niezgodna.");
+                                return;
+                            }
                         }
                     }
 
-                    string updateQuery = @"
-        UPDATE kary
-        SET StatusKary = 'Zwrócono'
-        FROM kary
-        INNER JOIN HistoriaWypozyczen ON kary.Login = HistoriaWypozyczen.LoginUzytkownika
-            AND kary.Tytul = HistoriaWypozyczen.TytulPozycji
-        WHERE kary.Login = @login AND HistoriaWypozyczen.TytulPozycji = @tytul;
-        
-        UPDATE HistoriaWypozyczen
-        SET StatusZwrotu = 'Zwrócono'
-        WHERE LoginUzytkownika = @login AND TytulPozycji = @tytul;";
-
-                    SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
-                    updateCommand.Parameters.AddWithValue("@login", login);
-                    updateCommand.Parameters.AddWithValue("@tytul", tytul);
-
-                    int rowsAffected = updateCommand.ExecuteNonQuery();
-                    if (rowsAffected > 0)
+                    using (SqlTransaction transaction = connection.BeginTransaction())
                     {
-                        MessageBox.Show("Status został pomyślnie zaktualizowany.");
-                        LoadData();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nie udało się zaktualizować statusu.");
+                        try
+                        {
+                            string updateQuery = @"
+                    UPDATE kary
+                    SET StatusKary = 'Zwrócono'
+                    WHERE Id = @id;
+
+                    UPDATE HistoriaWypozyczen
+                    SET StatusZwrotu = 'Zwrócono'
+                    WHERE LoginUzytkownika = @login AND TytulPozycji = @tytul;";
+
+                            using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection, transaction))
+                            {
+                                updateCommand.Parameters.AddWithValue("@id", id);
+                                updateCommand.Parameters.AddWithValue("@login", login);
+                                updateCommand.Parameters.AddWithValue("@tytul", tytul);
+
+                                int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+                                    transaction.Commit();
+                                    MessageBox.Show("Status został pomyślnie zaktualizowany.");
+                                    LoadData();
+                                }
+                                else
+                                {
+                                    transaction.Rollback();
+                                    MessageBox.Show("Nie udało się zaktualizować statusu.");
+                                }
+                            }
+                        }
+                        catch
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
                     }
                 }
             }
@@ -178,9 +206,7 @@ namespace bilbioteka.Forms
             {
                 MessageBox.Show("Wystąpił błąd: " + ex.Message);
             }
-            LoadData();
         }
-
 
         private void buttonZalogujRej_Click_1(object sender, EventArgs e)
         {
@@ -193,7 +219,7 @@ namespace bilbioteka.Forms
             string tytul = textBoxTytul.Text;
             string kwota = textBoxKwota.Text;
             string typ = textBoxTyp.Text;
-            
+
 
             if (string.IsNullOrWhiteSpace(login))
             {
@@ -249,8 +275,8 @@ namespace bilbioteka.Forms
                 MessageBox.Show("Wystąpił błąd: " + ex.Message);
             }//koniec
              //połączenie 1
-            
-           
+
+
 
             try
             {
@@ -360,6 +386,11 @@ namespace bilbioteka.Forms
                     MessageBox.Show("Wystąpił błąd: " + ex.Message);
                 }
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
